@@ -36,7 +36,7 @@ const FirstBlock = styled.div`
 
 const IntroHeader = styled.h1`
   font-size: 1.9rem;
-  line-height: 1.2;
+  line-height: 1.3;
 
   @media (min-width: 768px) {
     font-size: 3rem;

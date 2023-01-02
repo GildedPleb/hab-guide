@@ -5,13 +5,6 @@ import reset from "styled-reset";
 const styled = { createGlobalStyle, ...sc };
 
 const GlobalStyle = styled.createGlobalStyle`
-  @font-face {
-    font-family: "Ubuntu";
-    src: url("/hab-guide/fonts/Ubuntu-Bold.ttf") format("truetype");
-    font-weight: 800;
-    font-style: bold;
-    font-display: auto;
-  }
 
   ${reset}
 
@@ -20,7 +13,7 @@ const GlobalStyle = styled.createGlobalStyle`
     color: whitesmoke;
     padding: 0;
     margin: 0;
-    font-family: Baskerville, Baskerville Old Face, Hoefler Text, Garamond,
+    font-family: Baskerville, Baskervville, Baskerville Old Face, Hoefler Text, Garamond,
     Times New Roman, serif;
     background: #000000;
     font-size: 1.2rem;
