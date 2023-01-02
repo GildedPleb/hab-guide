@@ -7,7 +7,7 @@ const styled = { createGlobalStyle, ...sc };
 const GlobalStyle = styled.createGlobalStyle`
   @font-face {
     font-family: "Ubuntu";
-    src: url("/fonts/Ubuntu-Bold.ttf") format("truetype");
+    src: url("/hab-guide/fonts/Ubuntu-Bold.ttf") format("truetype");
     font-weight: 800;
     font-style: bold;
     font-display: auto;
