@@ -1,0 +1,8 @@
+{
+  "label": "Layer 1 - Hosts",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "Setting up all the hosts for a HAB Node"
+  }
+}

@@ -1,0 +1,123 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #f2a900;
+  --ifm-color-primary-dark: #da9800;
+  --ifm-color-primary-darker: #ce9000;
+  --ifm-color-primary-darkest: #ac7800;
+  --ifm-color-primary-light: #ffb50b;
+  --ifm-color-primary-lighter: #ffb917;
+  --ifm-color-primary-lightest: #ffc43c;
+  --ifm-code-font-size: 65%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-heading-font-family: Baskerville, Baskerville Old Face, Hoefler Text,
+    Garamond, Times New Roman, serif;
+  --ifm-font-family-base: Baskerville, Baskerville Old Face, Hoefler Text,
+    Garamond, Times New Roman, serif;
+  --ifm-font-size-base: 130%;
+  /* --ifm-navbar-height: 3.75rem; */
+  /* --ifm-navbar-item-padding-vertical: 0rem; */
+  --ifm-line-height-base: 1.4;
+  --ifm-global-spacing: 1rem;
+  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="-8 -8 32 32"><path d="M16,16L8,10L0,16L8,0L16,16z"/></svg>');
+  --ifm-heading-font-weight: var(--ifm-font-weight-normal);
+  /* --ifm-table-head-font-weight */
+  --ifm-heading-font-weight: ;
+  --ifm-button-font-weight: ;
+  --ifm-button-background-color: white;
+  --aa-primary-color-rgb: 150, 150, 150 !important;
+
+  /* --ifm-font-weight-light: 300;
+--ifm-font-weight-normal: 400;
+--ifm-font-weight-semibold: 500;
+--ifm-font-weight-bold: 700;
+--ifm-font-weight-base: var(--ifm-font-weight-normal); */
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+  --ifm-color-primary: #f2a900;
+  --ifm-color-primary-dark: #da9800;
+  --ifm-color-primary-darker: #ce9000;
+  --ifm-color-primary-darkest: #ac7800;
+  --ifm-color-primary-light: #ffb50b;
+  --ifm-color-primary-lighter: #ffb917;
+  --ifm-color-primary-lightest: #ffc43c;
+  --docusaurus-highlighted-code-line-bg: rgba(250, 250, 250, 0.1);
+}
+
+.main-wrapper {
+  font-family: Baskerville, Baskerville Old Face, Hoefler Text, Garamond,
+    Times New Roman, serif;
+}
+
+body {
+  word-wrap: normal;
+}
+
+p {
+  text-indent: 1rem;
+}
+
+b {
+  font-weight: normal;
+}
+
+p > img {
+  margin-top: 1rem;
+  text-indent: 0rem;
+}
+
+blockquote {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+
+blockquote > p {
+  text-indent: 0rem;
+}
+
+.button {
+  border-radius: 0;
+  background-color: white;
+  padding: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+  background-color: black;
+  margin-bottom: 10px;
+}
+
+.button.button--secondary {
+  color: #f2a900;
+}
+
+.docusaurus-mermaid-container {
+  margin-bottom: 2rem;
+}
+
+/* This targets /How? Mermaid JS Charts */
+/* .HABNClass g foreignObject {
+  transform: translateY(-35px);
+} */
+
+.navbar__search-input {
+  font-family: inherit;
+}
+
+.searchQueryInput_CFBF {
+  font-family: inherit;
+}
+
+.navbar__toggle {
+  order: 2;
+}
+
+.markdown li + li {
+  margin-top: 0;
+}

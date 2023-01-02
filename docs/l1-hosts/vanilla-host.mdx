@@ -1,0 +1,383 @@
+---
+sidebar_position: 7
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+# Stand-up Vanilla Hosts
+
+We will now be standing up Vanilla Hosts.
+
+For each host type below, you will have to do a handful of particulars before
+standing up the vanilla host. However, once those are complete, you will be
+running _the same_ command on your control computer with different arguments.
+Something like:
+
+```bash
+apb Hosts/standup-vanilla.yml -e "rawhosts=hostName"
+```
+
+Before you set up your hosts as per their type, and before you run any commands,
+let's review the final code block we will be running. Open up
+`Hosts/standup-vanilla.yml` in an editor. This time, see if you can figure out
+what it's doing without heavily commented code. We suggest DuckDuckGoing
+anything you do not understand with a simple copy/past. However, if that is too
+in the weeds, we have heavily commented the Ansible plays for
+`Hosts/prep-raw-pis-for-boot-from-usb.yml` open that file to get a better
+rundown of Ansible files.
+
+But, to broadly explain the `Hosts/standup-vanilla.yml` code that we will run
+for all hosts, the commands will do this:
+
+1. Add a handful of files to the `~/.HAB/inventory` directory that will assist
+   in planing and managing the cluster for later steps.
+1. Fact gather about the new hosts added in the command line, and add then to
+   any previously added hosts.
+1. Check for host name validity and uniqueness.
+1. Make sure, according to OS, that the host is up-to-date, and the appropriate
+   settings are set for being able to receive k3s.
+1. Also add some important quality of life improvements, like message-of-the-day
+   when you ssh into a host.
+1. Assert and double check everything looks good to go.
+
+With this in mind, let's now prep your hosts according to the type of host they
+are.
+
+<Tabs
+  values={[
+    { label: "Raspberry Pi", value: "1" },
+    { label: "NUC", value: "2" },
+    { label: "Generic", value: "3" },
+  ]}
+  defaultValue="1"
+>
+  <TabItem value="1">
+
+## Stand-up Vanilla RPi
+
+Raspberry Pi's need no introduction. At this point in time, we should probably
+assume a great deal of pleb-nodes run on Raspberry Pis and much of the following
+should be familiar to all who run them.
+
+## Boot From SSD
+
+Running k3s in high availability mode—where there are three or more controlling
+nodes that can individually be killed without the cluster going down—may kill
+your SD card from too many etcd writes, and besides, your SD card read/write
+times are very slow in comparison to what is available. The
+[docs](https://rancher.com/docs/k3s/latest/en/installation/ha-embedded/) suggest
+that running k3s in HA on a SD card is not a good idea. We could run the DB
+externally, and have 2 master nodes, but that feels antithetical—we'd rather
+have a third node to run in HA mode than a NFS external database managing node
+state—as said NFS may not be able to function as a full node itself.
+
+In light of this, we will provision our pi's to boot from a SSD card connected
+to USB.
+
+## Prep Raw Raspberry Pi's
+
+:::warning
+
+Be sure all hosts and all SD/SSD media do not have any information on them that
+is not backed up or can not be lost. _Imaging will erase this information._
+
+:::
+
+The purpose of this first official imaging is to gather data about our pis, to
+`ssh` in for the first time, and to make sure they are ready to boot from an
+external SSD. Only once they are ready to boot from an external drive, will we
+be able to stand up vanilla pis.
+
+A few notes to keep in mind before embarking:
+
+- **Host Count** If you only have one pi, that's fine.
+- **SD Count** If you only have 1 SD card but multiple pis, you will have to run
+  through this entire thing for each pi, individually, but it'll work.
+- **Add a Pi Later** You must also go through these steps to add a new pi,
+  regardless of the state of other pis (when adding a new pi, you only have to
+  execute all actions against the one new pi, the other pis are golden)
+- **User/Password** This guide and the Ansible scripts herein rely on a uniform
+  user/password schema when in the raw and vanilla state. Though you can deviate
+  from them, it will make your life just a little easier to stick with the same
+  user and password for ALL hosts in the vanilla state. We will secure the host
+  with far superior methods later on.
+
+  :::warning
+
+  With the first Pi imaging, it is important to stick with the given name and
+  password. These are explicitly tied to a script and only used one time as such
+  for the first imaging. Then you can change them.
+
+  :::
+
+- **Booting From USB** The
+  [recommended way of ensuring that booting from USB is enabled](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#raspberry-pi-4-boot-eeprom)
+  is simpler. However, this way will provide some more logging if things go
+  south and will update firmware if needed.
+
+### First Imaging
+
+1.  If you are setting up multiple pis, none of the params in the below list
+    will change pi to pi, thus, setting `to always use` means you do not have to
+    do this for each image write when completed in parallel. Or if you only have
+    1 SD card, you can write one image and start at **Step vii** for each
+    additional pi in **This Step**. In such a case, be sure to continue to
+    **Step 2** and **3**, before moving on to the next pi. Repeat for each
+    Raspberry Pi:
+    1.  Insert SD card into control computer
+    1.  In Raspberry Pi Imager, choose image: `Raspberry Pi OS Lite (64-bit)`
+    1.  Select appropriate SD card
+    1.  Click the ⚙️ Advanced Options:
+        - Image customization options: `to alwasy use`
+        - ✅ Enable SSH
+          - ✅ User password authentication
+        - ✅ Set username and password
+        - Username: `pi`
+        - Password: `raspberryRaw`
+        - ✅ Set locale setting
+          - Time zone: `[your timezone]`
+          - Keyboard layout: `[your keyboard layout]`
+          - ✅ Skip first-run wizard
+          - If you are using wifi for this (not officially recommended, but
+            doable), you should set that up here
+    1.  **WRITE THE IMAGE**
+    1.  Eject
+    1.  Put into appropriate RPi
+    1.  Attach pi to the network via Ethernet if you are using Ethernet
+    1.  Power on (aka, plug into power)
+1.  Once all the pis are powered on (or once each pi is individually if you only
+    have 1 SD card), run this command on your local computer, alter the subnet
+    to the subnet your pis are on, it can be CIDR, a range, or a single IP—(it
+    gets past to `nmap` in the play). Again, use the method we discussed in
+    [Ansible](/docs/l1-hosts/ansible) and review the code you are about to run
+    before running, we have heavily commented it to help.
+
+    ```bahs
+    apb Hosts/prep-raw-pis-for-boot-from-usb.yml -e "subnet=10.1.0.20-29"
+    ```
+
+    If all is well, Ansible will update the software, ensure that booting from
+    USB is enabled, update firmware, log pertinent info, and shut down ALL the
+    pis. If something fails, consult the Ansible logs and trouble shoot any
+    issues.
+
+1.  Once all the pis are shut down, remove the SD Card(s).
+
+You should never have to do this step again for any pi that has already done it.
+But it's idempotent, so it doesn't matter if you do just to make sure—and thus
+the power of idempotence.
+
+You can now boot from a USB attached drive, so, let's do that...
+
+### Second Imaging
+
+1. Open Raspberry Pi Imager once again on control computer:
+1. This time, for each RPi:
+   - Insert **SSD** (not to be confused with SD Card) into the control computer.
+   - Choose image: `Raspberry Pi OS Lite (64-bit)`
+   - Select appropriate SSD
+   - Click the ⚙️ Advanced Options. If you are setting up multiple pis, the only
+     param of the bellow settings that will change pi to pi is the hostname
+     - Image customization options: `to always use`
+     - ✅ Set the hostname. Use the hostname that is already defined in DHCP/DNS
+       for the device the SSD belongs to: e.g. `pi1`.
+     - ✅ Enable SSH
+       - ✅ User password authentication
+     - ✅ Set username and password (This password can be altered, but its just
+       easier keep it as is. If you alter them, they must stay uniform across
+       hosts)
+       - Username: `hab`
+       - Password: `vanillaHab`
+     - ✅ Set locale setting
+       - Time zone: `[your timezone]`
+       - Keyboard layout: `[your keyboard layout]`
+       - ✅ Skip first-run wizard
+   - **WRITE THE IMAGE**
+1. Eject
+1. Put SSD into appropriate RPi
+1. Power on
+
+If you didn't change the user/password, on the control machine, edit the host
+names below and run:
+
+```bash
+apb Hosts/standup-vanilla.yml -e "rawhosts=pi1,pi2,pi3,pi4,pi5"
+```
+
+If you did change the user and password, edit the host names, user, and password
+below and run:
+
+```bash
+apb Hosts/standup-vanilla.yml -e "rawhosts=pi1,pi2,pi3,pi4,pi5 user=pi pass=raspberryRaw"
+```
+
+If there are no failures, all raw pi's are now vanilla hosts 🙌
+
+  </TabItem>
+  <TabItem value="2">
+
+## Stand-up Vanilla NUCs
+
+NUCs are extremely performant, low form-factor, extensible consumer grade
+devices but can be more expensive than pis.
+
+## Prep Raw NUCs
+
+- **User/Password** This guide and the Ansible scripts herein rely on a uniform
+  user/password schema when in the raw and vanilla state. Though you can deviate
+  from them, it will make your life just a little easier to stick with the same
+  user and password for ALL hosts in the vanilla state. We will secure the host
+  with far superior methods later on.
+
+:::warning
+
+Be sure all hosts and all SD/SSD media do not have any information on them that
+is not backed up or can not be lost. _Imaging will erase this information._
+
+:::
+
+1. Install all the hardware on the NUC: M.2 drive, SATA, RAM, etc.
+1. Connect monitor and keyboard to NUC.
+1. Connect Ethernet cable.
+1. Connect power, but no need to power on yet.
+1. Get the latest Ubuntu server 20.04 image from
+   [Ubuntu](https://ubuntu.com/download/server) on your controlling computer
+1. On the Ubuntu website, select "Option 2 - Manual Server Installation"
+1. Make sure you are downloading **AMD** architecture (you are usually and it
+   will say so in the name of the download, e.g.
+   "ubuntu-20.04.4-live-server-amd64.iso")
+1. Click download
+1. Open the Raspberry Pi Imager
+1. Choose "Use Custom" and find the image you just downloaded.
+1. Insert a SD card into the control computer
+1. Select it in Imager as the "storage" option
+1. **Click WRITE**
+1. Once written, Eject card and put it in the NUC
+1. Power on the NUC and hold / press F10 on the keyboard until you see the
+   `boot from` screen.
+1. Select boot from USB / SD.
+1. Go through the process of setting up the server.
+   - No need to enter your name
+   - User and password (This password can be altered, but it's just easier to
+     keep it as is):
+     - User: `hab`
+     - Password: `vanillaHab`
+   - SSH:
+     - No need to copy over keys just yet
+     - Make sure password authentication is enabled
+   - Select disk partitions and boot drives as you find appropriate, generally,
+     we want at least one massive partition > 1.5 TB.
+1. Once everything is installed, it will indicate a successful install, and ask
+   you to eject the USB / SD media, Eject it.
+1. Boot the device from disk
+1. Log in using provided user/pass
+1. Do not disconnect keyboard / monitor until you can confirm that you can ssh
+   in from local control machine using user/pass given above
+   - If you can not log in, you may need to start `sshd` on the NUC, run:
+     `sudo systemctl enable sshd` (this is a problem we had) but there could be
+     a
+     [handful](https://duckduckgo.com/?q=can+not+SSH+into+Ubuntu+Server+on+NUC&t=ffab&ia=web)
+     of other things going on.)
+1. Once you have SSHed in, escalate the ubuntu user permissions to use sudo
+   without a password
+   1. run: `sudo visudo`
+   1. Add: `ubuntu ALL=(ALL) NOPASSWD:ALL` to the end of the file
+   1. To save changes: `CTRL + o`
+   1. Confirm changes: `ENTER`
+   1. Exit and apply : `CTRL + x`
+1. Set the host name
+   1. A hostname will never change from top to bottom in this guide for each
+      computer. Use the hostname that is already defined for this device: e.g.
+      `nuc1`
+   1. While still logged in, run this command, be sure to change the name to
+      match the NUC its being applied to, e.g. `nuc1` etc:
+   ```bash
+   sudo hostnamectl set-hostname nuc1
+   ```
+1. It might also be good to make sure firmware is up-to-date with:
+   `fwupdmgr get-updates --ipfs`
+1. Additionally, it's probably a good idea to make sure your hard drive, volume
+   groups, and logical volumes are in order. Run, `sudo pvs` `sudo vgs` and
+   `sudo lvs`. Your physical volumes ('pv', from 'pvs') should reflect the
+   expected disk space you have. So too should vgs (volume groups) and lvs
+   (logic volumes). See
+   [here](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning).
+
+## Stand-up Vanilla NUCs
+
+Once all the NUCs are raw, as per these steps, run this command on your local
+computer:
+
+If you didn't change the user/password, edit the host names below and run:
+
+```bash
+apb Hosts/standup-vanilla.yml -e "rawhosts=nuc1,nuc2 nameservers=10.1.0.1,1.1.1.1 timezone=EST"
+```
+
+If you did change the user and password, edit the hostnames, user, and password
+below and run:
+
+```bash
+apb Hosts/standup-vanilla.yml -e "rawhosts=nuc1,nuc2 user=newUser pass=newPassword nameservers=10.1.0.1,1.1.1.1 timezone=EST"
+```
+
+Passing in a `nameserver` is optional, if you do not pass one in, `1.1.1.1` will
+be used. Likewise with `timezone`, default is `US/Pacific`
+
+If there are no failures, all raw NUC's are now vanilla hosts 🙌
+
+  </TabItem>
+  <TabItem value="3">
+
+## Stand-up Vanilla Generic Device
+
+Given the setup for Raspberry Pis and NUCs, we should now have some guidelines
+on setting up a _generic_ device. Be sure to read the NUC setup steps in
+particular.
+
+Of first importance is to make sure the device meets _hardware_ requirements
+outlined [elsewhere](/docs/l1-hosts/hardware). With that set, the easiest way
+forward is to start with Ubuntu server, as it will be generally the most
+well-supported among a variety of hardware. What is more, with Ubuntu, getting
+it into a raw state shouldn't be dissimilar from setting up a NUC as we have
+just seen.
+
+Here are some basic goalposts for adding a generic host that we should call
+attention to from the NUC guide.
+
+- [ ] Name the host uniquely in accordance with your naming plan.
+- [ ] Get ssh access from your control machine via password.
+- [ ] Make sure `hostnamectl` is set correctly.
+- [ ] Make sure Ansible does not need to enter the password to use root
+      privileges.
+
+All of these have pathways in the NUC guide above, in fact, again, most of the
+NUC guide should apply.
+
+You can then stand up a vanilla generic raw host using the same command we have
+already seen:
+
+```bash
+apb Hosts/standup-vanilla.yml -e "rawhosts=geriatric1"
+```
+
+If there are no failures, all raw generic hosts are now vanilla hosts 🙌
+
+  </TabItem>
+</Tabs>
+
+If you don't have any other computers, you can proceed to the section:
+[Stand-up Live Hosts](/docs/l1-hosts/live-hosts). Otherwise, change the tab
+above to the next set of hosts.
+
+---
+
+:::tip
+
+All the steps above will soon be irrelevant when
+[netbooting](https://openfaas.gumroad.com/l/netbooting-raspberrypi)—booting,
+imaging, and provisioning a Raspberry Pi (or any computer) remotely—makes it
+into the guide!
+
+:::

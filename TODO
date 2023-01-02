@@ -1,0 +1,6 @@
+- [ ] Make sure all inventory references are to ~/.HAB/inventory/ not ./Hosts/inventory
+- [ ] Add an ask for password script
+- [ ] Add a bitwarden add on walk through
+- [ ] Add Auxiliary storage walk through with adding expanded drives
+- [ ] Add Network attached storage walk through with NFS
+- [ ] Add TOR controller
