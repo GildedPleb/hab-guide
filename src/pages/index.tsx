@@ -20,7 +20,7 @@ import StaticScroll from "../animations/StaticScroll";
 import Teaser from "../components/pitch/Teaser";
 
 const HideAddressBarScroller = styled.section`
-  padding-bottom: 1px;
+  padding-top: 1px;
 `;
 
 const Pitch = styled.section`
