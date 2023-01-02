@@ -19,9 +19,10 @@ import Sovereign from "../components/pitch/FeatureSoverign";
 import StaticScroll from "../animations/StaticScroll";
 import Teaser from "../components/pitch/Teaser";
 
+// Obnoxious setting height to 100.1 if this works... 
 const Pitch = styled.section`
   overflow-y: scroll;
-  height: 100vh;
+  height: 100.1vh; 
 `;
 
 export default function Home(): JSX.Element {
