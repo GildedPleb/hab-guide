@@ -19,10 +19,18 @@ import Sovereign from "../components/pitch/FeatureSoverign";
 import StaticScroll from "../animations/StaticScroll";
 import Teaser from "../components/pitch/Teaser";
 
-// Obnoxious setting height to 100.1 if this works... 
+const HideAddressBarScroller = styled.section`
+  padding-bottom: 1px;
+`;
+
 const Pitch = styled.section`
   overflow-y: scroll;
-  height: 100.1vh; 
+  height: 100vh; 
+  position: fixed:
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 `;
 
 export default function Home(): JSX.Element {
@@ -31,7 +39,7 @@ export default function Home(): JSX.Element {
   return (
     <>
       <GlobalStyle />
-      <div>
+      <HideAddressBarScroller>
         <FAB />
         <Pitch ref={refOuter}>
           <StaticScroll refOuter={refOuter} child={Teaser} height={"300vh"} />
@@ -62,7 +70,7 @@ export default function Home(): JSX.Element {
           <StaticScroll refOuter={refOuter} child={MinMax} height={"600vh"} />
           <StaticScroll refOuter={refOuter} child={Fin} height={"300vh"} />
         </Pitch>
-      </div>
+      </HideAddressBarScroller>
     </>
   );
 }
