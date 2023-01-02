@@ -29,7 +29,6 @@ const ZeroBlock = styled(BasicBlock)`
 
 const FirstBlock = styled(BasicBlock)`
   ${FlexBlock}
-  padding: 10%;
   max-width: 800px;
   justify-content: center;
 `;
@@ -37,7 +36,6 @@ const FirstBlock = styled(BasicBlock)`
 const SecondBlock = styled(BasicBlock)`
   ${FlexBlock}
   padding: 10%;
-  /* justify-content: center; */
   text-align: center;
 `;
 

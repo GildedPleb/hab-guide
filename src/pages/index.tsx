@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import GlobalStyle from "../styles/globalStyles";
 import styled from "styled-components";
 import FAB from "../components/nav/FAB";
@@ -20,21 +20,25 @@ import StaticScroll from "../animations/StaticScroll";
 import Teaser from "../components/pitch/Teaser";
 
 const HideAddressBarScroller = styled.section`
-  padding-top: 1px;
+  /* padding-top: 1px; */
 `;
 
 const Pitch = styled.section`
   overflow-y: scroll;
   height: 100vh; 
-  position: fixed:
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
 `;
 
 export default function Home(): JSX.Element {
   const refOuter = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(()=>{
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) && !document.fullscreenElement)
+      document.documentElement.requestFullscreen();
+    return ()=>{
+      if (document.exitFullscreen)
+        document.exitFullscreen();
+    }
+  })
 
   return (
     <>
