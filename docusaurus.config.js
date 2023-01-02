@@ -190,7 +190,7 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       colorMode: {
-        defaultMode: "dark",
+        defaultMode: "light",
         respectPrefersColorScheme: true,
       },
       image: "img/og_image.png",

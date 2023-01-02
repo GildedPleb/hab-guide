@@ -2,10 +2,12 @@
 
 This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
+The website is deployed at https://gildedpleb.github.io/hab-guide
+
 ### Installation
 
 ```
-$ mpn i
+$ npm i
 ```
 
 ### Local Development

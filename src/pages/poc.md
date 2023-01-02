@@ -167,9 +167,7 @@ risk.
 
 ## Uptime
 
-![Uptime](/img/uptime.png)
-
-As you can see, 169 days of uptime on the first build is great! However, shortly
+As you can see, 169 days of uptime on the first build is great! ![Uptime](/img/uptime.png) However, shortly
 after this screenshot was taken, the entire cluster crashed.
 
 :::note Note on Cluster Resource Allocations
