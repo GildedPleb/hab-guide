@@ -20,10 +20,14 @@ function StaticScroll({
   refOuter,
   child,
   height = "300vh",
+  minPos = -1,
+  maxPos = 2,
 }: {
   child: React.FC<{ pos: number | null }>;
   height?: string;
   refOuter: React.RefObject<HTMLDivElement> | null;
+  minPos?: number;
+  maxPos?: number;
 }) {
   const refInner = useRef<HTMLDivElement>(null);
 
@@ -40,16 +44,22 @@ function StaticScroll({
       const iHeight = innerRect.height;
       const diff = iHeight - oHeight;
 
-      setPos(offTop / (diff > 0 ? diff : oHeight + (offTop < 0 ? 0 : 1)));
+      const newPos =
+        offTop / (diff > 0 ? diff : oHeight + (offTop < 0 ? 0 : 1));
+      const rounded = parseFloat(newPos.toFixed(3));
+      if (rounded >= minPos && rounded <= maxPos) setPos(rounded);
     }
   }
 
   useEffect(() => {
-    const outer = refOuter?.current;
-
-    outer?.addEventListener("scroll", onScroll);
-
-    return () => outer?.removeEventListener("scroll", onScroll);
+    if (refOuter && refOuter.current) {
+      refOuter.current.addEventListener("scroll", onScroll);
+    }
+    return () => {
+      if (refOuter && refOuter.current) {
+        refOuter.current.removeEventListener("scroll", onScroll);
+      }
+    };
   }, [refOuter]);
 
   return (
@@ -59,4 +69,4 @@ function StaticScroll({
   );
 }
 
-export default StaticScroll;
+export default React.memo(StaticScroll);

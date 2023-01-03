@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import React from "react";
 
 interface TransformType {
   end: number;
@@ -16,6 +17,7 @@ const ScrollClipPath = styled.div.attrs<TransformType>(
       const diff = from - to;
 
       const dist = end - start;
+      if (dist === 0) throw new Error(`Diff must not be 0: got ${diff}`);
       const percentThere = normalizedStart / dist;
       const calc = to + diff - diff * percentThere;
       const res = pos < start ? from : pos < end ? calc : to;
@@ -39,4 +41,4 @@ const ScrollClipPath = styled.div.attrs<TransformType>(
   will-change: auto;
 `;
 
-export default ScrollClipPath;
+export default React.memo(ScrollClipPath);

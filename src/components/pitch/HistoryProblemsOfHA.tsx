@@ -91,9 +91,10 @@ const History = ({ pos }: { pos: number | null }) => {
       <FirstBlock>
         <IntroBody>
           <ScrollFade start={0.33} end={0.66} pos={pos} from={1} to={0}>
-            And thank God the incentives work. Thermodynamics ensures creating
-            HA services for any physical computing, including individual nodes,
-            is a perennial problem.
+            And thank God the incentives work. Thermodynamics ensures uptime for{" "}
+            <span style={{ fontStyle: "italic" }}>any</span> physical computing,
+            including individual nodes, and all HA hardware is a perennial
+            problem.
           </ScrollFade>
         </IntroBody>
         <IntroBody>
@@ -118,6 +119,7 @@ const History = ({ pos }: { pos: number | null }) => {
               toHorizontal={"0%"}
               toVertical={"100vh"}
               style={{ display: "inline-block" }}
+              key={pos}
             >
               <div
                 style={{

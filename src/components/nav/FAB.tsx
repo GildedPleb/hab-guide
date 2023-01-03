@@ -25,4 +25,4 @@ const Nav = (_props: unknown) => {
   );
 };
 
-export default Nav;
+export default React.memo(Nav);

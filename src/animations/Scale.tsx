@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 interface ScaleType {
@@ -45,4 +46,4 @@ const ScrollScale = styled.div.attrs<ScaleType>(
   will-change: auto;
 `;
 
-export default ScrollScale;
+export default React.memo(ScrollScale);

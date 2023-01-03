@@ -51,10 +51,8 @@ const SecondBlock = styled.div`
   color: white;
   z-index: 20;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
-  max-width: 60%;
-  margin-left: 5%;
   @media (pointer: coarse) {
     max-width: 100%;
     margin-left: 0;
@@ -62,6 +60,7 @@ const SecondBlock = styled.div`
 `;
 
 const IntroBody = styled.div`
+  max-width: 600px;
   font-size: 1.5rem;
   line-height: 2;
   margin: 1.2rem;
@@ -103,7 +102,10 @@ const History = ({ pos }: { pos: number | null }) => {
     <StyledContainer>
       <FirstBlock>
         <ImageContainer>
-          <StyledImage src={useBaseUrl("/img/google_prod_server.jpg")} />
+          <StyledImage
+            src={useBaseUrl("/img/google_prod_server.jpg")}
+            loading="lazy"
+          />
         </ImageContainer>
       </FirstBlock>
       <SecondBlock>

@@ -46,33 +46,110 @@ export default function Home(): JSX.Element {
       <HideAddressBarScroller>
         <FAB />
         <Pitch ref={refOuter}>
-          <StaticScroll refOuter={refOuter} child={Teaser} height={"300vh"} />
-          <StaticScroll refOuter={refOuter} child={History1} height={"200vh"} />
-          <StaticScroll refOuter={refOuter} child={History2} height={"200vh"} />
-          <StaticScroll refOuter={refOuter} child={History3} height={"150vh"} />
-          <StaticScroll refOuter={refOuter} child={History4} height={"200vh"} />
-          <StaticScroll refOuter={refOuter} child={History5} height={"200vh"} />
-          <StaticScroll refOuter={refOuter} child={History6} height={"300vh"} />
-          <StaticScroll refOuter={refOuter} child={Intro} height={"500vh"} />
+          <StaticScroll
+            refOuter={refOuter}
+            child={Teaser}
+            height={"300vh"}
+            minPos={0}
+            maxPos={1.5}
+          />
+          <StaticScroll
+            refOuter={refOuter}
+            child={History1}
+            height={"200vh"}
+            minPos={-1.5}
+            maxPos={1.2}
+          />
+          <StaticScroll
+            refOuter={refOuter}
+            child={History2}
+            height={"200vh"}
+            maxPos={1.5}
+          />
+          <StaticScroll
+            refOuter={refOuter}
+            child={History3}
+            height={"150vh"}
+            minPos={0}
+            maxPos={1}
+          />
+          <StaticScroll
+            refOuter={refOuter}
+            child={History4}
+            height={"200vh"}
+            minPos={-0.5}
+            maxPos={2}
+          />
+          <StaticScroll
+            refOuter={refOuter}
+            child={History5}
+            height={"200vh"}
+            minPos={-2}
+            maxPos={1.5}
+          />
+          <StaticScroll
+            refOuter={refOuter}
+            child={History6}
+            height={"300vh"}
+            minPos={-0.5}
+            maxPos={1}
+          />
+          <StaticScroll
+            refOuter={refOuter}
+            child={Intro}
+            height={"500vh"}
+            minPos={0}
+            maxPos={1}
+          />
           <StaticScroll
             refOuter={refOuter}
             child={Assimilate}
             height={"100vh"}
+            minPos={0}
+            maxPos={0}
           />
           <StaticScroll
             refOuter={refOuter}
             child={Sovereign}
             height={"100vh"}
+            minPos={0}
+            maxPos={0}
           />
-          <StaticScroll refOuter={refOuter} child={HALX} height={"100vh"} />
-          <StaticScroll refOuter={refOuter} child={Hydra} height={"100vh"} />
+          <StaticScroll
+            refOuter={refOuter}
+            child={HALX}
+            height={"100vh"}
+            minPos={0}
+            maxPos={0}
+          />
+          <StaticScroll
+            refOuter={refOuter}
+            child={Hydra}
+            height={"100vh"}
+            minPos={0}
+            maxPos={0}
+          />
           <StaticScroll
             refOuter={refOuter}
             child={Aesthetics}
             height={"100vh"}
+            minPos={0}
+            maxPos={0}
           />
-          <StaticScroll refOuter={refOuter} child={MinMax} height={"600vh"} />
-          <StaticScroll refOuter={refOuter} child={Fin} height={"300vh"} />
+          <StaticScroll
+            refOuter={refOuter}
+            child={MinMax}
+            height={"600vh"}
+            minPos={0}
+            maxPos={1.2}
+          />
+          <StaticScroll
+            refOuter={refOuter}
+            child={Fin}
+            height={"300vh"}
+            minPos={-0.5}
+            maxPos={1}
+          />
         </Pitch>
       </HideAddressBarScroller>
     </>

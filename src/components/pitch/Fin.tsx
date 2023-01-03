@@ -127,35 +127,50 @@ const Media = ({ pos }: { pos: number | null }) => {
         <ScrollFade start={0.11} end={0.22} pos={pos} from={0} to={1}>
           <ScrollFade start={0.22} end={0.33} pos={pos} from={1} to={0}>
             <ImageContainer>
-              <StyledImage src={useBaseUrl("/img/casestudy_white1.png")} />
+              <StyledImage
+                src={useBaseUrl("/img/casestudy_white1.png")}
+                loading="lazy"
+              />
             </ImageContainer>
           </ScrollFade>
         </ScrollFade>
         <ScrollFade start={0.22} end={0.33} pos={pos} from={0} to={1}>
           <ScrollFade start={0.33} end={0.44} pos={pos} from={1} to={0}>
             <ImageContainer>
-              <StyledImage src={useBaseUrl("/img/casestudy_orange.png")} />
+              <StyledImage
+                src={useBaseUrl("/img/casestudy_orange.png")}
+                loading="lazy"
+              />
             </ImageContainer>
           </ScrollFade>
         </ScrollFade>
         <ScrollFade start={0.33} end={0.44} pos={pos} from={0} to={1}>
           <ScrollFade start={0.44} end={0.55} pos={pos} from={1} to={0}>
             <ImageContainer>
-              <StyledImage src={useBaseUrl("/img/casestudy_blue.png")} />
+              <StyledImage
+                src={useBaseUrl("/img/casestudy_blue.png")}
+                loading="lazy"
+              />
             </ImageContainer>
           </ScrollFade>
         </ScrollFade>
         <ScrollFade start={0.44} end={0.55} pos={pos} from={0} to={1}>
           <ScrollFade start={0.55} end={0.66} pos={pos} from={1} to={0}>
             <ImageContainer>
-              <StyledImage src={useBaseUrl("/img/casestudy_yellow.png")} />
+              <StyledImage
+                src={useBaseUrl("/img/casestudy_yellow.png")}
+                loading="lazy"
+              />
             </ImageContainer>
           </ScrollFade>
         </ScrollFade>
         <ScrollFade start={0.55} end={0.66} pos={pos} from={0} to={1}>
           <ScrollFade start={0.66} end={0.77} pos={pos} from={1} to={0}>
             <ImageContainer>
-              <StyledImage src={useBaseUrl("/img/casestudy_white2.png")} />
+              <StyledImage
+                src={useBaseUrl("/img/casestudy_white2.png")}
+                loading="lazy"
+              />
             </ImageContainer>
           </ScrollFade>
         </ScrollFade>
@@ -185,7 +200,10 @@ const Media = ({ pos }: { pos: number | null }) => {
             to={1}
             style={{ height: "100%", width: "100%" }}
           >
-            <StyledImage src={useBaseUrl("/img/fin_black.png")} />
+            <StyledImage
+              src={useBaseUrl("/img/fin_black.png")}
+              loading="lazy"
+            />
           </ScrollFade>
         </ImageContainer>
         <IntroBody>

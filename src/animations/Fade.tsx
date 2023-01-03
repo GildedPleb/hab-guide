@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 interface FadeType {
@@ -6,10 +7,11 @@ interface FadeType {
   pos: number | null;
   start: number;
   to: number;
+  killAtZero: boolean;
 }
 
 const ScrollFade = styled.div.attrs<FadeType>(
-  ({ from, to, start, end, pos }) => {
+  ({ from, to, start, end, pos, killAtZero }) => {
     if (pos || pos === 0) {
       const normalizedStart = pos - start;
       const diff: number = to - from;
@@ -18,6 +20,7 @@ const ScrollFade = styled.div.attrs<FadeType>(
         return {
           style: {
             opacity: `${from}`,
+            ...(from === 0 && killAtZero && { display: "none" }),
           },
         };
 
@@ -26,9 +29,12 @@ const ScrollFade = styled.div.attrs<FadeType>(
       const calc =
         diff >= 0 ? diff * percentThere : from - Math.abs(diff * percentThere);
 
+      const res = pos < start ? from : pos < end ? calc : to;
+
       return {
         style: {
-          opacity: `${pos < start ? from : pos < end ? calc : to}`,
+          opacity: `${res}`,
+          ...(res === 0 && killAtZero && { display: "none" }),
         },
       };
     }
@@ -36,6 +42,7 @@ const ScrollFade = styled.div.attrs<FadeType>(
     return {
       style: {
         opacity: `${from}`,
+        ...(from === 0 && killAtZero && { display: "none" }),
       },
     };
   }
@@ -43,4 +50,4 @@ const ScrollFade = styled.div.attrs<FadeType>(
   will-change: auto;
 `;
 
-export default ScrollFade;
+export default React.memo(ScrollFade);

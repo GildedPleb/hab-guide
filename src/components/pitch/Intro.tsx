@@ -106,7 +106,6 @@ const FourthBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
 `;
 
 const IntroBodySecond = styled.div`
@@ -145,7 +144,7 @@ const Intro = ({ pos }: { pos: number | null }) => {
   return (
     <StyledContainer>
       <ZeroBlock>
-        <StyledImage src={useBaseUrl("/img/intro_reveal.png")} />
+        <StyledImage src={useBaseUrl("/img/intro_reveal.png")} loading="lazy" />
       </ZeroBlock>
       <FirstBlock>
         <ScrollTransform
@@ -156,6 +155,7 @@ const Intro = ({ pos }: { pos: number | null }) => {
           pos={pos}
           toHorizontal={"0%"}
           toVertical={"-100vh"}
+          key={pos}
         >
           <IntroHeader>No Average Node</IntroHeader>
         </ScrollTransform>
@@ -183,6 +183,7 @@ const Intro = ({ pos }: { pos: number | null }) => {
                 width={200}
                 height={50}
                 src={useBaseUrl("/img/k8s.png")}
+                loading="lazy"
               />{" "}
               means it stays up.
             </BodyTextInner>

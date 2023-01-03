@@ -23,9 +23,6 @@ const GlobalStyle = styled.createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
-  * {
-    box-sizing: border-box;
-  }
 `;
 
 export default GlobalStyle;

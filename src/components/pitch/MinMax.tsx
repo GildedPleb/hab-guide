@@ -137,6 +137,7 @@ const InnerText = styled.div`
 const FifthBlock = styled.div`
   ${BasicBlock};
   height: 110vh;
+  position: absolute;
 `;
 
 const VideoContainer = styled.div`
@@ -155,11 +156,12 @@ const SpecialBlock = styled(BasicBlock)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: center;
   gap: 0 10px;
-  padding: 10%;
-  max-width: 800px;
-  position: absolute;
+  max-width: 640px;
+  height: 100vh;
   color: black;
+  z-index: 1000;
 `;
 
 const TeaserText = styled.span`
@@ -207,7 +209,7 @@ const History = ({ pos }: { pos: number | null }) => {
       <FirstBlock>
         <IntroBody>
           <ScrollFade start={0} end={0.08} pos={pos} from={1} to={0}>
-            So, since when were maximalists all about node minimalism?
+            So, since when were Bitcoin Maximalists all about node minimalism?
           </ScrollFade>
         </IntroBody>
       </FirstBlock>
@@ -292,7 +294,7 @@ const History = ({ pos }: { pos: number | null }) => {
       <FifthBlock>
         <ScrollClipPath start={0.925} end={1} from={50} to={0} pos={pos}>
           <VideoContainer>
-            <Video autoPlay loop muted>
+            <Video autoPlay loop muted preload="none">
               <source src="blue-node.mp4" type="video/mp4" />
             </Video>
           </VideoContainer>

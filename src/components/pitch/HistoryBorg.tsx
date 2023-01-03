@@ -69,11 +69,15 @@ const Overlay = styled.div`
   position: relative;
 `;
 
+const StyledLink = styled.a`
+  color: #f2a900;
+`;
+
 const History = ({ pos }: { pos: number | null }) => {
   return (
     <StyledContainer>
       <ZeroBlock>
-        <ScrollFade start={1} end={2} pos={pos} from={0} to={1}>
+        <ScrollFade start={1} end={2} pos={pos} from={0} to={1} killAtZero>
           <Overlay />
         </ScrollFade>
       </ZeroBlock>
@@ -91,7 +95,9 @@ const History = ({ pos }: { pos: number | null }) => {
               In the early twenty teens, wanting to integrate new container
               technology, and improve upon lessons learned, Google rebuilt this
               software as general purpose, and in 2015, released it as a free
-              and open source project called Kubernetes, or k8s for short.
+              and open source project called{" "}
+              <StyledLink href="https://kubernetes.io/">Kubernetes</StyledLink>,
+              or k8s for short.
             </ScrollFade>
           </ScrollFade>
         </IntroBody>

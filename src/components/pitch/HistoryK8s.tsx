@@ -2,7 +2,7 @@ import React from "react";
 import Link from "@docusaurus/Link";
 import ScrollFade from "../../animations/Fade";
 import ScrollScale from "../../animations/Scale";
-import ScrollTransform from "../../animations/TransformPosition";
+import ScrollTransform from "../../animations/TransformTranslate";
 import styled from "styled-components";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
@@ -81,33 +81,37 @@ const SecondBlock = styled.div<SecondBlockType>`
 
 const ZeroBlock = styled.div`
   ${BasicBlock};
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-`;
-
-const ImageContainer = styled.div`
-  height: 20vh;
-  width: 20vh;
-  position: fixed;
-  top: calc(15vh);
-  left: calc(50% - 10vh);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 const StyledImage = styled.img`
   object-fit: cover;
-  width: 100%;
-  height: 100%;
+  width: 20vh;
+  height: 20vh;
+
+  position: fixed;
+  top: 15vh;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const TitleBlock = styled.div`
   font-family: "Ubuntu", sans-serif;
-  width: 100vw;
   text-align: center;
+  font-size: 5vh;
+
   position: fixed;
   top: 25vh;
   left: 0;
-  font-size: 5vh;
+  right: 0;
+  text-align: center;
 `;
 
 const StyledLink = styled(Link)`
@@ -118,35 +122,54 @@ const History = ({ pos }: { pos: number | null }) => {
   return (
     <StyledContainer>
       <ZeroBlock>
-        <ScrollFade start={-1.5} end={-1} pos={pos} from={0} to={1}>
-          <ImageContainer>
-            <ScrollScale
-              start={-1}
-              end={0}
+        <ScrollTransform
+          start={-1}
+          end={0}
+          pos={pos}
+          fromHorizontal={"0px"}
+          fromVertical={"0vh"}
+          toHorizontal={"0px"}
+          toVertical={"-5vh"}
+          style={{
+            position: "fixed",
+            top: "0",
+            left: "0",
+            right: "0",
+          }}
+        >
+          <ScrollScale
+            start={-1}
+            end={0}
+            pos={pos}
+            from={1}
+            to={0.8}
+            style={{
+              position: "fixed",
+              top: "0",
+              left: "0",
+              right: "0",
+            }}
+          >
+            <ScrollFade
+              start={-1.5}
+              end={-1}
               pos={pos}
-              from={1}
-              to={0.8}
-              style={{ height: "100%", width: "100%" }}
+              from={0}
+              to={1}
+              killAtZero
             >
-              <ScrollTransform
-                start={-1}
-                end={0}
-                fromLeft={"0px"}
-                fromTop={"0px"}
-                pos={pos}
-                toLeft={"0px"}
-                toTop={"-10vh"}
-                style={{ height: "100%", width: "100%" }}
-              >
-                <StyledImage src={useBaseUrl("/img/k8s_logo.png")} />
-              </ScrollTransform>
-            </ScrollScale>
-          </ImageContainer>
-        </ScrollFade>
-        <ScrollFade start={-0.25} end={0} pos={pos} from={0} to={1}>
+              <StyledImage
+                src={useBaseUrl("/img/k8s_logo.png")}
+                loading="lazy"
+              />
+            </ScrollFade>
+          </ScrollScale>
+        </ScrollTransform>
+        <ScrollFade start={-0.25} end={0} pos={pos} from={0} to={1} killAtZero>
           <TitleBlock>kubernetes</TitleBlock>
         </ScrollFade>
       </ZeroBlock>
+
       <FirstBlock>
         <IntroBody>
           <ScrollFade start={0} end={0.35} pos={pos} from={1} to={0}>

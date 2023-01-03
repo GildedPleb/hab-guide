@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 interface TransformType {
@@ -22,12 +23,16 @@ const ScrollTransform = styled.div.attrs<TransformType>(
   }) => {
     if (pos || pos === 0) {
       const normalizedStart = pos - start;
-      const diffHorizontal = `calc(${fromHorizontal} - ${toHorizontal})`;
-      const diffVertical = `calc(${fromVertical} - ${toVertical})`;
+      const diffHorizontal = `(${fromHorizontal} - ${toHorizontal})`;
+      const diffVertical = `(${fromVertical} - ${toVertical})`;
+      if (end === start)
+        throw new Error(
+          `End and Start must be differnt values. Got ${end} for both.`
+        );
       const dist = end - start;
       const percentThere = normalizedStart / dist;
-      const calcHorizontal = `calc(${toHorizontal} + calc(${diffHorizontal} - calc(${diffHorizontal} * ${percentThere})))`;
-      const calcVertical = `calc(${toVertical} + calc(${diffVertical} - calc(${diffVertical} * ${percentThere})))`;
+      const calcHorizontal = `calc(${toHorizontal} + (${diffHorizontal} - (${diffHorizontal} * ${percentThere})))`;
+      const calcVertical = `calc(${toVertical} + (${diffVertical} - (${diffVertical} * ${percentThere})))`;
 
       return {
         style: {
@@ -54,4 +59,4 @@ const ScrollTransform = styled.div.attrs<TransformType>(
   will-change: auto;
 `;
 
-export default ScrollTransform;
+export default React.memo(ScrollTransform);

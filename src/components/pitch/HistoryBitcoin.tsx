@@ -159,7 +159,7 @@ const History = ({ pos }: { pos: number | null }) => {
         <IntroBody>
           <ScrollFade start={0.15} end={0.3} pos={pos} from={0} to={1}>
             <ScrollFade start={0.55} end={0.7} pos={pos} from={1} to={0}>
-              Honey Badger is getting thirsty...
+              Honey ₿adger is getting thirsty...
             </ScrollFade>
           </ScrollFade>
         </IntroBody>
@@ -168,8 +168,9 @@ const History = ({ pos }: { pos: number | null }) => {
           <ScrollFade start={0.3} end={0.45} pos={pos} from={0} to={1}>
             <ScrollFade start={0.55} end={0.7} pos={pos} from={1} to={0}>
               ...and the wider tech industry has been spending the last few
-              decades building, testing, and actively deploying, in defense of
-              trillions in value, the very solution to quench that thirst.
+              decades building, testing, and actively deploying, in defense of{" "}
+              <span style={{ fontStyle: "italic" }}>trillions</span> in value,
+              the very solution to quench that thirst.
             </ScrollFade>
           </ScrollFade>
         </IntroBody>

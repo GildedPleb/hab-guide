@@ -3,7 +3,7 @@ import styled, { css, keyframes } from "styled-components";
 import { useEffect, useRef, useState } from "react";
 import ScrollFade from "../../animations/Fade";
 import ScrollScale from "../../animations/Scale";
-import ScrollTransform from "../../animations/TransformPosition";
+import ScrollTranslate from "../../animations/TransformTranslate";
 
 const StyledContainer = styled.div`
   display: grid;
@@ -25,6 +25,11 @@ const FlexBlock = css`
 const ZeroBlock = styled(BasicBlock)`
   ${FlexBlock}
   z-index: 100;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 `;
 
 const FirstBlock = styled(BasicBlock)`
@@ -41,7 +46,7 @@ const SecondBlock = styled(BasicBlock)`
 
 const FourthBlock = styled(BasicBlock)`
   width: 100%;
-  height: 100%;
+  max-height: 100vh;
 `;
 
 const OrangeBox = styled.div`
@@ -95,22 +100,35 @@ const firstSentence =
 
 const Teaser = ({ pos }: { pos: number | null }) => {
   const refBitcoin = useRef<HTMLDivElement>(null);
+  const refB = useRef<HTMLDivElement>(null);
+
   const [xOffset, setXOffset] = useState<number>(0);
   const [yOffset, setYOffset] = useState<number>(0);
+
+  const [xOffsetB, setXOffsetB] = useState<number>(0);
+  const [yOffsetB, setYOffsetB] = useState<number>(0);
+  const [bFixed, setBFixed] = useState(false);
 
   const isLessThanOne = Math.round(pos || 0);
 
   useEffect(() => {
     const handleResize = () => {
+      window.scrollTo(0, 0);
       if (refBitcoin.current) {
         const btcRect = refBitcoin.current.getBoundingClientRect();
 
         setXOffset(btcRect.left);
         setYOffset(btcRect.top);
       }
+      if (refB.current) {
+        const bRect = refB.current.getBoundingClientRect();
+
+        setXOffsetB(bRect.left);
+        setYOffsetB(bRect.top);
+        setBFixed(true);
+      }
     };
 
-    handleResize();
     window.addEventListener("resize", handleResize);
     window.addEventListener("load", handleResize);
 
@@ -129,138 +147,153 @@ const Teaser = ({ pos }: { pos: number | null }) => {
       setXOffset(btcRect.left);
       setYOffset(btcRect.top);
     }
+    if (refB.current && isLessThanOne < 1 && !bFixed) {
+      const bRect = refB.current.getBoundingClientRect();
+
+      setXOffsetB(bRect.left);
+      setYOffsetB(bRect.top);
+      setBFixed(true);
+    }
   }, [isLessThanOne]);
 
   return (
     <StyledContainer>
-      <ZeroBlock>
-        <ScrollTransform
-          start={0}
-          end={0.18}
-          fromLeft={"49%"}
-          fromTop={"49%"}
-          pos={pos}
-          toLeft={`${xOffset - 1}px`}
-          toTop={`${yOffset - 9}px`}
-        >
-          <ScrollFade start={0.44} end={0.5} pos={pos} from={1} to={0}>
-            <ScrollScale start={0} end={0.18} pos={pos} from={8} to={1}>
-              <TeaserText>
-                <BitcoinB>₿</BitcoinB>
-              </TeaserText>
-            </ScrollScale>
-          </ScrollFade>
-        </ScrollTransform>
-        <DownArrow>
-          <ScrollFade start={0} end={0.025} pos={pos} from={0.5} to={0}>
-            Scroll to Advance
-          </ScrollFade>
-        </DownArrow>
-      </ZeroBlock>
-      <FirstBlock>
-        {firstSentence.split(" ").map((word, i, arr) => (
-          <ScrollFade
-            key={`${word}-${i}`}
-            start={(0.1 / arr.length) * i * 2}
-            end={(0.1 / arr.length) * (i + 1) * 2}
-            pos={pos}
-            from={0}
-            to={1}
-          >
-            <ScrollFade
-              start={((0.1 / arr.length) * i + 0.1) * 2}
-              end={((0.1 / arr.length) * (i + 1) + 0.1) * 2}
+      {pos < 0.66 && (
+        <>
+          <ZeroBlock>
+            <ScrollTranslate
+              ref={refB}
+              start={0}
+              end={0.18}
               pos={pos}
-              from={1}
-              to={0}
+              fromHorizontal={"0px"}
+              fromVertical={"0px"}
+              toHorizontal={`${(xOffset - xOffsetB) / 1 + 0}px`}
+              toVertical={`${(yOffset - yOffsetB) / 1 - 5}px`}
             >
-              {word === "bitcoin" ? (
-                <TeaserText ref={refBitcoin}>
-                  <BitcoinB style={{ opacity: 0 }}>₿</BitcoinB>
-                  itcoin
+              <ScrollFade start={0.44} end={0.5} pos={pos} from={1} to={0}>
+                <ScrollScale start={0} end={0.18} pos={pos} from={8} to={1}>
+                  <TeaserText>
+                    <BitcoinB>₿</BitcoinB>
+                  </TeaserText>
+                </ScrollScale>
+              </ScrollFade>
+            </ScrollTranslate>
+            <DownArrow>
+              <ScrollFade start={0} end={0.025} pos={pos} from={0.5} to={0}>
+                Scroll to Advance
+              </ScrollFade>
+            </DownArrow>
+          </ZeroBlock>
+          <FirstBlock>
+            {firstSentence.split(" ").map((word, i, arr) => (
+              <ScrollFade
+                key={`${word}-${i}`}
+                start={(0.1 / arr.length) * i * 2}
+                end={(0.1 / arr.length) * (i + 1) * 2}
+                pos={pos}
+                from={0}
+                to={1}
+              >
+                <ScrollFade
+                  start={((0.1 / arr.length) * i + 0.1) * 2}
+                  end={((0.1 / arr.length) * (i + 1) + 0.1) * 2}
+                  pos={pos}
+                  from={1}
+                  to={0}
+                >
+                  {word === "bitcoin" ? (
+                    <TeaserText ref={refBitcoin}>
+                      <BitcoinB style={{ opacity: 0 }}>₿</BitcoinB>
+                      itcoin
+                    </TeaserText>
+                  ) : (
+                    <TeaserText>{word}</TeaserText>
+                  )}
+                </ScrollFade>
+              </ScrollFade>
+            ))}
+          </FirstBlock>
+          <SecondBlock>
+            <ScrollFade start={0.5} end={0.56} pos={pos} from={0} to={1}>
+              <ScrollFade start={0.66} end={0.7} pos={pos} from={1} to={0}>
+                <TeaserText>
+                  Since when were maximalists all about minimums?
                 </TeaserText>
-              ) : (
-                <TeaserText>{word}</TeaserText>
-              )}
+              </ScrollFade>
             </ScrollFade>
-          </ScrollFade>
-        ))}
-      </FirstBlock>
-      <SecondBlock>
-        <ScrollFade start={0.5} end={0.56} pos={pos} from={0} to={1}>
-          <ScrollFade start={0.66} end={0.7} pos={pos} from={1} to={0}>
-            <TeaserText>
-              Since when were maximalists all about minimums?
-            </TeaserText>
-          </ScrollFade>
-        </ScrollFade>
-      </SecondBlock>
-      <FourthBlock>
-        <ScrollTransform
-          start={0.66} // .33
-          end={1} // fixed
-          fromLeft={"0px"}
-          fromTop={"100%"}
-          pos={pos}
-          toLeft={`0px`}
-          toTop={`50%`}
-        >
-          <ScrollTransform
-            start={1} // fixed
-            end={2}
-            fromLeft={"0px"}
-            fromTop={"0px"}
+          </SecondBlock>
+        </>
+      )}
+      {pos > 0.66 && (
+        <FourthBlock>
+          <ScrollTranslate
+            start={0.66} // .33
+            end={1} // fixed
             pos={pos}
-            toLeft={`0px`}
-            toTop={`100vh`}
+            fromHorizontal={"0px"}
+            fromVertical={"100%"}
+            toHorizontal={"0px"}
+            toVertical={"50%"}
           >
-            <OrangeBox />
-          </ScrollTransform>
-        </ScrollTransform>
+            <ScrollTranslate
+              start={1} // fixed
+              end={2}
+              pos={pos}
+              fromHorizontal={"0px"}
+              fromVertical={"0%"}
+              toHorizontal={"0px"}
+              toVertical={"100%"}
+            >
+              <OrangeBox />
+            </ScrollTranslate>
+          </ScrollTranslate>
 
-        <ScrollTransform
-          start={0.78}
-          end={1} // fixed
-          fromLeft={"0px"}
-          fromTop={"100%"}
-          pos={pos}
-          toLeft={`0px`}
-          toTop={`66%`}
-        >
-          <ScrollTransform
-            start={1} // fixed
-            end={2.47}
-            fromLeft={"0px"}
-            fromTop={"0px"}
+          <ScrollTranslate
+            start={0.78} // .33
+            end={1} // fixed
             pos={pos}
-            toLeft={`0px`}
-            toTop={`100vh`}
+            fromHorizontal={"0px"}
+            fromVertical={"0%"}
+            toHorizontal={"0px"}
+            toVertical={"-34%"}
           >
-            <WhiteBox />
-          </ScrollTransform>
-        </ScrollTransform>
-        <ScrollTransform
-          start={0.9}
-          end={1} // fixed
-          fromLeft={"0px"}
-          fromTop={"100%"}
-          pos={pos}
-          toLeft={`0px`}
-          toTop={`82%`}
-        >
-          <ScrollTransform
-            start={1} // fixed
-            end={3.78}
-            fromLeft={"0px"}
-            fromTop={"0px"}
+            <ScrollTranslate
+              start={1} // fixed
+              end={2.47}
+              pos={pos}
+              fromHorizontal={"0px"}
+              fromVertical={"0%"}
+              toHorizontal={"0px"}
+              toVertical={"100%"}
+            >
+              <WhiteBox />
+            </ScrollTranslate>
+          </ScrollTranslate>
+
+          <ScrollTranslate
+            start={0.9} // .33
+            end={1} // fixed
             pos={pos}
-            toLeft={`0px`}
-            toTop={`100vh`}
+            fromHorizontal={"0px"}
+            fromVertical={"-100%"}
+            toHorizontal={"0px"}
+            toVertical={"-118%"}
           >
-            <RedBox />
-          </ScrollTransform>
-        </ScrollTransform>
-      </FourthBlock>
+            <ScrollTranslate
+              start={1} // fixed
+              end={3.78}
+              pos={pos}
+              fromHorizontal={"0px"}
+              fromVertical={"0%"}
+              toHorizontal={"0px"}
+              toVertical={"100%"}
+            >
+              <RedBox />
+            </ScrollTranslate>
+          </ScrollTranslate>
+        </FourthBlock>
+      )}
     </StyledContainer>
   );
 };
