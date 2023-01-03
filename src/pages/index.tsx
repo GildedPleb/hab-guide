@@ -31,14 +31,14 @@ const Pitch = styled.section`
 export default function Home(): JSX.Element {
   const refOuter = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(()=>{
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) && !document.fullscreenElement && document.documentElement && document.documentElement.requestFullscreen)
-      document.documentElement.requestFullscreen();
-    return ()=>{
-      if (document.exitFullscreen)
-        document.exitFullscreen();
-    }
-  })
+  // useLayoutEffect(()=>{
+  //   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) && !document.fullscreenElement && document.documentElement && document.documentElement.requestFullscreen)
+  //     document.documentElement.requestFullscreen();
+  //   return ()=>{
+  //     if (document.exitFullscreen)
+  //       document.exitFullscreen();
+  //   }
+  // })
 
   return (
     <>
