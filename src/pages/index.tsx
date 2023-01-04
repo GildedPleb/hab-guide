@@ -32,34 +32,33 @@ export default function Home(): JSX.Element {
   const refOuter = useRef<HTMLDivElement>(null);
   const [fullScreen, setFullScreen] = useState(false)
 
-  // const onScroll = ()=>{
-  //   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) && !document.fullscreenElement && document.documentElement && document.documentElement.requestFullscreen && !fullScreen) {
-  //     document.documentElement.requestFullscreen();
-  //     setFullScreen(true);
-  //   }
-  //   return ()=>{
-  //     if (document.exitFullscreen){
-  //       document.exitFullscreen();
-  //       setFullScreen(false);
-  //     }
-  //   }
-  // }
+  const onScroll = () => {
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) && !document.fullscreenElement && document.documentElement && document.documentElement.requestFullscreen && !fullScreen) {
+      document.documentElement.requestFullscreen();
+      setFullScreen(true);
+    }
+ 
+  }
 
   useLayoutEffect(() => {
-    if (!fullScreen)
-      setTimeout(function () {
-        if (!window.pageYOffset) {
-          window.scrollTo(0, 1);
-          setFullScreen(true);
-        }
-      }, 1000);
-    // if (refOuter && refOuter.current) {
-    //   refOuter.current.addEventListener("scroll", onScroll);
-    // }
+    // if (!fullScreen)
+    //   setTimeout(function () {
+    //     console.log("HIT")
+    //     if (!window.pageYOffset) {
+    //       window.scrollTo(0, 100);
+    //       setFullScreen(true);
+    //     }
+    //   }, 1000);
+    if (refOuter && refOuter.current) {
+      refOuter.current.addEventListener("scroll", onScroll);
+    }
     return () => {
-      // if (refOuter && refOuter.current) {
-      //   refOuter.current.removeEventListener("scroll", onScroll);
-      // }
+      if (refOuter && refOuter.current) {
+        refOuter.current.removeEventListener("scroll", onScroll);
+      }
+      if (document.exitFullscreen){
+        document.exitFullscreen(); 
+      }
       setFullScreen(false);
     };
   }, [refOuter]);
