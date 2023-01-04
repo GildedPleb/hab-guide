@@ -294,7 +294,7 @@ const History = ({ pos }: { pos: number | null }) => {
       <FifthBlock>
         <ScrollClipPath start={0.925} end={1} from={50} to={0} pos={pos}>
           <VideoContainer>
-            <Video autoPlay loop muted preload="none">
+            <Video autoPlay loop muted playsinline preload="none">
               <source src="blue-node.mp4" type="video/mp4" />
             </Video>
           </VideoContainer>

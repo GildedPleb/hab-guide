@@ -202,9 +202,8 @@ const Intro = ({ pos }: { pos: number | null }) => {
             toVertical={"-180vh"}
           >
             <BodyTextInner>
-              Only HAB Nodes eliminate the most Single Points of Failure,
-              removing hardware, supply chain, internet provider, power source,
-              Bitcoin version, and geographic chokepoints. All while providing a
+              Only HAB Nodes can eliminate the most Single Points of Failure:
+              hardware, software, internet provider, power source, and more. All while providing a
               litany of world class HA infrastructure, like improved privacy,
               security, and up-time.
             </BodyTextInner>
