@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef, useLayoutEffect, useState } from "react";
 import GlobalStyle from "../styles/globalStyles";
 import styled from "styled-components";
 import FAB from "../components/nav/FAB";
@@ -30,15 +30,39 @@ const Pitch = styled.section`
 
 export default function Home(): JSX.Element {
   const refOuter = useRef<HTMLDivElement>(null);
+  const [fullScreen, setFullScreen] = useState(false)
 
-  // useLayoutEffect(()=>{
-  //   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) && !document.fullscreenElement && document.documentElement && document.documentElement.requestFullscreen)
+  // const onScroll = ()=>{
+  //   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) && !document.fullscreenElement && document.documentElement && document.documentElement.requestFullscreen && !fullScreen) {
   //     document.documentElement.requestFullscreen();
-  //   return ()=>{
-  //     if (document.exitFullscreen)
-  //       document.exitFullscreen();
+  //     setFullScreen(true);
   //   }
-  // })
+  //   return ()=>{
+  //     if (document.exitFullscreen){
+  //       document.exitFullscreen();
+  //       setFullScreen(false);
+  //     }
+  //   }
+  // }
+
+  useLayoutEffect(() => {
+    if (!fullScreen)
+      setTimeout(function () {
+        if (!window.pageYOffset) {
+          window.scrollTo(0, 1);
+          setFullScreen(true);
+        }
+      }, 1000);
+    // if (refOuter && refOuter.current) {
+    //   refOuter.current.addEventListener("scroll", onScroll);
+    // }
+    return () => {
+      // if (refOuter && refOuter.current) {
+      //   refOuter.current.removeEventListener("scroll", onScroll);
+      // }
+      setFullScreen(false);
+    };
+  }, [refOuter]);
 
   return (
     <>

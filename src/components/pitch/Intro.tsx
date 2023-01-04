@@ -73,6 +73,7 @@ const BodyText = css`
   @media (pointer: coarse) {
     max-width: 100%;
     margin: 0%;
+    line-height: 1.6;
   }
   padding-left: 10px;
   padding-right: 10px;
