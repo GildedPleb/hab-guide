@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useState } from "react";
+import React, { useRef } from "react";
 import GlobalStyle from "../styles/globalStyles";
 import styled from "styled-components";
 import FAB from "../components/nav/FAB";
@@ -19,66 +19,22 @@ import Sovereign from "../components/pitch/FeatureSoverign";
 import StaticScroll from "../animations/StaticScroll";
 import Teaser from "../components/pitch/Teaser";
 
-const HideAddressBarScroller = styled.section`
-`;
-
-const Pitch = styled.section`
-  overflow-y: scroll;
-  height: 100.1vh; 
-`;
+const Pitch = styled.section``;
 
 export default function Home(): JSX.Element {
   const refOuter = useRef<HTMLDivElement>(null);
-  const [fullScreen, setFullScreen] = useState(false)
-
-  const onScroll = () => {
-    if (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) 
-      && !document.fullscreenElement 
-      && document.documentElement 
-      && document.documentElement.requestFullscreen 
-      // && !fullScreen
-    ) {
-      // document.documentElement.requestFullscreen();
-      setFullScreen(true);
-    }
- 
-  }
-
-  useLayoutEffect(() => {
-    // if (!fullScreen)
-      setTimeout(function () {
-        console.log("HIT")
-        if (!window.pageYOffset) {
-          window.scrollTo(0, 1);
-          // setFullScreen(true);
-        }
-      }, 1000);
-    if (refOuter && refOuter.current) {
-      window.addEventListener("scroll", onScroll);
-    }
-    return () => {
-      if (refOuter && refOuter.current) {
-        window.removeEventListener("scroll", onScroll);
-      }
-      if (document.exitFullscreen){
-        document.exitFullscreen(); 
-      }
-      setFullScreen(false);
-    };
-  }, [refOuter]);
 
   return (
     <>
       <GlobalStyle />
-      <HideAddressBarScroller>
+      <div>
         <FAB />
         <Pitch ref={refOuter}>
           <StaticScroll
             refOuter={refOuter}
             child={Teaser}
             height={"300vh"}
-            minPos={0}
+            minPos={-0.5}
             maxPos={1.5}
           />
           <StaticScroll
@@ -179,7 +135,7 @@ export default function Home(): JSX.Element {
             maxPos={1}
           />
         </Pitch>
-      </HideAddressBarScroller>
+      </div>
     </>
   );
 }

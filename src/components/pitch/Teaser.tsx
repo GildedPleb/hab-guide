@@ -22,6 +22,14 @@ const FlexBlock = css`
   gap: 0 10px;
 `;
 
+const NegativeOneBlock = styled(BasicBlock)`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding-top: 25px;
+`;
+
 const ZeroBlock = styled(BasicBlock)`
   ${FlexBlock}
   z-index: 100;
@@ -91,10 +99,6 @@ const BitcoinB = styled.span`
   animation: ${glow} 2s ease-in-out infinite alternate;
 `;
 
-const DownArrow = styled.div`
-  transform: translate(0, 40vh);
-`;
-
 const firstSentence =
   "Running a bare-bones full node is a minimum requirement to keep the lights on for bitcoin";
 
@@ -160,6 +164,11 @@ const Teaser = ({ pos }: { pos: number | null }) => {
     <StyledContainer>
       {pos < 0.66 && (
         <>
+          <NegativeOneBlock>
+            <ScrollFade start={0} end={0.025} pos={pos} from={0.5} to={0}>
+              Scroll to Advance
+            </ScrollFade>
+          </NegativeOneBlock>
           <ZeroBlock>
             <ScrollTranslate
               ref={refB}
@@ -179,11 +188,6 @@ const Teaser = ({ pos }: { pos: number | null }) => {
                 </ScrollScale>
               </ScrollFade>
             </ScrollTranslate>
-            <DownArrow>
-              <ScrollFade start={0} end={0.025} pos={pos} from={0.5} to={0}>
-                Scroll to Advance
-              </ScrollFade>
-            </DownArrow>
           </ZeroBlock>
           <FirstBlock>
             {firstSentence.split(" ").map((word, i, arr) => (

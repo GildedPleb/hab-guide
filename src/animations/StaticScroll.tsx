@@ -33,14 +33,12 @@ function StaticScroll({
 
   const [pos, setPos] = useState<number | null>(null);
 
-  function onScroll(e: Event) {
-    if (refInner.current !== null && e.target !== null) {
-      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-      const targetAny = e.target as HTMLDivElement;
-      const outerRect = targetAny.getBoundingClientRect();
+  function onScrollW(_e: Event) {
+    if (refInner.current !== null) {
       const innerRect = refInner.current.getBoundingClientRect();
-      const offTop = outerRect.y - innerRect.y;
-      const oHeight = outerRect.height;
+      const offTop = 0 - innerRect.y;
+      const oHeight = window.innerHeight;
+
       const iHeight = innerRect.height;
       const diff = iHeight - oHeight;
 
@@ -53,11 +51,11 @@ function StaticScroll({
 
   useEffect(() => {
     if (refOuter && refOuter.current) {
-      refOuter.current.addEventListener("scroll", onScroll);
+      document.addEventListener("scroll", onScrollW);
     }
     return () => {
       if (refOuter && refOuter.current) {
-        refOuter.current.removeEventListener("scroll", onScroll);
+        document.removeEventListener("scroll", onScrollW);
       }
     };
   }, [refOuter]);
