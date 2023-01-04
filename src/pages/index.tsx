@@ -33,7 +33,13 @@ export default function Home(): JSX.Element {
   const [fullScreen, setFullScreen] = useState(false)
 
   const onScroll = () => {
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) && !document.fullscreenElement && document.documentElement && document.documentElement.requestFullscreen && !fullScreen) {
+    if (
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i.test(navigator.userAgent) 
+      && !document.fullscreenElement 
+      && document.documentElement 
+      && document.documentElement.requestFullscreen 
+      // && !fullScreen
+    ) {
       document.documentElement.requestFullscreen();
       setFullScreen(true);
     }
