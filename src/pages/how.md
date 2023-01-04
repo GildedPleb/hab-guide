@@ -2,7 +2,7 @@
 title: How does a HAB Node work?
 ---
 
-# How does a HAB Node work?
+# How does a HAB Node Work?
 
 A HAB node depends on a construct called Container Orchestration (CO for this
 article), which is what Kubernetes (k8s) does. There are many good technical

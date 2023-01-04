@@ -50,11 +50,11 @@ export default function Home(): JSX.Element {
     //     }
     //   }, 1000);
     if (refOuter && refOuter.current) {
-      refOuter.current.addEventListener("scroll", onScroll);
+      window.addEventListener("scroll", onScroll);
     }
     return () => {
       if (refOuter && refOuter.current) {
-        refOuter.current.removeEventListener("scroll", onScroll);
+        window.removeEventListener("scroll", onScroll);
       }
       if (document.exitFullscreen){
         document.exitFullscreen(); 
