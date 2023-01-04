@@ -20,12 +20,11 @@ import StaticScroll from "../animations/StaticScroll";
 import Teaser from "../components/pitch/Teaser";
 
 const HideAddressBarScroller = styled.section`
-  /* padding-top: 1px; */
 `;
 
 const Pitch = styled.section`
   overflow-y: scroll;
-  height: 100vh; 
+  height: 100.1vh; 
 `;
 
 export default function Home(): JSX.Element {
@@ -40,7 +39,7 @@ export default function Home(): JSX.Element {
       && document.documentElement.requestFullscreen 
       // && !fullScreen
     ) {
-      document.documentElement.requestFullscreen();
+      // document.documentElement.requestFullscreen();
       setFullScreen(true);
     }
  
@@ -48,13 +47,13 @@ export default function Home(): JSX.Element {
 
   useLayoutEffect(() => {
     // if (!fullScreen)
-    //   setTimeout(function () {
-    //     console.log("HIT")
-    //     if (!window.pageYOffset) {
-    //       window.scrollTo(0, 100);
-    //       setFullScreen(true);
-    //     }
-    //   }, 1000);
+      setTimeout(function () {
+        console.log("HIT")
+        if (!window.pageYOffset) {
+          window.scrollTo(0, 1);
+          // setFullScreen(true);
+        }
+      }, 1000);
     if (refOuter && refOuter.current) {
       window.addEventListener("scroll", onScroll);
     }
