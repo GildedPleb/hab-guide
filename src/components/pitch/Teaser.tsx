@@ -124,26 +124,23 @@ const Teaser = ({ pos }: { pos: number | null }) => {
   const [xOffsetBLeft, setXOffsetBLeft] = useState<number>(0);
   const [xOffsetBRight, setXOffsetBRight] = useState<number>(0);
 
-  const isLessThanOne = Math.round(pos || 0);
-
   useEffect(() => {
-    if (refBitcoin.current && isLessThanOne < 1) {
+    if (refBitcoin.current) {
       const btcRect = refBitcoin.current.getBoundingClientRect();
       setXOffset(btcRect.left);
       setYOffset(btcRect.top);
     }
-    if (refB.current && isLessThanOne < 1 ) {
+    if (refB.current) {
       const bRect = refB.current.getBoundingClientRect();
       setYOffsetBTop(bRect.top);
       setYOffsetBBottom(bRect.bottom);
       setXOffsetBLeft(bRect.left);
       setXOffsetBRight(bRect.right);
     }
-  }, [isLessThanOne]);
+  }, []);
 
   return (
     <StyledContainer>
-      {pos < 0.72 && (
         <>
           <NegativeOneBlock>
             <ScrollFade start={0} end={0.025} pos={pos} from={0.5} to={0}>
@@ -206,8 +203,6 @@ const Teaser = ({ pos }: { pos: number | null }) => {
             </ScrollFade>
           </SecondBlock>
         </>
-      )}
-      {pos > 0.66 && (
         <FourthBlock>
           <ScrollTranslate
             start={0.66} // .33
@@ -274,8 +269,7 @@ const Teaser = ({ pos }: { pos: number | null }) => {
               <RedBox />
             </ScrollTranslate>
           </ScrollTranslate>
-        </FourthBlock>
-      )}
+        </FourthBlock> 
     </StyledContainer>
   );
 };
