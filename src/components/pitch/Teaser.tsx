@@ -117,7 +117,6 @@ const Teaser = ({ pos }: { pos: number | null }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      window.scrollTo(0, 0);
       if (refBitcoin.current) {
         const btcRect = refBitcoin.current.getBoundingClientRect();
 
