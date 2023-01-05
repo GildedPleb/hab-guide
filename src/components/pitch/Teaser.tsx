@@ -115,34 +115,6 @@ const Teaser = ({ pos }: { pos: number | null }) => {
 
   const isLessThanOne = Math.round(pos || 0);
 
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     if (refBitcoin.current) {
-  //       const btcRect = refBitcoin.current.getBoundingClientRect();
-
-  //       setXOffset(btcRect.left);
-  //       setYOffset(btcRect.top);
-  //     }
-  //     if (refB.current) {
-  //       const bRect = refB.current.getBoundingClientRect();
-
-  //       setXOffsetB(bRect.left);
-  //       setYOffsetB(bRect.top);
-  //       setBFixed(true);
-  //     }
-  //   };
-
-  //   // window.addEventListener("resize", handleResize);
-  //   // window.addEventListener("load", handleResize);
-
-  //   // handleResize();
-
-  //   return () => {
-  //     // window.removeEventListener("resize", handleResize);
-  //     // window.removeEventListener("load", handleResize);
-  //   };
-  // }, [refBitcoin]);
-
   useEffect(() => {
     if (refBitcoin.current && isLessThanOne < 1) {
       const btcRect = refBitcoin.current.getBoundingClientRect();

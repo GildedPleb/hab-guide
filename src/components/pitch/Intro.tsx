@@ -179,14 +179,7 @@ const Intro = ({ pos }: { pos: number | null }) => {
               <br /> Incrementally built from almost any consumer-grade
               electronics and automation software, a HAB Node is increasingly
               easy to set up. And the orchestration brilliance of
-              <StyledImage
-                style={{ transform: "scale(.95) translate(7px, 17px)" }}
-                width={200}
-                height={50}
-                src={useBaseUrl("/img/k8s.png")}
-                loading="lazy"
-              />{" "}
-              means it stays up.
+              Kubernetes means it <span style={{ fontStyle: "italic" }}>stays up</span>.
             </BodyTextInner>
           </ScrollTransform>
         </IntroBody>

@@ -1,7 +1,6 @@
 import React from "react";
 import ScrollFade from "../../animations/Fade";
 import styled from "styled-components";
-import Link from "@docusaurus/Link";
 
 const StyledContainer = styled.div`
   display: grid;
@@ -159,7 +158,7 @@ const History = ({ pos }: { pos: number | null }) => {
         <IntroBody>
           <ScrollFade start={0.15} end={0.3} pos={pos} from={0} to={1}>
             <ScrollFade start={0.55} end={0.7} pos={pos} from={1} to={0}>
-              Honey ₿adger is getting thirsty...
+              Honey Badger is getting thirsty...
             </ScrollFade>
           </ScrollFade>
         </IntroBody>
