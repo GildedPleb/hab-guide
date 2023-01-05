@@ -34,14 +34,6 @@ type DisplayBlockType = {
   pos: number | null;
 };
 
-const ZeroBlock = styled.div<DisplayBlockType>`
-  ${BasicBlock};
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
-  display: ${({ pos }) => (pos && pos > 0 ? "none" : "block")};
-`;
-
 const IntroBody = styled.div`
   max-width: 600px;
 
@@ -71,16 +63,6 @@ const IntroBody = styled.div`
   hyphens: auto;
   word-break: break-word;
   text-indent: 1rem;
-`;
-
-type OverlayType = {
-  pos: number | null;
-};
-
-const Overlay = styled.div<OverlayType>`
-  height: 100vh;
-  width: 100vw;
-  background: ${({ pos }) => (pos === 0 ? "none" : "white")};
 `;
 
 const SecondBlock = styled.div<DisplayBlockType>`
@@ -124,11 +106,6 @@ const StyledLink = styled.a`
 const History = ({ pos }: { pos: number | null }) => {
   return (
     <StyledContainer>
-      <ZeroBlock pos={pos}>
-        <ScrollFade start={-0.5} end={0} pos={pos} from={1} to={0}>
-          <Overlay pos={pos} />
-        </ScrollFade>
-      </ZeroBlock>
       <FirstBlock>
         <IntroBody>
           <ScrollFade start={0} end={0.15} pos={pos} from={1} to={0}>

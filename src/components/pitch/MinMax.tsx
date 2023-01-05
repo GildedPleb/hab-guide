@@ -189,9 +189,9 @@ type GlowType = {
 
 const Glow = styled.span<GlowType>`
   display: inline-block;
-  color: ${({ pos }) => (pos && pos > 0.535 ? "#f2a900" : "black")};
+  color: ${({ pos }) => (pos && pos > 0.542 ? "#f2a900" : "black")};
   ${({ pos }) =>
-    pos && pos > 0.535
+    pos && pos > 0.542
       ? css`
           animation: ${glow} 2s ease-in-out infinite alternate;
         `
@@ -248,7 +248,7 @@ const History = ({ pos }: { pos: number | null }) => {
             from={0}
             to={1}
           >
-            <ScrollFade start={0.54} end={0.62} pos={pos} from={1} to={0}>
+            <ScrollFade start={0.57} end={0.64} pos={pos} from={1} to={0}>
               {word === "civilization" && (
                 <TeaserText>
                   <Glow pos={pos}>{word}</Glow>{" "}
@@ -262,7 +262,7 @@ const History = ({ pos }: { pos: number | null }) => {
 
       <FourthBlock>
         <ScrollScale start={0.75} end={1} pos={pos} from={1} to={1.25}>
-          <ScrollFade start={0.62} end={0.7} pos={pos} from={0} to={1}>
+          <ScrollFade start={0.64} end={0.7} pos={pos} from={0} to={1}>
             <IntroFinText>Your Bitcoin Node</IntroFinText>
           </ScrollFade>
           <IntroFinTextMap>

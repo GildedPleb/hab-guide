@@ -178,7 +178,7 @@ const Intro = ({ pos }: { pos: number | null }) => {
               <span style={{ fontStyle: "italic" }}>for everyone</span>. <br />{" "}
               <br /> Incrementally built from almost any consumer-grade
               electronics and automation software, a HAB Node is increasingly
-              easy to set up. And the orchestration brilliance of
+              easy to set up, and the orchestration brilliance of
               Kubernetes means it <span style={{ fontStyle: "italic" }}>stays up</span>.
             </BodyTextInner>
           </ScrollTransform>

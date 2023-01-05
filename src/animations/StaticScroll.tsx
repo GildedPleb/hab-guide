@@ -46,6 +46,7 @@ function StaticScroll({
         offTop / (diff > 0 ? diff : oHeight + (offTop < 0 ? 0 : 1));
       const rounded = parseFloat(newPos.toFixed(3));
       if (rounded >= minPos && rounded <= maxPos) setPos(rounded);
+      else if (pos !== null) setPos(null);
     }
   }
 
