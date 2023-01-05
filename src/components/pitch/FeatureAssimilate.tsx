@@ -122,9 +122,9 @@ const Features = ({ pos: _pos }: { pos: number | null }) => {
           </ImageContainer>
         </Header>
         <IntroBody>
-          Today, K8s can still run on any entry-level consumer hardware which
-          can run a modern linux distribution: RPis, SBCs, NUCs, etc. As such,
-          it can allow a Bitcoin node to baptize nearly any idle compute or
+          Today, K8s can still run on any entry-level consumer hardware as long as it
+          can run modern linux: RPis, SBCs, NUCs, etc. As such,
+         a HAB node to baptize nearly any idle compute or
           storage into the cluster, making all services more robust.
         </IntroBody>
         <IntroBody>

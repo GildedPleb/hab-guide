@@ -42,8 +42,10 @@ const ZeroBlock = styled(BasicBlock)`
 
 const FirstBlock = styled(BasicBlock)`
   ${FlexBlock}
-  max-width: 800px;
+  max-width: 820px;
   justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 const SecondBlock = styled(BasicBlock)`
@@ -133,7 +135,7 @@ const Teaser = ({ pos }: { pos: number | null }) => {
 
   return (
     <StyledContainer>
-      {pos < 0.66 && (
+      {pos < 0.72 && (
         <>
           <NegativeOneBlock>
             <ScrollFade start={0} end={0.025} pos={pos} from={0.5} to={0}>
@@ -191,7 +193,7 @@ const Teaser = ({ pos }: { pos: number | null }) => {
           </FirstBlock>
           <SecondBlock>
             <ScrollFade start={0.5} end={0.56} pos={pos} from={0} to={1}>
-              <ScrollFade start={0.66} end={0.7} pos={pos} from={1} to={0}>
+              <ScrollFade start={0.66} end={0.72} pos={pos} from={1} to={0}>
                 <TeaserText>
                   Since when were maximalists all about minimums?
                 </TeaserText>
