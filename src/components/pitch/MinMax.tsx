@@ -207,24 +207,24 @@ const firstSentence =
 
 const History = ({ pos }: { pos: number | null }) => {
 
-  useEffect(()=>{
+  // useEffect(()=>{
 
-    function makeURL(object) {
-      return (window.URL) ? window.URL.createObjectURL(object) :    
-      window.webkitURL.createObjectURL(object);
-    }
+  //   function makeURL(object) {
+  //     return (window.URL) ? window.URL.createObjectURL(object) :    
+  //     window.webkitURL.createObjectURL(object);
+  //   }
   
-    async function display(videoStream){
-      var myvideo = document.getElementById('ForcePlay');
-      let blob = await fetch(videoStream).then(r => r.blob());
-      var videoUrl= makeURL(blob);
-      myvideo.src = videoUrl;
-    }
+  //   async function display(videoStream){
+  //     var myvideo = document.getElementById('ForcePlay');
+  //     let blob = await fetch(videoStream).then(r => r.blob());
+  //     var videoUrl= makeURL(blob);
+  //     myvideo.src = videoUrl;
+  //   }
   
-    display('blue-node.mp4');
+  //   display('blue-node.mp4');
 
 
-  },[])
+  // },[])
 
   return (
     <StyledContainer>
@@ -315,7 +315,7 @@ const History = ({ pos }: { pos: number | null }) => {
       <FifthBlock>
         <ScrollClipPath start={0.925} end={1} from={50} to={0} pos={pos}>
           <VideoContainer>
-            <Video id="ForcePlay" autoplay loop muted playsinline>
+            <Video id="ForcePlay" autoPlay autoplay loop muted playsinline playsInline>
               <source src="blue-node.mp4" type="video/mp4" />
             </Video>
           </VideoContainer>
