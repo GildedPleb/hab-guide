@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled, { css, keyframes } from "styled-components";
 import ScrollClipPath from "../../animations/VerticalClipPath";
 import ScrollFade from "../../animations/Fade";
@@ -206,6 +206,26 @@ const firstSentence =
   "But we are not here to merely keep the lights on, we are here to re-light civilization";
 
 const History = ({ pos }: { pos: number | null }) => {
+
+  useEffect(()=>{
+
+    function makeURL(object) {
+      return (window.URL) ? window.URL.createObjectURL(object) :    
+      window.webkitURL.createObjectURL(object);
+    }
+  
+    async function display(videoStream){
+      var myvideo = document.getElementById('ForcePlay');
+      let blob = await fetch(videoStream).then(r => r.blob());
+      var videoUrl= makeURL(blob);
+      myvideo.src = videoUrl;
+    }
+  
+    display('blue-node.mp4');
+
+
+  },[])
+
   return (
     <StyledContainer>
       <FirstBlock>
@@ -295,7 +315,7 @@ const History = ({ pos }: { pos: number | null }) => {
       <FifthBlock>
         <ScrollClipPath start={0.925} end={1} from={50} to={0} pos={pos}>
           <VideoContainer>
-            <Video autoPlay autoplay loop muted playsinline preload="none">
+            <Video id="ForcePlay" autoPlay autoplay loop muted playsinline preload="none">
               <source src="blue-node.mp4" type="video/mp4" />
             </Video>
           </VideoContainer>
