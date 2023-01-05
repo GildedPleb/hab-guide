@@ -78,7 +78,7 @@ const config = {
       announcementBar: {
         id: "guide_warning_1",
         content:
-          "The Guide is presently under active development, and requires additional undocumented steps to complete as is. See <a href='/docs/Introduction/intro'> Warning. </a>",
+          "The Guide is presently under active development, and requires additional undocumented steps to complete as is. See <a href='/hab-guide/docs/Introduction/intro'> Warning. </a>",
         backgroundColor: "pink",
         textColor: "#091E42",
         isCloseable: false,

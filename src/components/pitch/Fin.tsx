@@ -215,7 +215,7 @@ const Media = ({ pos }: { pos: number | null }) => {
           <ScrollFade start={0.88} end={1} from={0} pos={pos} to={1}>
             <StyledLink to="/why">
               <BodyTextInnerFinLink>
-                ➤ A Case For HAB Nodes
+                ➤ Why HAB Nodes?
               </BodyTextInnerFinLink>
             </StyledLink>
             <StyledLink to="/how">

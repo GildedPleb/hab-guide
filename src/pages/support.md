@@ -6,7 +6,8 @@ title: Support the HAB Node project
 
 Bitcoiners,
 
-Gilded Pleb here, pleasure to make your acquaintance.
+Gilded Pleb here, pleasure to make your acquaintance. I have been around Bitcoin
+a long time, but this is my public debut.
 
 I have wanted to work on, in, or around Bitcoin for a long time. However, my
 love and deep respect of Bitcoin as well as my atypical background, have, for
@@ -15,13 +16,14 @@ can I bring to the table?"
 
 In pursuit of that end, in 2018, I learned to code. But that alone shouldn't be
 enough. So, in 2019-2022, I worked as a Full Stack developer at a transportation
-startup— professionally getting experience in everything from actual hardware,
-to CSS animations. Nearing the end of that incredible experience, I felt like I
+startup— getting professional experience in everything from actual hardware, to
+CSS animations. Nearing the end of that incredible experience, I felt like I
 could finally bring something to the table.
 
 I put together a portfolio project to show off my skills, and this HAB Node and
-guide was the result: from the CSS animated introduction, to the bloody fingers
-working on HAB Node hardware, and everything in between.
+guide was the result: from the HAB Node hardware to the CSS animated
+introduction, and everything in between. I am very please with how this all
+turned out.
 
 Though it is certainly a work in progress, I hope that for some of you, it is a
 net addition to the space, and pushes the conversation forward about creating
@@ -33,9 +35,9 @@ internet on our shoulders, and this is how it starts.
 By browsing this site, and hopefully being intrigued or challenged by these
 ideas, you have supported this project.
 
-There is much more to come, and Bitcoin is only getting started,
-
 Thank you!
+
+There is much more to come, and Bitcoin is only getting started,
 
 — Gilded Pleb
 
@@ -46,8 +48,8 @@ A few notes on additional support for this project.
 In addition to reading about this project, there are a few other ways you can
 show support if you are so inclined:
 
-- Follow us on Twitter `@gildedpleb` say hi and let's have a conversation! Or,
-  email us at gildedpleb at protonmail.
+- Follow me on Twitter `@gildedpleb` say hi and let's have a conversation! Or,
+  gildedpleb at protonmail.
 - Share links to this website on the platforms of your choice.
 - Watch, star, and contribute to these projects on GitHub: the
   [Helm Chart](https://github.com/GildedPleb/helm-charts/blob/master/charts/hab),
@@ -60,7 +62,7 @@ show support if you are so inclined:
 - If your preferred way of contributing to Bitcoin is incubating startups,
   funding companies, or investing in entrepreneurs, lets talk. If it's not
   obvious, there are a handful of startups and business opportunities concealed
-  in these pages.
+  in these pages which can materially improve the lives of Bitcoiners.
 - Directly funding via grants, donations, or other voluntary avenues is also an
   option. Get in touch for a bitcoin address, and information on how said
   capital might be deployed.

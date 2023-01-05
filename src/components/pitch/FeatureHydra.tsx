@@ -128,7 +128,7 @@ const Features = ({ pos: _pos }: { pos: number | null }) => {
           Potential scenarios include: front-running supply chain collapse,
           diversifying location before foreseen kinetic attack, bootstrapping
           upon internet co-option, &ldquo;Version&rdquo; signalling sybil attack
-          resistance, etc.
+          resistance, and more.
         </IntroBody>
       </FirstBlock>
     </StyledContainer>

@@ -1,8 +1,8 @@
 ---
-title: A Case For HAB Nodes
+title: In Defense Of HAB Nodes
 ---
 
-# A Case For HAB Nodes
+# In Defense Of HAB Nodes
 
 Bitcoin, in whole, is a fundamentally robust, antifragile or highly available
 (HA) system. Although most nodes are not HA, meaning it is unreasonable to
