@@ -158,10 +158,12 @@ const SpecialBlock = styled(BasicBlock)`
   justify-content: center;
   align-content: center;
   gap: 0 10px;
-  max-width: 640px;
+  max-width: 660px;
   height: 100vh;
   color: black;
   z-index: 1000;
+  padding-left: 10px;
+  padding-right: 10px;
 `;
 
 const TeaserText = styled.span`
@@ -207,7 +209,7 @@ const History = ({ pos }: { pos: number | null }) => {
   return (
     <StyledContainer>
       <FirstBlock>
-        <IntroBody>
+        <IntroBody style={{textAlign: "center"}}>
           <ScrollFade start={0} end={0.08} pos={pos} from={1} to={0}>
             So, since when were Bitcoin Maximalists all about node minimalism?
           </ScrollFade>

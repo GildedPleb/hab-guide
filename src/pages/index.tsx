@@ -68,7 +68,7 @@ export default function Home(): JSX.Element {
             refOuter={refOuter}
             child={History5}
             height={"200vh"}
-            minPos={-2}
+            minPos={-3}
             maxPos={1.5}
           />
           <StaticScroll
