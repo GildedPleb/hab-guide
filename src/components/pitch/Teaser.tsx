@@ -132,14 +132,14 @@ const Teaser = ({ pos }: { pos: number | null }) => {
       }
     };
 
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("load", handleResize);
+    // window.addEventListener("resize", handleResize);
+    // window.addEventListener("load", handleResize);
 
     handleResize();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("load", handleResize);
+      // window.removeEventListener("resize", handleResize);
+      // window.removeEventListener("load", handleResize);
     };
   }, [refBitcoin]);
 
