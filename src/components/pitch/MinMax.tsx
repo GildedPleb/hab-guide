@@ -141,15 +141,15 @@ const FifthBlock = styled.div`
 `;
 
 const VideoContainer = styled.div`
-  height: 100vh;
+  height: 110vh;
   width: 100vw;
   overflow: hidden;
 `;
 
 const Video = styled.video`
   object-fit: cover;
-  height: 100%;
-  width: 100%;
+  height: 110vh;
+  width: 100vw;
 `;
 
 const SpecialBlock = styled(BasicBlock)`
@@ -259,7 +259,6 @@ const History = ({ pos }: { pos: number | null }) => {
           </ScrollFade>
         ))}
       </SpecialBlock>
-
       <FourthBlock>
         <ScrollScale start={0.75} end={1} pos={pos} from={1} to={1.25}>
           <ScrollFade start={0.64} end={0.7} pos={pos} from={0} to={1}>
