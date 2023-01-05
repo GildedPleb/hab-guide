@@ -98,7 +98,15 @@ const BitcoinB = styled.span`
   display: inline-block;
   color: #f2a900;
   transform: rotate(14deg);
+  font-size: calc(1.9rem * 8);
   animation: ${glow} 2s ease-in-out infinite alternate;
+`;
+
+const BitcoinB2 = styled.span`
+  display: inline-block;
+  transform: rotate(14deg);
+  font-size: 1.9rem;
+  opacity: 0;
 `;
 
 const firstSentence =
@@ -111,25 +119,25 @@ const Teaser = ({ pos }: { pos: number | null }) => {
   const [xOffset, setXOffset] = useState<number>(0);
   const [yOffset, setYOffset] = useState<number>(0);
 
-  const [xOffsetB, setXOffsetB] = useState<number>(0);
-  const [yOffsetB, setYOffsetB] = useState<number>(0);
-  const [bFixed, setBFixed] = useState(false);
+  const [yOffsetBTop, setYOffsetBTop] = useState<number>(0);
+  const [yOffsetBBottom, setYOffsetBBottom] = useState<number>(0);
+  const [xOffsetBLeft, setXOffsetBLeft] = useState<number>(0);
+  const [xOffsetBRight, setXOffsetBRight] = useState<number>(0);
 
   const isLessThanOne = Math.round(pos || 0);
 
   useEffect(() => {
     if (refBitcoin.current && isLessThanOne < 1) {
       const btcRect = refBitcoin.current.getBoundingClientRect();
-
       setXOffset(btcRect.left);
       setYOffset(btcRect.top);
     }
-    if (refB.current && isLessThanOne < 1 && !bFixed) {
+    if (refB.current && isLessThanOne < 1 ) {
       const bRect = refB.current.getBoundingClientRect();
-
-      setXOffsetB(bRect.left);
-      setYOffsetB(bRect.top);
-      setBFixed(true);
+      setYOffsetBTop(bRect.top);
+      setYOffsetBBottom(bRect.bottom);
+      setXOffsetBLeft(bRect.left);
+      setXOffsetBRight(bRect.right);
     }
   }, [isLessThanOne]);
 
@@ -144,20 +152,17 @@ const Teaser = ({ pos }: { pos: number | null }) => {
           </NegativeOneBlock>
           <ZeroBlock>
             <ScrollTranslate
-              ref={refB}
               start={0}
               end={0.18}
               pos={pos}
               fromHorizontal={"0px"}
               fromVertical={"0px"}
-              toHorizontal={`${(xOffset - xOffsetB) / 1 + 0}px`}
-              toVertical={`${(yOffset - yOffsetB) / 1 - 5}px`}
+              toHorizontal={`${(xOffset - xOffsetBLeft) / 1 - (xOffsetBRight - xOffsetBLeft) / 2 + 19}px`}
+              toVertical={`${(yOffset - yOffsetBTop) / 1 - (yOffsetBBottom - yOffsetBTop) / 2 + 30}px`}
             >
               <ScrollFade start={0.44} end={0.5} pos={pos} from={1} to={0}>
-                <ScrollScale start={0} end={0.18} pos={pos} from={8} to={1}>
-                  <TeaserText>
-                    <BitcoinB>₿</BitcoinB>
-                  </TeaserText>
+                <ScrollScale start={0} end={0.18} pos={pos} from={1} to={1 / 8}>
+                  <BitcoinB ref={refB}>₿</BitcoinB> 
                 </ScrollScale>
               </ScrollFade>
             </ScrollTranslate>
@@ -179,9 +184,9 @@ const Teaser = ({ pos }: { pos: number | null }) => {
                   from={1}
                   to={0}
                 >
-                  {word === "bitcoin" ? (
-                    <TeaserText ref={refBitcoin}>
-                      <BitcoinB style={{ opacity: 0 }}>₿</BitcoinB>
+                 {word === "bitcoin" ? (
+                    <TeaserText >
+                      <BitcoinB2 ref={refBitcoin}>₿</BitcoinB2>
                       itcoin
                     </TeaserText>
                   ) : (
