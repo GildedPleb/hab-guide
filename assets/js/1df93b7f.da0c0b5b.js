@@ -233,7 +233,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-`,B=e=>{let{pos:t}=e;return i.createElement(Z,null,i.createElement(z,null,i.createElement($,null,"Induction Option",i.createElement(H,null,i.createElement(A,{src:(0,h.Z)("/img/feature_baptismal.png")}))),i.createElement(j,null,"Today, K8s can still run on any entry-level consumer hardware as long as it can run modern linux: RPis, SBCs, NUCs, etc. As such, a HAB node to baptize nearly any idle compute or storage into the cluster, making all services more robust."),i.createElement(j,null,"The grandfather of k8s was internally called \u201cBorg\u201d at Google, as it assimilated all. Inheriting this quality, HAB Nodes can scale budgets from 0 to anything and expand or contract compute and storage without downtime.")))},O=r.ZP.div.attrs((e=>{let{from:t,to:n,start:i,end:r,pos:a,killAtZero:o}=e;if(a||0===a){const e=n-t;if(0===e)return{style:{opacity:`${t}`,...0===t&&o&&{display:"none"}}};const l=(a-i)/(r-i),s=e>=0?e*l:t-Math.abs(e*l),m=a<i?t:a<r?s:n;return{style:{opacity:`${m}`,...0===m&&o&&{display:"none"}}}}return{style:{opacity:`${t}`,...0===t&&o&&{display:"none"}}}}))`
+`,B=e=>{let{pos:t}=e;return i.createElement(Z,null,i.createElement(z,null,i.createElement($,null,"Induction Option",i.createElement(H,null,i.createElement(A,{src:(0,h.Z)("/img/feature_baptismal.png")}))),i.createElement(j,null,"Today, K8s can still run on any entry-level consumer hardware as long as it can run modern linux: RPis, SBCs, NUCs, etc. As such, a HAB node can baptize nearly any idle compute or storage into the cluster, making all services more robust."),i.createElement(j,null,"The grandfather of k8s was internally called \u201cBorg\u201d at Google, as it assimilated all. Inheriting this quality, HAB Nodes can scale budgets from 0 to anything and expand or contract compute and storage without downtime.")))},O=r.ZP.div.attrs((e=>{let{from:t,to:n,start:i,end:r,pos:a,killAtZero:o}=e;if(a||0===a){const e=n-t;if(0===e)return{style:{opacity:`${t}`,...0===t&&o&&{display:"none"}}};const l=(a-i)/(r-i),s=e>=0?e*l:t-Math.abs(e*l),m=a<i?t:a<r?s:n;return{style:{opacity:`${m}`,...0===m&&o&&{display:"none"}}}}return{style:{opacity:`${t}`,...0===t&&o&&{display:"none"}}}}))`
   will-change: auto;
 `,V=i.memo(O),S=r.ZP.div`
   display: grid;
@@ -318,7 +318,7 @@
   overflow: hidden;
 `,D=(0,r.ZP)(c.Z)`
   color: #f2a900;
-`,X=e=>{let{pos:t}=e;return i.createElement(S,null,i.createElement(N,null,i.createElement(T,null,i.createElement(V,{start:0,end:.11,from:1,pos:t,to:0},i.createElement(L,null,"However...")))),i.createElement(I,null,i.createElement(V,{start:.11,end:.22,pos:t,from:0,to:1},i.createElement(V,{start:.22,end:.33,pos:t,from:1,to:0},i.createElement(M,null,i.createElement(R,{src:(0,h.Z)("/img/casestudy_white1.png"),loading:"lazy"})))),i.createElement(V,{start:.22,end:.33,pos:t,from:0,to:1},i.createElement(V,{start:.33,end:.44,pos:t,from:1,to:0},i.createElement(M,null,i.createElement(R,{src:(0,h.Z)("/img/casestudy_orange.png"),loading:"lazy"})))),i.createElement(V,{start:.33,end:.44,pos:t,from:0,to:1},i.createElement(V,{start:.44,end:.55,pos:t,from:1,to:0},i.createElement(M,null,i.createElement(R,{src:(0,h.Z)("/img/casestudy_blue.png"),loading:"lazy"})))),i.createElement(V,{start:.44,end:.55,pos:t,from:0,to:1},i.createElement(V,{start:.55,end:.66,pos:t,from:1,to:0},i.createElement(M,null,i.createElement(R,{src:(0,h.Z)("/img/casestudy_yellow.png"),loading:"lazy"})))),i.createElement(V,{start:.55,end:.66,pos:t,from:0,to:1},i.createElement(V,{start:.66,end:.77,pos:t,from:1,to:0},i.createElement(M,null,i.createElement(R,{src:(0,h.Z)("/img/casestudy_white2.png"),loading:"lazy"})))),i.createElement(T,null,i.createElement(V,{start:.22,end:.33,from:0,pos:t,to:1},i.createElement(V,{start:.55,end:.66,pos:t,from:1,to:0},i.createElement(L,null,"No Highly Available Bitcoin Node will be the same.",i.createElement("br",null),i.createElement("br",null)," Each one is as individualized as its builder, modularized as its supply chain allows, and unique as its physical location.",i.createElement("br",null),i.createElement("br",null),"No other node will be like this proof of concept..."))))),i.createElement(G,null,i.createElement(M,null,i.createElement(V,{start:.66,end:.77,pos:t,from:0,to:1,style:{height:"100%",width:"100%"}},i.createElement(R,{src:(0,h.Z)("/img/fin_black.png"),loading:"lazy"}))),i.createElement(T,null,i.createElement(V,{start:.77,end:.88,from:0,pos:t,to:1},i.createElement(C,null,"What will your HAB Node be like?")),i.createElement(V,{start:.88,end:1,from:0,pos:t,to:1},i.createElement(D,{to:"/why"},i.createElement(F,null,"\u27a4 A Case For HAB Nodes")),i.createElement(D,{to:"/how"},i.createElement("br",null),i.createElement(F,null,"\u27a4 How Does It Work?")),i.createElement(D,{to:"/poc"},i.createElement("br",null),i.createElement(F,null,"\u27a4 PoC Design and Specs")),i.createElement(D,{to:"docs/Introduction/intro"},i.createElement("br",null),i.createElement(F,null,"\u27a4 Build Your Own"))))))},Y=r.ZP.div`
+`,X=e=>{let{pos:t}=e;return i.createElement(S,null,i.createElement(N,null,i.createElement(T,null,i.createElement(V,{start:0,end:.11,from:1,pos:t,to:0},i.createElement(L,null,"However...")))),i.createElement(I,null,i.createElement(V,{start:.11,end:.22,pos:t,from:0,to:1},i.createElement(V,{start:.22,end:.33,pos:t,from:1,to:0},i.createElement(M,null,i.createElement(R,{src:(0,h.Z)("/img/casestudy_white1.png"),loading:"lazy"})))),i.createElement(V,{start:.22,end:.33,pos:t,from:0,to:1},i.createElement(V,{start:.33,end:.44,pos:t,from:1,to:0},i.createElement(M,null,i.createElement(R,{src:(0,h.Z)("/img/casestudy_orange.png"),loading:"lazy"})))),i.createElement(V,{start:.33,end:.44,pos:t,from:0,to:1},i.createElement(V,{start:.44,end:.55,pos:t,from:1,to:0},i.createElement(M,null,i.createElement(R,{src:(0,h.Z)("/img/casestudy_blue.png"),loading:"lazy"})))),i.createElement(V,{start:.44,end:.55,pos:t,from:0,to:1},i.createElement(V,{start:.55,end:.66,pos:t,from:1,to:0},i.createElement(M,null,i.createElement(R,{src:(0,h.Z)("/img/casestudy_yellow.png"),loading:"lazy"})))),i.createElement(V,{start:.55,end:.66,pos:t,from:0,to:1},i.createElement(V,{start:.66,end:.77,pos:t,from:1,to:0},i.createElement(M,null,i.createElement(R,{src:(0,h.Z)("/img/casestudy_white2.png"),loading:"lazy"})))),i.createElement(T,null,i.createElement(V,{start:.22,end:.33,from:0,pos:t,to:1},i.createElement(V,{start:.55,end:.66,pos:t,from:1,to:0},i.createElement(L,null,"No Highly Available Bitcoin Node will be the same.",i.createElement("br",null),i.createElement("br",null)," Each one is as individualized as its builder, modularized as its supply chain allows, and unique as its physical location.",i.createElement("br",null),i.createElement("br",null),"No other node will be like this proof of concept..."))))),i.createElement(G,null,i.createElement(M,null,i.createElement(V,{start:.66,end:.77,pos:t,from:0,to:1,style:{height:"100%",width:"100%"}},i.createElement(R,{src:(0,h.Z)("/img/fin_black.png"),loading:"lazy"}))),i.createElement(T,null,i.createElement(V,{start:.77,end:.88,from:0,pos:t,to:1},i.createElement(C,null,"What will your HAB Node be like?")),i.createElement(V,{start:.88,end:1,from:0,pos:t,to:1},i.createElement(D,{to:"/why"},i.createElement(F,null,"\u27a4 Why HAB Nodes?")),i.createElement(D,{to:"/how"},i.createElement("br",null),i.createElement(F,null,"\u27a4 How Does It Work?")),i.createElement(D,{to:"/poc"},i.createElement("br",null),i.createElement(F,null,"\u27a4 PoC Design and Specs")),i.createElement(D,{to:"docs/Introduction/intro"},i.createElement("br",null),i.createElement(F,null,"\u27a4 Build Your Own"))))))},Y=r.ZP.div`
   display: grid;
   height: 100vh;
   width: 100vw;
@@ -366,9 +366,9 @@
     font-size: 3rem;
     padding-top: 0;
   }
-`,J=r.ZP.div`
-  display: flex;
 `,W=r.ZP.div`
+  display: flex;
+`,J=r.ZP.div`
   flex: 1;
   position: relative;
   min-height: 250px;
@@ -410,7 +410,7 @@
   hyphens: auto;
   word-break: break-word;
   text-indent: 1rem;
-`,te=e=>{let{pos:t}=e;return i.createElement(Y,null,i.createElement(K,null,i.createElement(U,null,"H.A.L.X. Option"),i.createElement(J,null,i.createElement(W,null,i.createElement(Q,{src:(0,h.Z)("/img/feature_HALX2.png")})),i.createElement(ee,null,"Not only does high availability on layer 1 ensure layer X is more stable, HA at higher, self-hosted, p2p layers is predicated on highly available lower layers. Running multiple instances of Lightning from one Bitcoin instance, running on one computer, is not a HA Lightning Node. Only H.A.B.N. can enable H.A.L.X."))))},ne=r.ZP.div.attrs((e=>{let{from:t,to:n,start:i,end:r,pos:a}=e;if(a||0===a){const e=n-t;if(0===e)return{style:{transform:`scale(${t})`}};const o=(a-i)/(r-i),l=e>=0?t+e*o:t-Math.abs(e*o);return{style:{transform:`scale(${a<i?t:a<r?l:n})`}}}return{style:{transform:`scale(${t})`}}}))`
+`,te=e=>{let{pos:t}=e;return i.createElement(Y,null,i.createElement(K,null,i.createElement(U,null,"H.A.L.X. Option"),i.createElement(W,null,i.createElement(J,null,i.createElement(Q,{src:(0,h.Z)("/img/feature_HALX2.png")})),i.createElement(ee,null,"Not only does high availability on layer 1 ensure layer X is more stable, HA at higher, self-hosted, p2p layers is predicated on highly available lower layers. Running multiple instances of Lightning from one Bitcoin instance, running on one computer, is not a HA Lightning Node. Only H.A.B.N. can enable H.A.L.X."))))},ne=r.ZP.div.attrs((e=>{let{from:t,to:n,start:i,end:r,pos:a}=e;if(a||0===a){const e=n-t;if(0===e)return{style:{transform:`scale(${t})`}};const o=(a-i)/(r-i),l=e>=0?t+e*o:t-Math.abs(e*o);return{style:{transform:`scale(${a<i?t:a<r?l:n})`}}}return{style:{transform:`scale(${t})`}}}))`
   will-change: auto;
 `,ie=i.memo(ne),re=r.ZP.div.attrs((e=>{let{fromHorizontal:t,fromVertical:n,toHorizontal:i,toVertical:r,start:a,end:o,pos:l}=e;if(l||0===l){const e=l-a,s=`(${t} - ${i})`,m=`(${n} - ${r})`;if(o===a)throw new Error(`End and Start must be differnt values. Got ${o} for both.`);const d=e/(o-a);return{style:{transform:`translate(${l<a?t:l<o?`calc(${i} + (${s} - (${s} * ${d})))`:i}, ${l<a?n:l<o?`calc(${r} + (${m} - (${m} * ${d})))`:r})`}}}return{style:{transform:`translate(${t}, ${n})`}}}))`
   will-change: auto;
@@ -784,12 +784,12 @@
   width: 100vw;
   background: black;
   color: white;
-`,Je=r.ZP.div`
+`,We=r.ZP.div`
   place-self: center;
   grid-column: 1;
   grid-row: 1;
-`,We=r.ZP.div`
-  ${Je};
+`,Je=r.ZP.div`
+  ${We};
   height: 100vh;
   width: 100vw;
   flex-direction: column;
@@ -830,7 +830,7 @@
   word-break: break-word;
   text-indent: 1rem;
 `,et=r.ZP.div`
-  ${Je};
+  ${We};
   display: ${e=>{let{pos:t}=e;return t&&t<.15?"none":"flex"}};
 
   flex-direction: column;
@@ -848,7 +848,7 @@
   padding-left: 10px;
   padding-right: 10px;
 `,nt=r.ZP.div`
-  ${Je};
+  ${We};
   display: ${e=>{let{pos:t}=e;return t&&t<.15?"none":"flex"}};
 
   flex-direction: column;
@@ -859,7 +859,7 @@
   width: 100vw;
 `,it=r.ZP.a`
   color: #f2a900;
-`,rt=e=>{let{pos:t}=e;return i.createElement(Ue,null,i.createElement(We,null,i.createElement(Qe,null,i.createElement(V,{start:0,end:.15,pos:t,from:1,to:0},"As the Bitcoin ecosystem grows with higher layers, base layer node architecture will increasingly need to reliably support ever-expanding, self-hosted, p2p apps, services, marketplaces, and income streams.")),i.createElement(Qe,null,i.createElement(V,{start:0,end:.15,pos:t,from:1,to:0},'Indeed, for some nodes, downtime already means loses. And if it\u2019s a Raspberry Pi node with a bricked hard drive, downtime means loses for weeks, or having to trust the infamous "Trusted Third Party", which will forever be a problem with'," ",i.createElement(it,{href:" https://medium.com/breez-technology/introducing-lightning-service-providers-fe9fb1665d5f"},"LSPs"),"."))),i.createElement(et,{pos:t},i.createElement(Qe,null,i.createElement(V,{start:.15,end:.3,pos:t,from:0,to:1},i.createElement(V,{start:.55,end:.7,pos:t,from:1,to:0},"Honey Badger is getting thirsty..."))),i.createElement(Qe,null,i.createElement(V,{start:.3,end:.45,pos:t,from:0,to:1},i.createElement(V,{start:.55,end:.7,pos:t,from:1,to:0},"...and the wider tech industry has been spending the last few decades building, testing, and actively deploying, in defense of"," ",i.createElement("span",{style:{fontStyle:"italic"}},"trillions")," in value, the very solution to quench that thirst.")))),i.createElement(nt,{pos:t},i.createElement(V,{start:.7,end:.85,pos:t,from:0,to:1},i.createElement(tt,null,"Your Bitcoin Node")),i.createElement(V,{start:.85,end:1,pos:t,from:0,to:1},i.createElement(tt,null,"Highly Available"))))},at=r.ZP.div`
+`,rt=e=>{let{pos:t}=e;return i.createElement(Ue,null,i.createElement(Je,null,i.createElement(Qe,null,i.createElement(V,{start:0,end:.15,pos:t,from:1,to:0},"As the Bitcoin ecosystem grows with higher layers, base layer node architecture will increasingly need to reliably support ever-expanding, self-hosted, p2p apps, services, marketplaces, and income streams.")),i.createElement(Qe,null,i.createElement(V,{start:0,end:.15,pos:t,from:1,to:0},'Indeed, for some nodes, downtime already means loses. And if it\u2019s a Raspberry Pi node with a bricked hard drive, downtime means loses for weeks, or having to trust the infamous "Trusted Third Party", which will forever be a problem with'," ",i.createElement(it,{href:" https://medium.com/breez-technology/introducing-lightning-service-providers-fe9fb1665d5f"},"LSPs"),"."))),i.createElement(et,{pos:t},i.createElement(Qe,null,i.createElement(V,{start:.15,end:.3,pos:t,from:0,to:1},i.createElement(V,{start:.55,end:.7,pos:t,from:1,to:0},"Honey Badger is getting thirsty..."))),i.createElement(Qe,null,i.createElement(V,{start:.3,end:.45,pos:t,from:0,to:1},i.createElement(V,{start:.55,end:.7,pos:t,from:1,to:0},"...and the wider tech industry has been spending the last few decades building, testing, and actively deploying, in defense of"," ",i.createElement("span",{style:{fontStyle:"italic"}},"trillions")," in value, the very solution to quench that thirst.")))),i.createElement(nt,{pos:t},i.createElement(V,{start:.7,end:.85,pos:t,from:0,to:1},i.createElement(tt,null,"Your Bitcoin Node")),i.createElement(V,{start:.85,end:1,pos:t,from:0,to:1},i.createElement(tt,null,"Highly Available"))))},at=r.ZP.div`
   display: grid;
   height: 100vh;
   width: 100vw;
@@ -953,7 +953,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-`,ct=e=>{let{pos:t}=e;return i.createElement(at,null,i.createElement(ot,null,i.createElement(lt,null,"Hydra Option",i.createElement(mt,null,i.createElement(dt,{src:(0,h.Z)("/img/feature_hydra2.png")}))),i.createElement(st,null,"A HAB node accounts for bizarre and/or unlikely attacks. Designed correctly, it is decomposable into individual, self-sufficeint nodes, making it trivial to change from one to many nodes, or to slice off one or many parts, without taking down the cluster."),i.createElement(st,null,"Potential scenarios include: front-running supply chain collapse, diversifying location before foreseen kinetic attack, bootstrapping upon internet co-option, \u201cVersion\u201d signalling sybil attack resistance, etc.")))},ht=r.ZP.div`
+`,ct=e=>{let{pos:t}=e;return i.createElement(at,null,i.createElement(ot,null,i.createElement(lt,null,"Hydra Option",i.createElement(mt,null,i.createElement(dt,{src:(0,h.Z)("/img/feature_hydra2.png")}))),i.createElement(st,null,"A HAB node accounts for bizarre and/or unlikely attacks. Designed correctly, it is decomposable into individual, self-sufficeint nodes, making it trivial to change from one to many nodes, or to slice off one or many parts, without taking down the cluster."),i.createElement(st,null,"Potential scenarios include: front-running supply chain collapse, diversifying location before foreseen kinetic attack, bootstrapping upon internet co-option, \u201cVersion\u201d signalling sybil attack resistance, and more.")))},ht=r.ZP.div`
   display: grid;
   height: 100vh;
   width: 100vw;
@@ -1169,13 +1169,13 @@
   height: 110vh;
   position: absolute;
 `,Ct=r.ZP.div`
-  height: 100vh;
+  height: 110vh;
   width: 100vw;
   overflow: hidden;
 `,Ft=r.ZP.video`
   object-fit: cover;
-  height: 100%;
-  width: 100%;
+  height: 110vh;
+  width: 100vw;
 `,Mt=(0,r.ZP)(Bt)`
   display: flex;
   flex-wrap: wrap;
@@ -1214,7 +1214,7 @@ from {
   width: 100vw;
   background: #f2a900;
   color: black;
-`,Jt=r.ZP.div`
+`,Wt=r.ZP.div`
   place-self: center;
   grid-column: 1;
   grid-row: 1;
@@ -1227,7 +1227,7 @@ from {
   @media (max-width: 768px) {
     margin: 0;
   }
-`,Wt=r.ZP.h1`
+`,Jt=r.ZP.h1`
   font-size: 1.9rem;
   line-height: 1.2;
   color: black;
@@ -1304,7 +1304,7 @@ from {
   position: absolute;
   width: 100%;
   height: 100%;
-`,nn=e=>{let{pos:t}=e;return i.createElement(Ut,null,i.createElement(Jt,null,i.createElement(Wt,null,"Sovereign Option",i.createElement(en,null,i.createElement(tn,{src:(0,h.Z)("/img/feature_soverign2.png")}))),i.createElement(Qt,null,"Arbitrary services can be added to the cluster, including hooks, repository mirroring, and any other infrastructure. A HAB Node can thus operate as GitHub, Docker Hub, and a build server, hardening it against middle man failures from any of the above. All self-hosted and highly available."),i.createElement(Qt,null,"Under such a setup, for instance, a node would be able to take full ownership of the entire Bitcoin code pipeline, every dependency, and all code needed to do this.")))},rn=r.ZP.div`
+`,nn=e=>{let{pos:t}=e;return i.createElement(Ut,null,i.createElement(Wt,null,i.createElement(Jt,null,"Sovereign Option",i.createElement(en,null,i.createElement(tn,{src:(0,h.Z)("/img/feature_soverign2.png")}))),i.createElement(Qt,null,"Arbitrary services can be added to the cluster, including hooks, repository mirroring, and any other infrastructure. A HAB Node can thus operate as GitHub, Docker Hub, and a build server, hardening it against middle man failures from any of the above. All self-hosted and highly available."),i.createElement(Qt,null,"Under such a setup, for instance, a node would be able to take full ownership of the entire Bitcoin code pipeline, every dependency, and all code needed to do this.")))},rn=r.ZP.div`
   height: ${e=>{let{height:t}=e;return t}};
   position: relative;
 `,an=r.ZP.div`
@@ -1385,4 +1385,4 @@ from {
   transform: rotate(14deg);
   font-size: 1.9rem;
   opacity: 0;
-`,Pn=e=>{let{pos:t}=e;const n=(0,i.useRef)(null),r=(0,i.useRef)(null),[a,o]=(0,i.useState)(0),[l,s]=(0,i.useState)(0),[m,d]=(0,i.useState)(0),[c,h]=(0,i.useState)(0),[p,g]=(0,i.useState)(0),[f,u]=(0,i.useState)(0),x=Math.round(t||0);return(0,i.useEffect)((()=>{if(n.current&&x<1){const e=n.current.getBoundingClientRect();o(e.left),s(e.top)}if(r.current&&x<1){const e=r.current.getBoundingClientRect();d(e.top),h(e.bottom),g(e.left),u(e.right)}}),[x]),i.createElement(sn,null,t<.72&&i.createElement(i.Fragment,null,i.createElement(cn,null,i.createElement(V,{start:0,end:.025,pos:t,from:.5,to:0},"Scroll to Advance")),i.createElement(hn,null,i.createElement(ae,{start:0,end:.18,pos:t,fromHorizontal:"0px",fromVertical:"0px",toHorizontal:(a-p)/1-(f-p)/2+19+"px",toVertical:(l-m)/1-(c-m)/2+30+"px"},i.createElement(V,{start:.44,end:.5,pos:t,from:1,to:0},i.createElement(ie,{start:0,end:.18,pos:t,from:1,to:1/8},i.createElement(yn,{ref:r},"\u20bf"))))),i.createElement(pn,null,"Running a bare-bones full node is a minimum requirement to keep the lights on for bitcoin".split(" ").map(((e,r,a)=>i.createElement(V,{key:`${e}-${r}`,start:.1/a.length*r*2,end:.1/a.length*(r+1)*2,pos:t,from:0,to:1},i.createElement(V,{start:2*(.1/a.length*r+.1),end:2*(.1/a.length*(r+1)+.1),pos:t,from:1,to:0},"bitcoin"===e?i.createElement(vn,null,i.createElement(En,{ref:n},"\u20bf"),"itcoin"):i.createElement(vn,null,e)))))),i.createElement(gn,null,i.createElement(V,{start:.5,end:.56,pos:t,from:0,to:1},i.createElement(V,{start:.66,end:.72,pos:t,from:1,to:0},i.createElement(vn,null,"Since when were maximalists all about minimums?"))))),t>.66&&i.createElement(fn,null,i.createElement(ae,{start:.66,end:1,pos:t,fromHorizontal:"0px",fromVertical:"100%",toHorizontal:"0px",toVertical:"50%"},i.createElement(ae,{start:1,end:2,pos:t,fromHorizontal:"0px",fromVertical:"0%",toHorizontal:"0px",toVertical:"100%"},i.createElement(un,null))),i.createElement(ae,{start:.78,end:1,pos:t,fromHorizontal:"0px",fromVertical:"0%",toHorizontal:"0px",toVertical:"-34%"},i.createElement(ae,{start:1,end:2.47,pos:t,fromHorizontal:"0px",fromVertical:"0%",toHorizontal:"0px",toVertical:"100%"},i.createElement(xn,null))),i.createElement(ae,{start:.9,end:1,pos:t,fromHorizontal:"0px",fromVertical:"-100%",toHorizontal:"0px",toVertical:"-118%"},i.createElement(ae,{start:1,end:3.78,pos:t,fromHorizontal:"0px",fromVertical:"0%",toHorizontal:"0px",toVertical:"100%"},i.createElement(wn,null)))))},kn=r.ZP.section``;function Zn(){const e=(0,i.useRef)(null);return i.createElement(i.Fragment,null,i.createElement(d,null),i.createElement("div",null,i.createElement(f,null),i.createElement(kn,{ref:e},i.createElement(ln,{refOuter:e,child:Pn,height:"300vh",minPos:-.5,maxPos:1.5}),i.createElement(ln,{refOuter:e,child:pe,height:"200vh",minPos:-1.5,maxPos:1.2}),i.createElement(ln,{refOuter:e,child:be,height:"200vh",maxPos:1.5}),i.createElement(ln,{refOuter:e,child:Ae,height:"150vh",minPos:0,maxPos:1}),i.createElement(ln,{refOuter:e,child:Te,height:"200vh",minPos:-.5,maxPos:2}),i.createElement(ln,{refOuter:e,child:Ke,height:"200vh",minPos:-3,maxPos:1.5}),i.createElement(ln,{refOuter:e,child:rt,height:"300vh",minPos:-.5,maxPos:1}),i.createElement(ln,{refOuter:e,child:$t,height:"500vh",minPos:0,maxPos:1}),i.createElement(ln,{refOuter:e,child:B,height:"100vh",minPos:0,maxPos:0}),i.createElement(ln,{refOuter:e,child:nn,height:"100vh",minPos:0,maxPos:0}),i.createElement(ln,{refOuter:e,child:te,height:"100vh",minPos:0,maxPos:0}),i.createElement(ln,{refOuter:e,child:ct,height:"100vh",minPos:0,maxPos:0}),i.createElement(ln,{refOuter:e,child:k,height:"100vh",minPos:0,maxPos:0}),i.createElement(ln,{refOuter:e,child:Kt,height:"600vh",minPos:0,maxPos:1.2}),i.createElement(ln,{refOuter:e,child:X,height:"300vh",minPos:-.5,maxPos:1}))))}}}]);
+`,Pn=e=>{let{pos:t}=e;const n=(0,i.useRef)(null),r=(0,i.useRef)(null),[a,o]=(0,i.useState)(0),[l,s]=(0,i.useState)(0),[m,d]=(0,i.useState)(0),[c,h]=(0,i.useState)(0),[p,g]=(0,i.useState)(0),[f,u]=(0,i.useState)(0);return(0,i.useEffect)((()=>{if(n.current){const e=n.current.getBoundingClientRect();o(e.left),s(e.top)}if(r.current){const e=r.current.getBoundingClientRect();d(e.top),h(e.bottom),g(e.left),u(e.right)}}),[]),i.createElement(sn,null,i.createElement(i.Fragment,null,i.createElement(cn,null,i.createElement(V,{start:0,end:.025,pos:t,from:.5,to:0},"Scroll to Advance")),i.createElement(hn,null,i.createElement(ae,{start:0,end:.18,pos:t,fromHorizontal:"0px",fromVertical:"0px",toHorizontal:(a-p)/1-(f-p)/2+19+"px",toVertical:(l-m)/1-(c-m)/2+30+"px"},i.createElement(V,{start:.44,end:.5,pos:t,from:1,to:0},i.createElement(ie,{start:0,end:.18,pos:t,from:1,to:1/8},i.createElement(yn,{ref:r},"\u20bf"))))),i.createElement(pn,null,"Running a bare-bones full node is a minimum requirement to keep the lights on for bitcoin".split(" ").map(((e,r,a)=>i.createElement(V,{key:`${e}-${r}`,start:.1/a.length*r*2,end:.1/a.length*(r+1)*2,pos:t,from:0,to:1},i.createElement(V,{start:2*(.1/a.length*r+.1),end:2*(.1/a.length*(r+1)+.1),pos:t,from:1,to:0},"bitcoin"===e?i.createElement(vn,null,i.createElement(En,{ref:n},"\u20bf"),"itcoin"):i.createElement(vn,null,e)))))),i.createElement(gn,null,i.createElement(V,{start:.5,end:.56,pos:t,from:0,to:1},i.createElement(V,{start:.66,end:.72,pos:t,from:1,to:0},i.createElement(vn,null,"Since when were maximalists all about minimums?"))))),i.createElement(fn,null,i.createElement(ae,{start:.66,end:1,pos:t,fromHorizontal:"0px",fromVertical:"100%",toHorizontal:"0px",toVertical:"50%"},i.createElement(ae,{start:1,end:2,pos:t,fromHorizontal:"0px",fromVertical:"0%",toHorizontal:"0px",toVertical:"100%"},i.createElement(un,null))),i.createElement(ae,{start:.78,end:1,pos:t,fromHorizontal:"0px",fromVertical:"0%",toHorizontal:"0px",toVertical:"-34%"},i.createElement(ae,{start:1,end:2.47,pos:t,fromHorizontal:"0px",fromVertical:"0%",toHorizontal:"0px",toVertical:"100%"},i.createElement(xn,null))),i.createElement(ae,{start:.9,end:1,pos:t,fromHorizontal:"0px",fromVertical:"-100%",toHorizontal:"0px",toVertical:"-118%"},i.createElement(ae,{start:1,end:3.78,pos:t,fromHorizontal:"0px",fromVertical:"0%",toHorizontal:"0px",toVertical:"100%"},i.createElement(wn,null)))))},kn=r.ZP.section``;function Zn(){const e=(0,i.useRef)(null);return i.createElement(i.Fragment,null,i.createElement(d,null),i.createElement("div",null,i.createElement(f,null),i.createElement(kn,{ref:e},i.createElement(ln,{refOuter:e,child:Pn,height:"300vh",minPos:-.5,maxPos:1.5}),i.createElement(ln,{refOuter:e,child:pe,height:"200vh",minPos:-1.5,maxPos:1.2}),i.createElement(ln,{refOuter:e,child:be,height:"200vh",maxPos:1.5}),i.createElement(ln,{refOuter:e,child:Ae,height:"150vh",minPos:0,maxPos:1}),i.createElement(ln,{refOuter:e,child:Te,height:"200vh",minPos:-.5,maxPos:2}),i.createElement(ln,{refOuter:e,child:Ke,height:"200vh",minPos:-3,maxPos:1.5}),i.createElement(ln,{refOuter:e,child:rt,height:"300vh",minPos:-.5,maxPos:1}),i.createElement(ln,{refOuter:e,child:$t,height:"500vh",minPos:0,maxPos:1}),i.createElement(ln,{refOuter:e,child:B,height:"100vh",minPos:0,maxPos:0}),i.createElement(ln,{refOuter:e,child:nn,height:"100vh",minPos:0,maxPos:0}),i.createElement(ln,{refOuter:e,child:te,height:"100vh",minPos:0,maxPos:0}),i.createElement(ln,{refOuter:e,child:ct,height:"100vh",minPos:0,maxPos:0}),i.createElement(ln,{refOuter:e,child:k,height:"100vh",minPos:0,maxPos:0}),i.createElement(ln,{refOuter:e,child:Kt,height:"600vh",minPos:0,maxPos:1.2}),i.createElement(ln,{refOuter:e,child:X,height:"300vh",minPos:-.5,maxPos:1}))))}}}]);
