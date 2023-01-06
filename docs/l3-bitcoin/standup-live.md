@@ -17,9 +17,9 @@ of how to use it.
 Importantly, you will need to create a `values.hab.yml` file which corresponds
 to your `host-plan` and design objectives. This is where the rubber hits the
 road. And there will be a great deal of customization and unique circumstances
-dictating exactly how your `values.hab.yml` look. To see how the original
-`values.hab.yml` for the Ionico Base Node, browse to the bottom of the examples'
-page linked above.
+dictating exactly how your `values.hab.yml` look. The original `values.hab.yml`
+for the Ionico Base Node is
+[here](https://github.com/GildedPleb/helm-charts/blob/master/charts/hab/examples.md#poc-hab-node).
 
 Once you have reviewed the documentation, and have an idea about how your node
 deployment should look:

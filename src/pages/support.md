@@ -6,13 +6,14 @@ title: Support the HAB Node project
 
 Bitcoiners,
 
-Gilded Pleb here, pleasure to make your acquaintance. I have been around Bitcoin
-a long time, but this is my public debut.
+Gilded Pleb here, I have been involved in Bitcoin for a long time, but with a
+strong preference for remaining private, so this is my semi-public debut on a
+new yet pseudonymous account, pleasure to make your acquaintance!
 
-I have wanted to work on, in, or around Bitcoin for a long time. However, my
-love and deep respect of Bitcoin as well as my atypical background, have, for
-years, caused me to stop and say "Sure, but how to break into that space, what
-can I bring to the table?"
+I have wanted to work on, in, or around Bitcoin for years now. However, my love
+of and deep respect for Bitcoin as well as my atypical background, have, for a
+long time, caused me to stop and say, "Sure, but how to break into that space,
+what can I bring to the table?"
 
 In pursuit of that end, in 2018, I learned to code. But that alone shouldn't be
 enough. So, in 2019-2022, I worked as a Full Stack developer at a transportation
@@ -21,23 +22,28 @@ CSS animations. Nearing the end of that incredible experience, I felt like I
 could finally bring something to the table.
 
 I put together a portfolio project to show off my skills, and this HAB Node and
-guide was the result: from the HAB Node hardware to the CSS animated
-introduction, and everything in between. I am very please with how this all
-turned out.
+guide was the result: hardware, DevOps, FrontEnd, and even animation in the
+introduction page. I am very please with how this all turned out, only wishing
+that I could have incorporated a DB to show of backend skills as well.
+Certainly, it seems that this project may be bigger than my desire to get a job,
+so I really can not complain.
 
-Though it is certainly a work in progress, I hope that for some of you, it is a
+Though it is a work in progress, I hope that for some of you, a HAB Node is a
 net addition to the space, and pushes the conversation forward about creating
 nodes which can truly support the entire spectrum of peer-to-peer and
-distributed infrastructure in very reliable, affordable, non-relay, and
-non-federated ways for everyone. Indeed, Plebs should be able to put the entire
-internet on our shoulders, and this is how it starts.
+distributed infrastructure in very reliable, private, affordable, non-relay,
+non-federated, and sovereign ways for everyone. Indeed, Plebs should be able to
+put the entire internet on our shoulders, and this is how it starts.
 
 By browsing this site, and hopefully being intrigued or challenged by these
-ideas, you have supported this project.
+ideas—even if you disagree, you have helped this project be better, thank you
+for the support.
 
 Thank you!
 
 There is much more to come, and Bitcoin is only getting started,
+
+Sincerely,
 
 — Gilded Pleb
 
@@ -70,4 +76,5 @@ show support if you are so inclined:
   a reason: to be an attractive candidate for a job in Bitcoin. It turned into
   something else, clearly, but I am still very keen on staying humble and
   stacking sats. Let's talk if you have an open position for a Full Stack
-  Engineer in Bitcoin only.
+  Engineer in Bitcoin _only_. If you have already posted jobs that appear to me
+  to fit the bill, expect my application!

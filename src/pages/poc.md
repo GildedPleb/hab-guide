@@ -167,16 +167,19 @@ risk.
 
 ## Uptime
 
-As you can see, 169 days of uptime on the first build is great! ![Uptime](/img/uptime.png) However, shortly
-after this screenshot was taken, the entire cluster crashed.
+As you can see, 169 days of uptime on the first build is great!
+![Uptime](/img/uptime.png) However, shortly after this screenshot was taken, the
+entire cluster [crashed](#cluster-crash).
 
 :::note Note on Cluster Resource Allocations
 
 As you have probably noticed, bitcoind was only running on 3 off 7 nodes. This
 first build also included a bcoin instance, a non-clustered bitcoind instance, a
-btcd instance, and 1 node reserved for N+1. Both btcd and bcoin ran into
-reliability issues over the same time frame, as expected, and entered crash loop
-backoff regularly.
+btcd instance, and 1 node reserved for N+1 (to see the full list and
+configuration, check out the chart
+[here](https://github.com/GildedPleb/helm-charts/blob/master/charts/hab/examples.md#poc-hab-node)).
+Both btcd and bcoin ran into reliability issues over the same time frame, as
+expected, and entered crash loop backoff regularly.
 
 The standalone bitcoind instance ran on one of the NUCs and was used for
 performance testing. Thus, it did not accurately track uptime at all.
