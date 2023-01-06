@@ -32,6 +32,11 @@
   --ifm-button-background-color: white;
   --aa-primary-color-rgb: 150, 150, 150 !important;
 
+  --ifm-heading-font-family: Baskerville, Baskervville, Baskerville Old Face,
+    Hoefler Text, Garamond, Times New Roman, serif;
+  --ifm-font-family-base: Baskerville, Baskervville, Baskerville Old Face,
+    Hoefler Text, Garamond, Times New Roman, serif;
+
   /* --ifm-font-weight-light: 300;
 --ifm-font-weight-normal: 400;
 --ifm-font-weight-semibold: 500;
@@ -76,8 +81,8 @@
 }
 
 .main-wrapper {
-  font-family: Baskerville, Baskervville, Baskerville Old Face, Hoefler Text, Garamond,
-    Times New Roman, serif;
+  font-family: Baskerville, Baskervville, Baskerville Old Face, Hoefler Text,
+    Garamond, Times New Roman, serif;
 }
 
 body {

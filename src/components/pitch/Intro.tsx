@@ -199,7 +199,7 @@ const Intro = ({ pos }: { pos: number | null }) => {
               Only HAB Nodes can eliminate the most Single Points of Failure:
               hardware, software, internet provider, power source, and more. All while providing a
               litany of world class HA infrastructure, like improved privacy,
-              security, and up-time.
+              security, and scaling.
             </BodyTextInner>
           </ScrollTransform>
         </IntroBodySecond>
