@@ -504,35 +504,39 @@ opined on issues of availability and node management:
 > farms of specialized hardware. A server farm would only need to have one node
 > on the network and the rest of the LAN connects with that one node.
 
-BCH and BSV adherents often quote this passage in defense of large blocks. But
-this was wirtten 4 years before the launch of Raspberry Pi, 5 years before
-Docker really made sense of containers, and 7 years before the robust FOSS
-orchestration technology of Kubernetes arrived. As such, the three key
-technologies which make HAB Nodes possible, came after Satoshi's time in their
-individual niche settings.
+BCH and BSV adherents often quote this email in defense of large blocks. But
+this was written 4 years before the launch of Raspberry Pi (and the explosion of
+cheap consumer SBCs), 5 years before Docker really made sense of containers, 4
+years before Ansible made provisioning and automation intuitive, and 7 years
+before the robust FOSS orchestration technology of Kubernetes arrived. As such,
+the key technologies which make HAB Nodes possible came after Satoshi's time in
+their individual niche settings.
 
 Even if the need to solve the problem of delivering highly available node
 infrastructure was deeply felt by Satoshi—for instance, if he meant LAN
 connections to server farms to mean the LAN network of self-hosted households
 running HA Nodes—there wasn't an actionable or accessible way forward when he
 wrote those lines. The prevailing way forward was not through container
-orchestration, but was as Satoshi said: primarily through specialized hardware.
+orchestration, but was as Satoshi said: primarily through specialized hardware
+run by specialists.
 
 Now, thanks to Satoshi's efforts to design Bitcoin so robustly, to Core's
 efforts to expand on this premise, the efforts of #UASF to keep the cost of a
 minimally viable node as small as possible while scaling, the fantastic work
-being done in the microcomputer / SBC industry, and the unparalleled work done
-in containers and container orchestration, we can now solve these issues, and
-should, for the health, preservation, decentralization, permanence, cost, and
-robustness of Bitcoin. The more we push on clustered edge nodes, the more the
-entire bitcoin ecosystem improves.
+being done in the microcomputer / SBC industry, the ingeniousness of DevOps
+engineers to automate provisioning, and the unparalleled work done in containers
+and container orchestration, we now no longer face these issues. And we should
+pursue those advancements for the health, preservation, decentralization,
+permanence, cost, and robustness of Bitcoin. The more we push on clustered edge
+nodes, the more the entire bitcoin ecosystem improves.
 
 Contrary to what Satoshi seems to have meant, a home-server HAB Node should run
-many Bitcoin nodes, it should run on a diversity of easily acquirable consumer
-hardware, and node operators need not be server specialist for this robust
-version of node operation to be reality. As you'll see in the guide, setting up
-a HAB node is [well within](/docs/Introduction/what#the-content-vs-the-commands)
-the range of what a simple GUI might need, _already_.
+many Bitcoin instances, it should run on a diversity of easily acquirable
+consumer hardware, it should be provisioned via simple processes, and node
+operators need not be server specialist for this robust version of node
+operation to be reality. As you'll see in the guide, setting up a HAB node is
+[well within](/docs/Introduction/what#the-content-vs-the-commands) the range of
+what a simple GUI might need, _already_.
 
 ### "OK, but isn't container orchestration _complete overkill_?"
 
@@ -555,32 +559,32 @@ needed to meet a truly unknown-depth threat model. Again, looking to DNA as a
 guide, we see there is no better way forward, for it is how we as the human
 species, and all life which uses DNA, function at the cellular level.
 
-Indeed, there are other ways to solve the problems that a HAB Node solves, and
-solve them cleanly without container orchestration (`systemd`, running multiple
-un-clustered nodes, for instance). But pursuing all of those options, to their
-ultimate ends, eventually means creating a new form of highly available
-infrastructure which solves all the exact same problems that k8s already solves
-and has been solving for decades in defense of trillions more in value than
-Bitcoin.
-
 Strangely, the analogy above may not even cut deep enough. An aircraft carrier
 costs somewhere north of $10 Billion to make, whereas $56.5 Billion has been
 invested in the
 [landscape and infrastructure](https://landscape.cncf.io/?grouping=no&sort=amount)
 in and around Kubernetes—the CNCF _exists_ because of Kubernetes. We should be
 running HAB nodes to incorporate as much of that incredible work, deep wisdom,
-and experience as possible. If the legacy internet is dying, and the peer web is
-the future, who knows whether Kubernetes came to be for such a time as this?
+and experience as possible.
+
+Indeed, there are other ways to solve the problems that a HAB Node solves, and
+solve them cleanly without these dependencies (`systemd`, running multiple
+un-clustered nodes, for instance). But pursuing all of those options, to their
+ultimate ends, eventually means creating a new form of highly available
+infrastructure which solves all the exact same problems that k8s already solves
+and has been solving for a decade in defense of trillions more in value than
+Bitcoin. If the legacy internet is dying, and the peer web is the future, who
+knows whether Kubernetes came to be for such a time as this?
 
 There is no need to reinvent this wheel, we merely need to _use it_.
 
 ## Do We Need This Solution?
 
 Yes. Resoundingly so. To step back, the problem we face is small at the moment,
-but it carries all the characteristics of a problem that will only increasingly
-become more evident as the self-hosted Bitcoin node ecosystem continues to
-mature into the _very source_ of wages, circular economy, and human flourishing
-the world over.
+and not without its difficulties, but it carries all the characteristics of a
+problem that will only increasingly become more evident as the self-hosted
+Bitcoin node ecosystem continues to mature into the _very source_ of wages,
+circular economy, and human flourishing the world over.
 
 ---
 

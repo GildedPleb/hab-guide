@@ -69,5 +69,5 @@ Thank you. Thank you for completing this guide, and for making Bitcoin stronger!
 
 ---
 
-If you appreciate what you have seen, and would liek to support this project,
+If you appreciate what you have seen, and would like to support this project,
 check out the [Support Page](/support).
