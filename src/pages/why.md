@@ -9,13 +9,14 @@ Bitcoin, in whole, is a fundamentally robust, antifragile or highly available
 expect persistent connections to any random Bitcoin node, the design and
 incentives in Bitcoin as a whole ensure many nodes will always be available.
 Stated differently, though individual nodes may crash, not all the nodes
-worldwide crash all at the same time. Because downtime will generally be a
-shorter interval than uninterrupted uptime for the average node, and because the
-incentives and consensus mechanisms in Bitcoin cause node running to be of
-importance, Bitcoin, at large, remains reachable:
+worldwide crash all at the same time. Because the average node downtime will
+generally be a shorter interval than uninterrupted uptime for the same node, and
+because the incentives and consensus mechanisms in Bitcoin cause node running to
+be of importance, Bitcoin, at large, remains reachable:
 
-> "Nodes can leave and rejoin the network at will" - Satoshi, Bitcoin White
-> Paper
+> "Nodes can leave and rejoin the network at will"
+>
+> — Satoshi, Bitcoin White Paper
 
 Bitcoin uptime, as a whole, [is outstanding](https://bitcoinuptime.org/), but
 the low marks for the average node persist, for the average node does not have
@@ -100,7 +101,7 @@ mind.
 From this premise, we can begin to ask _why_ this is important, what specific
 benefits it gains us, and what specific or unknown threats it curtails. Though
 there are undoubtedly many more reasons, these stand out and are worth
-elaborating on:
+elaborating on here:
 
 - Reduction to Lost Income / HALX Option
 - Self-hosting / Sovereign Option ("Trusted Third Parties Are Security Holes")
@@ -108,6 +109,7 @@ elaborating on:
 - Forecasted Obsolescence / Induction Option
 - Node Operators are First Class Voting Citizens
 - Bitcoin is. (And Will Always Be Under Attack)
+- Dissenting Opinion Refutation
 
 ## Reduction to Lost Income / HALX Option
 
@@ -364,75 +366,132 @@ HAB Nodes are an advance in the defense of the bitcoin network. For above all,
 it is paramount that Bitcoin survives. Every second Bitcoin survives is a second
 closer to winning. We must have _constant vigilance_.
 
-## A Caught-In-The-Wild Case Study
+## Dissenting Opinion
 
-To wit, this is a real log from [btcd](https://github.com/btcsuite/btcd) syncing
-the bitcoin live net that we witnessed which demonstrates both the reason this
-is important and the power of HAB Nodes:
+Is a HAB node a panacea? Far from it. Here are some oppositional arguments and
+potential refutations:
 
-```log
-2022-04-02 19:16:05.338 [INF] SYNC: Processed 7 blocks in the last 11.34s (5235 transactions, height 681505, 2021-05-02 09:19:37 +0000 UTC)
-2022-04-02 19:16:15.370 [INF] SYNC: Processed 6 blocks in the last 10.03s (7148 transactions, height 681511, 2021-05-02 10:08:49 +0000 UTC)
-2022-04-02 19:16:25.801 [INF] SYNC: Processed 7 blocks in the last 10.43s (5342 transactions, height 681518, 2021-05-02 10:33:55 +0000 UTC)
-2022-04-02 19:16:35.489 [INF] SYNC: Rejected block 0000000000000000000c0b575b54782ac1233b52167a4360b387a92aad6d5c36 from 106.70.152.247:8333 (outbound): output fb1e8da2c605b140af57988ebfd01337c48981b6bea574814471888644a87179:374 referenced from transaction 574ed80323af61a44fde23fdfa353d9fcfd4044e746e5d71bb677539873a4d69:81 either does not exist or has already been spent
-2022-04-02 19:16:35.505 [INF] SYNC: Rejected block 00000000000000000000a62dbd00aac10221e14ee31e4ccf0f69b5992ef2dc09 from 106.70.152.247:8333 (outbound): previous block 0000000000000000000c0b575b54782ac1233b52167a4360b387a92aad6d5c36 is known to be invalid
-2022-04-02 19:16:35.520 [INF] CHAN: Adding orphan block 0000000000000000000504f79236c4c8cbfee36d23250d3e4b741f0866578586 with parent 00000000000000000000a62dbd00aac10221e14ee31e4ccf0f69b5992ef2dc09
-...
-```
+### Security
 
-Depending on ones node setup, an event like this might terminate the node, as 1
-minute later, this node was terminated:
+Though user error and environmental factors will also most likely be heightened
+security problems under a HAB Node paradigm, those factors are also the case
+with single node operation. Here are some security concerns that pertain
+specifically to HAB Nodes:
 
-```log
-2022-04-02 19:17:31.986 [INF] CHAN: Adding orphan block 00000000000000000002fb1e3184747bf39b69a1d12d4fa0c27e333e916e10ad with parent 000000000000000000029b9cf49faf90b0a83041c399abf1cef921456132ef20
-2022-04-02 19:17:33.965 [INF] CHAN: Adding orphan block 0000000000000000000314d2b93903aab6bc9f12401eeb2d98ac5e641352a355 with parent 00000000000000000002fb1e3184747bf39b69a1d12d4fa0c27e333e916e10ad
-2022-04-02 19:17:34.270 [INF] BTCD: Received signal (terminated).  Shutting down...
-2022-04-02 19:17:34.270 [INF] BTCD: Gracefully shutting down the server...
-2022-04-02 19:17:34.270 [WRN] SRVR: Server shutting down
-...
-2022-04-02 19:17:34.278 [INF] SRVR: Server shutdown complete
-2022-04-02 19:17:34.278 [INF] BTCD: Gracefully shutting down the database...
-2022-04-02 19:17:34.279 [INF] BTCD: Shutdown complete
-```
+1. **Kubernetes Complexity.** The security around Kubernetes is an
+   [ongoing discussion](https://cloud.redhat.com/blog/most-common-kubernetes-security-issues-and-concerns-to-address)
+   seriously worth addressing. Because Kubernetes is a complex ecosystem on top
+   of a complex paradigm, it is very easily prone to miss-configuration, blind
+   spots, and a host of niche problems which can open up security concerns for
+   all involved.
+1. **Attack Surface Multiplication.** What is more, moving from one hardware
+   device to many will mean multiplying attack surfaces for the node. This is
+   also true with the introduction of new dependencies that the node will need
+   to function and thus Bitcoin will need to rely on. Each of these dependencies
+   will also bring a new attack surface. The same can be said for multiplying
+   location and other forms of node diversification.
 
-Even if this was an ephemeral or user error (btcd was not shut down by the
-operator, but it may have been a setup error), btcd has encountered events like
-this in [the past](https://github.com/btcsuite/btcd/issues/1024). It would be
-optimistic, at best, to think that _any_ FOSS node implementation is immune from
-such events, which moving forward, might manifest themselves as zero-days, for
-zero-days are a problem inherent to all software.
+**Potential Refutation**
 
-### A Node Watchman
+We can not claim to, in this guide, presently offer a robust security solution.
+It should be noted here, as it is in the guide, _under no circumstances should
+private keys presently live on a HAB Node built from these pages_. However, we
+do have a few important frameworks in our favor that will allow us to start
+flushing out a robust solution both from first principles and practical reality.
+:
 
-There is something to be said for sussing out root issues, submitting PRs, and
-getting issues resolved at the source, but there is also something to be said
-for end user plebs who can not code, having the power to diversify away this
-kind of risk entirely.
+1. **Completely FOSS.** From OS to Bitcoin, there are no parts of the stack
+   which can not be fully understood and audited by anyone. As such, we adopt
+   the security model therein: public and open discussion, full accessibility to
+   the code, full community accountability, serious difficulty in injecting
+   vulnerabilities, and so on.
+1. **Complexity/Uniform Use Case.** Unlike broad usage of K8s, everyone who runs
+   a HAB Node will more or less use similar plugins and apps, arrange the
+   cluster in similar ways, and have the same security concerns. As such, we can
+   begin to find and build best practices and sensible defaults around HAB Nodes
+   and HAB Node security. With proper Infrastructure As Code techniques, setup
+   can be very repeatable and testable, and it can responsibly account for
+   fringe cases and minimize or remove setup/user errors. From here, because we
+   are already relying on automation in the stack, we can implement and make use
+   of practices like
+   [Security as Code](https://www.bmc.com/blogs/security-as-code/).
+1. **Magnitude of Problem.** Yes, building nodes on k8s is increasing dependency
+   attack surface and can be viewed as inserting weakness. However, Kubernetes
+   defends trillions in value. It's not hard to extrapolate, that at all moments
+   of Bitcoins history, k8s has defended more value than Bitcoin has. Far from
+   inserting a weakness into the Bitcoin stack, strictly in terms of value
+   defended, building nodes on k8s may actually be inserting strength, whereas
+   building k8s on bitcoin might be inserting weakness. Yes, Bitcoin's value
+   lies behind _one_ protocol, while the value defended by k8s is behind
+   thousands of companies, code implementations, and custom k8s configurations,
+   but at some level, value is value.
 
-Among other things, a HAB Cluster accomplishes this: it becomes the dedicated
-watchman of all local nodes.
+### Cost
 
-The above logs were from a Kubernetes pod in the [Proof Of Concept](/poc) HAB
-node. Within 30 seconds of the node shutting down, Kubernetes saw the
-degradation in service, rebooted the node, and it re-synced past the problematic
-block, without any human intervention:
+Apart from the reality that HAB Nodes can potentially cost unlimited amounts, it
+will remain true that it is sufficient and necessary for a HAB Node to be at
+minimum two or preferably three hosts (depending on k8s availability mode) and a
+router. This will always be more expensive than a single node on the most
+expensive host of the same group, without a dedicated router. This has these
+knock on effects:
 
-```log
-2022-04-02 19:18:04.431 [INF] BTCD: Version 0.22.0-beta
-2022-04-02 19:18:04.432 [INF] BTCD: Loading block database from '/root/.btcd/mainnet/blocks_ffldb'
-2022-04-02 19:18:04.932 [INF] BCDB: Detected unclean shutdown - Repairing...
-2022-04-02 19:18:04.938 [INF] BCDB: Database sync complete
-2022-04-02 19:18:04.938 [INF] BTCD: Block database loaded
-...
-2022-04-02 19:21:20.284 [INF] SYNC: Processed 2 blocks in the last 12.31s (1834 transactions, height 681515, 2021-05-02 10:29:45 +0000 UTC)
-2022-04-02 19:21:35.062 [INF] SYNC: Processed 3 blocks in the last 14.77s (1878 transactions, height 681518, 2021-05-02 10:33:55 +0000 UTC)
-2022-04-02 19:21:49.979 [INF] SYNC: Processed 2 blocks in the last 14.91s (2319 transactions, height 681520, 2021-05-02 10:37:27 +0000 UTC)
-```
+1. Multiplying hosts may be non-productive for keeping Bitcoin decentralized.
+1. HAB Nodes present messaging problems that may confuse people out of running a
+   single node at all.
+1. Strictly on cost alone, they may price out participation.
 
-But more importantly than that, the HAB node itself, which was simultaneously
-running bitcoind, experienced no downtime from the perspective of the bitcoin
-network or any higher layers running locally, were there any at the time of
-running this sync.
+**Potential Refutation**
+
+1. **Anti-decentralization.** We believe that this argument only has merit if
+   HAB Nodes are designed in such a way that the
+   [Hydra Option](#obscure-threat-mitigation--hydra-option) is not employed. For
+   instance, if instead of diversifying hosts, a consumer pooled the entire
+   budget into one host and then ran a k8s cluster on VMs on that host to create
+   a "HAB Node". In such a case, all those resources can only function together,
+   they have at least one practical similarity with a cloud based node: they are
+   not as friendly with decentralization as they could be. With a Hydra Option,
+   decentralization is at worst a forever potentiality, at best it is a fully
+   operational part of the HAB Node. What is more, some long term effects of
+   enabling a Hydra Option might actually create more diversity, and thus
+   decentralization, in node hardware.
+1. **Messaging Problem.** Indeed,
+   [care should be taken](/docs/Introduction/who#who-is-this-not-for) to not mix
+   messaging: running a HAB Node _should not_ be anyone's first node. If a
+   potential node running pleb is asking "Should I get a HAB node or a regular
+   node?" and that question is preventing them from running any node at all, we
+   think that it is fair to conclude that person has way too big a budget, which
+   will be a vast minority of potential node operators. For such a person, they
+   should re-evaluate the budget for the purpose of running a single node, buy
+   Bitcoin with the surplus, and once it has sufficiently appreciated, expand
+   their node. It should be obvious to all economically constrained participants
+   that running a single node is cheaper, faster, and easier to understand. What
+   is more, running a single node, in many cases, will be the first hardware
+   acquisition for a future HAB Node,
+   [as was the case for the PoC](/poc#going-forward).
+1. **Priced Out Of Participation.** Again, HAB Nodes should not be anyone's
+   first node. However, they can very easily be someone second node. And they
+   should be a second node over the current alternative of Lightning Service
+   Provider for the sufficiently sophisticated Bitcoiner. To be clear, we think
+   it is a net benefit that someone might first choose an LSP before ever
+   running their own node, but once they run their own node, then the next node
+   should be a HAB Node, for a HAB Node eliminates the need of an LSP. As for
+   cost, or being priced out of participation, this pathing is key. At it's
+   simplest, a HAB node is no less than two nodes and a router. Almost everyone
+   already has a wifi router, so, after they purchase their first single-node,
+   which every Bitcoiner should have done already (or is about to do), they are
+   then only one purchase away from a HAB Node. In all likelihood, their first
+   node would at some point be dated hardware that could use replacing. But it
+   would also most likely be able to enter a new cluster because of the
+   [Induction Option](#forecasted-obsolescence--induction-option), and as such,
+   this relieves the pressure of planning far ahead and purchasing high-end,
+   longer lasting hardware for more money and replaces it with purchase what you
+   can afford, when you can afford it, because hardware in a HAB Node is
+   infinitely replaceable. Far from pricing people out of participation, it
+   might actually, in the long run, price in more participation.
+
+Undoubtedly there are more dissenting opinions than these. If you have one,
+please don't hesitate to open a PR. If it is well argued it will be added to the
+list, and hopefully there will be a decent refutation as well.
 
 ## Conclusion
 
@@ -445,10 +504,12 @@ opined on issues of availability and node management:
 > farms of specialized hardware. A server farm would only need to have one node
 > on the network and the rest of the LAN connects with that one node.
 
-But this was 4 years before the launch of Raspberry Pi, 5 years before Docker
-really made sense of containers, and 7 years before the robust FOSS
-orchestration technology of Kubernetes arrived. Most of the technologies which
-enable HAB Nodes, came after Satoshi's time in their individual niche settings.
+BCH and BSV adherents often quote this passage in defense of large blocks. But
+this was wirtten 4 years before the launch of Raspberry Pi, 5 years before
+Docker really made sense of containers, and 7 years before the robust FOSS
+orchestration technology of Kubernetes arrived. As such, the three key
+technologies which make HAB Nodes possible, came after Satoshi's time in their
+individual niche settings.
 
 Even if the need to solve the problem of delivering highly available node
 infrastructure was deeply felt by Satoshi—for instance, if he meant LAN
