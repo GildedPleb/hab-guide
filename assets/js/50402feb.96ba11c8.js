@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkhab_guide=self.webpackChunkhab_guide||[]).push([[246],{3331:e=>{e.exports=JSON.parse('[{"label":"Case-Study","permalink":"/hab-guide/blog/tags/case-study","count":1},{"label":"Failure-Recovery","permalink":"/hab-guide/blog/tags/failure-recovery","count":1}]')}}]);

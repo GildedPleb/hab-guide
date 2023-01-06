@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkhab_guide=self.webpackChunkhab_guide||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"A Caught in the Wild Case Study on HAB Node Importance","permalink":"/hab-guide/blog/Case-study-1"}]}')}}]);
