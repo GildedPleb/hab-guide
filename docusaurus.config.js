@@ -54,7 +54,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            "https://github.com/GildedPleb/hab-guide/edit/master/website",
+            "https://github.com/GildedPleb/hab-guide/edit/master/",
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
@@ -63,7 +63,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-          "https://github.com/GildedPleb/hab-guide/edit/master/website",
+          "https://github.com/GildedPleb/hab-guide/edit/master/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -100,7 +100,7 @@ const config = {
             position: "left",
             label: "BYO",
           },
-          // { to: "/blog", label: "Blog", position: "left" },
+          { to: "/blog", label: "Blog", position: "right" },
 
           { to: "/support", label: "Support", position: "right" },
 
