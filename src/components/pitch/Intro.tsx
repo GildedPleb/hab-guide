@@ -174,7 +174,7 @@ const Intro = ({ pos }: { pos: number | null }) => {
           >
             <BodyTextInner>
               This is a photographed-in-operation, Highly Available Bitcoin
-              node. It represents the next phase of responsible node operation{" "}
+              node. It represents the final phase of responsible node operation{" "}
               <span style={{ fontStyle: "italic" }}>for everyone</span>. <br />{" "}
               <br /> Incrementally built from almost any consumer-grade
               electronics and automation software, a HAB Node is increasingly
