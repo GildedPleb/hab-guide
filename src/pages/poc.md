@@ -22,8 +22,9 @@ Civilization.
 
 The only real purpose of this project was that it needed to be a functional
 Bitcoin node which was highly available, as outlined in the docs elsewhere.
-Everything else came in second place, including all higher layer services (like
-lightning, which was not implemented for this PoC).
+Everything else came in second place, including all higher layer services, like
+lightning, which was not implemented for this PoC, and security concerns,
+outlined below.
 
 ### Constraints
 
@@ -44,7 +45,7 @@ cutting edge or beautiful).
 
 Managing 7x clunky power cables would have made this project unmanageable for
 consumer bare-metal, and it would have made it look like a rats nest. Power Over
-Ethernet (PoE) hats were deployed for the Raspberry Pi nodes bringing total
+Ethernet (PoE) hats were deployed for the Raspberry Pi hosts bringing total
 power bricks down to three, and massively reducing cabling.
 
 Additionally, many USB 3.1 SSD hard drives (especially in higher TB ranges) draw
@@ -127,11 +128,9 @@ All this for less than an Apple MacBook
 
 The focus of this build, again, was to present a Proof of Concept, it was to
 prove that we _could_ eliminate choke-points, but not, necessarily, to eliminate
-every single one.
+every single one. But we did get some notable ones.
 
 ### Eliminated
-
-That said, many have been eliminated. Most notably:
 
 - **Hardware Failure:** We have eliminated the most problematic node SPF as it
   almost for sure exists for almost every current self-hosted bitcoin node
@@ -142,7 +141,7 @@ That said, many have been eliminated. Most notably:
   eliminated a key SPF in a dependency while introducing said dependency.
 - **Implementation/Versioning Risk:** Lastly, we have eliminated bitcoin
   implementation and versioning choke points, which should be a key
-  consideration for all pleb operators who can not code for themselves.
+  consideration for all pleb operators who are not core contributors.
 
 Not featured, we have put this node behind a pre-existing UPS that was available
 to us, as power in our area has a tendency to flicker. This gives the node
@@ -153,7 +152,7 @@ risk.
 
 - **Geographic Location:** Because this node is designed with a Hydra Option in
   mind, it has the ability to be geographically dispersed. As pictured, this is
-  obviously not employed. But hey, it makes the pictures better! A first order
+  obviously not employed. But it does make the pictures better! A first order
   roadmap item is to get a node host in the cloud, which would remove this SPF.
 - **Router:** The router used for this node (a pfSense box) gives many options
   for removing SPFs in internet provider, VPNs, and micro-geo. However, only one
@@ -179,7 +178,8 @@ btcd instance, and 1 node reserved for N+1 (to see the full list and
 configuration, check out the chart
 [here](https://github.com/GildedPleb/helm-charts/blob/master/charts/hab/examples.md#poc-hab-node)).
 Both btcd and bcoin ran into reliability issues over the same time frame, as
-expected, and entered crash loop backoff regularly.
+expected, and entered crash loop back-off regularly, and were eventually shut
+down.
 
 The standalone bitcoind instance ran on one of the NUCs and was used for
 performance testing. Thus, it did not accurately track uptime at all.
@@ -224,11 +224,11 @@ SUC truly lived up to its abbreviated name! /s.
    This was the action we took, as it was the simplest, had community support,
    and the node was fully functional again after only a few hours of downtime.
 
-Thankfully, this was a nonpublic beta version for this very reason. And should
-not have issues once
-[Longhorn 1.4](https://github.com/longhorn/longhorn/milestone/33) is released
-after December 30, 2022. But it does bring to light the difficulty of
-introducing dependencies at the Live K3s level. Baby steps.
+Thankfully, this was a nonpublic beta version for this very reason. And will not
+have this issue when using
+[Longhorn 1.4](https://github.com/longhorn/longhorn/milestone/33) (released
+December 30, 2022). But it does bring to light the difficulty of introducing
+dependencies at the Live K3s level. Baby steps.
 
 ### Hard Drives
 
@@ -240,10 +240,11 @@ these tiny hard drives need on Raspberry Pis, how much hard drive space was
 actually needed in our block storage solution, Longhorn, and how performant they
 needed to be. Once we realized the USB sticks were out because size,
 performance, and power, we investigated NVMe USB adapters, but came to find out
-that they were out because of power. After many purchases and returns, we
-finally realized we needed to ride the minimums of acceptable performance just
-to get the least power and most space. This, in turn, pushed us toward adding
-NUCs to the cluster, which was not a part of the original design.
+that they were out because of power. After many purchases, tests, and returns,
+we finally realized we needed to ride the minimums of acceptable performance
+just to get the least power and most space. This, in turn, pushed us toward
+adding NUCs to the cluster, which was not a part of the original design, but a
+welcome addition.
 
 **Ways Forward:**
 
@@ -251,20 +252,21 @@ The way forward here is simple: front load more research into hardware and
 software specifications and requirements. At the end of the day, Raspberry Pis
 are cool and all, but until Pi 5 is released, and we get to see the specs, we
 would not recommend anyone to buy additional Raspberry Pis to incorporate into a
-HAB Node. If you have pis, use then, but if you are going to buy hardware, buy
-hardware which has better performance extensibility than Pi's.
+HAB Node, or to even use as a regular node. If you have pis, use then, but if
+you are going to buy hardware, buy hardware which has better performance and
+extensibility than Pi's.
 
 ### Host Diversification
 
-We placed a high premium on aesthetics for this node too early in the build. The
-pictures do look very pretty, however, as we have come to realize, no HAB Node
-should have 5, or even 3, or maybe even 2 of the same computer host. The problem
-here is that it can introduce perverse incentives for any single manufacture,
-via economies of scale. Say, if someone realizes that the Raspberry Pi
-Foundation is primarily manufacturing HAB Nodes, and those RPi hosts constitute
-a majority of hosts in HAB Nodes. This introduces a hardware single-point of
-failure if one wishes to attack HAB Nodes and was recently and briefly outlined
-by [Sjors](https://twitter.com/provoost), a core contributor, on
+We placed a high premium on aesthetics for this node too early in the build and
+the pictures do look very pretty. However, as we have come to realize, no HAB
+Node should not have 5, or even 3, or maybe even 2 of the same computer host.
+The problem here is that it can introduce perverse incentives for any single
+manufacture, via economies of scale. Say, if someone realizes that the Raspberry
+Pi Foundation is primarily manufacturing HAB Nodes, and those RPi hosts
+constitute a majority of hosts in the Bitcoin Network. This introduces an attack
+vector if one wishes to attack Bitcoin and was recently and briefly outlined by
+[Sjors](https://twitter.com/provoost), a core contributor, on
 [TFTC](https://podcasts.apple.com/us/podcast/383-bitcoin-a-work-in-progress-with-sjors-provoost/id1292381204?i=1000590398619).
 
 **Ways Forward:**
@@ -285,8 +287,9 @@ together via a VPN or TOR.
 
 The inimitable Ionico Base node, but in candy apple red:
 ![Node with red background](/img/feature_aesthetics_node.png) Undoubtedly, there
-are _better_ self-hosted solutions out there, and we look forward to seeing ones
-that exceed this project!
+are _better_ self-hosted solutions out there, as this one does little except
+scratch the surface of what is possible, and we look forward to seeing ones that
+exceed this project!
 
 ### Summary
 
@@ -305,17 +308,7 @@ Sprig, YAML, and Ansible. We hope that in the guide, the essential lessons have
 been passed on while abstracting away as much as possible to make the process of
 building more of these nodes palatable for more people.
 
-### Going Forward
-
-As you are probably well aware, the resources in this node have gone largely
-unused, there is much work still to be done, and many verticals to explore. At
-the end of the day, a k8s node can run, well, anything. With Bitcoin as the
-economic impetus for keeping uptime high, this opens the door for all sorts of
-HA services for self-hosted individuals. Indeed, a HAB node provides the path
-for all such services to becoming reliably income producing without sacrifices
-to privacy, autonomy, or sovereignty. HAB Nodes empower sovereign plebs at the
-edge with the most advanced datacenter tech which was formerly only meaningful
-in the centralized cloud.
+### Looking Back
 
 This Bitcoin node started as an idea in 2019 with one Raspberry Pi (now `pi5`,
 the Pi closest to the NUCs in the photos on this page), an old hard drive, a
@@ -336,23 +329,32 @@ revealed that these types of guides and projects have _exploded_ in popularity.
 This is an encouraging
 sign.![HAB Node vertical black and white](/img/intro_power.png)
 
+### Looking Forward
+
+As you are probably well aware, the resources in this node have gone largely
+unused, there is much work still to be done, and many verticals to explore. At
+the end of the day, a k8s node can run, well, anything. With Bitcoin as the
+economic impetus for keeping uptime high, this opens the door for all sorts of
+HA services for self-hosted individuals. Indeed, a HAB node provides the path
+for all such services to becoming reliably income producing without sacrifices
+to privacy, autonomy, or sovereignty. HAB Nodes empower sovereign plebs at the
+edge of the network with the most advanced datacenter tech which was formerly
+only meaningful at the center at the center of the cloud.
+
 Hopefully no other HAB Nodes look like the Ionico Base Node (_or costs as
 much_), indeed, this node is not without its problems, but a HAB Node, in all
 its variations, is the only way forward we are aware of that has the ability to
 meet HA uptime standards of the cloud, remove as many single-points-of-failure
 as possible, and thus has the ability to deliver reliable _satoshi income
 streams_ on Lighting and other higher layers, without sacrificing privacy,
-autonomy, freedom, rights, censorship, or human flourishing. We fully believe
-that this version of self-hosted is the future, indeed, it must be for Bitcoin
-and humanity to flourish:
+autonomy, freedom, rights, or human flourishing. We fully believe that this
+version of self-hosted is the future, and we hope that this PoC Node, this
+guide, and the code we have written herein, helps make that reality.
 
 > "We cannot expect governments, corporations, or other large, faceless
 > organizations to grant us privacy out of their beneficence."
 >
 > \- Eric Hughes, A Cypherpunk's Manifesto, 1993
-
-What is more, we hope that this PoC Node, this guide, and the code we have
-written herein, helps make that reality.
 
 ---
 

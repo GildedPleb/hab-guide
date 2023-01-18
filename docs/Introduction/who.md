@@ -14,9 +14,10 @@ It should be of interest to every Bitcoiner.
 However, not all those people will find that actually doing this guide is for
 them, or for them _yet_. This is for seasoned node operators who would like to
 level up their node, or who are beginning to feel they _should_ level up their
-node.
+node. What is more, it will be deeply helpful to have experience in software
+engineering and Linux.
 
-This guide assumes:
+That said, this guide assumes:
 
 - You do not know how to code
 - But you are comfortable reading and reasoning through code
@@ -24,7 +25,7 @@ This guide assumes:
 
 If you have completed the excellent [RaspiBolt](https://raspibolt.org/) guide
 you will be well positioned to approach this guide. In fact, that guide should
-be considered a required prerequisite to this guide.
+be considered a _required_ prerequisite to this guide.
 
 However, we must stipulate that philosophically the guides do differ a bit. It
 is prudent and reasonable, when provisioning one node, to embrace ideas like "do
@@ -34,9 +35,9 @@ instructions", explain things, and will strive to never ask you to run code
 which we also do not provide a source and explanation for.
 
 To give you a taste of what you are about to embark on, the RaspiBolt guide
-provisions one computer by using the terminal to run dozens, of not hundreds, of
-commands. This guide uses concepts like Infrastructure As Code that can use one
-_command_ in the terminal to provision dozens, of not hundreds, of _computers_.
+provisions _one computer_ by using the terminal to run _dozens of commands_.
+This guide uses concepts like Infrastructure As Code that can use _one command_
+in the terminal to provision _dozens of computers_.
 
 :::caution Caution: HAB Nodes can be expensive
 
@@ -47,7 +48,8 @@ will have spent money well, but do set a budget before continuing on this
 project, for it very easily could spiral out of hand.
 
 At a minimum, 3 sufficient computers will need to be networked together with a
-router that has internet access.
+router that has internet access, and a control computer will be needed to
+facilitate the project.
 
 :::
 
@@ -55,8 +57,8 @@ router that has internet access.
 
 If you are not running a singular (or multiple, non-clustered), self-hosted
 bitcoin node(s), this guide may not be for you. You should do that first (again,
-[use the RaspiBolt guide, it's AWESOME](https://raspibolt.org)), get the lay of
-the land, and after some time, come back.
+[use the RaspiBolt guide](https://raspibolt.org)), get the lay of the land, and
+after some time, come back.
 
 It is far more important for Bitcoin and your own understanding in the space to
 run a simple and cheap full node first. Running a simple and cheap full node is
@@ -75,7 +77,8 @@ But for now, let us reiterate this point, but in a friendly red color:
 :::warning THIS SHOULDN'T BE YOUR FIRST NODE
 
 This should not be anyone's _first_ node unless they are already a Site
-Reliability Engineer, or have other real operational experience with servers.
+Reliability Engineer, or have other real operational experience with servers
+and/or container orchestration.
 
 :::
 

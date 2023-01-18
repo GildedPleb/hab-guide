@@ -16,7 +16,7 @@ knowledge of how computers work (e.g. the explainer is intended for
 long-established technical experts learning a new niche) or, on the contrary,
 they do not have a wide enough understanding of the topic to _also_ explain or
 include the _why_ and _how_ of the problem they solve in a relatable way (e.g.
-"Here's how to build a k8s cluster, to solve the problem of being not as hip as
+"Here's how to build a k8s cluster, to solve the problem of not being as hip as
 you could be").
 
 In this explainer, we hope to avoid both of these pitfalls.
@@ -36,10 +36,10 @@ Well, for starters, the cat has the ability to see and recognize symbols, say,
 of another cat. As such, it has a symbol of what a cat looks like in its mind.
 We humans have this ability too, we have a symbol (albeit imperfect) of a cat,
 or another human, or a computer in our head which allows us to recognize what we
-are looking at. Indeed, for humans it goes far deeper than this and than cats; a
-human who knows another human sufficiently well, can simulate with decent enough
-accuracy what that other person would think, say, or do, given a certain premise
-(for more on this see the book,
+are looking at. Indeed, for humans it goes far deeper than this; a human who
+knows another human sufficiently well, can simulate with decent enough accuracy
+what that other person would think, say, or do, given a certain premise (for
+more on this see the book,
 [I am a Strange Loop by Douglas Hofstadter](https://www.goodreads.com/book/show/123471.I_Am_a_Strange_Loop)).
 
 Now, let's consider what the computer "thinks": a computer, too can think of a
@@ -56,8 +56,8 @@ Turning.![https://en.wikipedia.org/wiki/File:Turing_Machine_Model_Davey_2012.jpg
 
 Nearly all computers which can perform the simple functions of store data, read
 data, and change data can do this. Even the originally conceived Turing Machine
-shown above. Yes, given enough tape, it can simulate a _MacBook_ as they are
-both Turing Complete. This is a very powerful concept:
+shown above. Yes, given enough tape, it can simulate a _MacBook_. This is a very
+powerful concept:
 
 > A Turing machine is a mathematical model of computation describing an abstract
 > machine that manipulates symbols on a strip of tape according to a table of
@@ -80,29 +80,33 @@ it can emulate itself (given an infinite playing board):
 Computers are good at many things like word processing, social media, or playing
 games, but many of these uses do not employ the computers' ability to simulate
 itself. In fact, very little, historically speaking, of any consumer use cases
-rely on simulating other computers. And rightly so, there is by and large
-fundamentally no need to nest computers... emulation mostly exists as a cool, if
-not a bit weird, possibility in computing.
+rely on simulating other computers. One standout use case is for security: one
+container can only communicate with another container via network routing
+despite living on the same physical memory chips. To this end, entire extremely
+secure OSes are built where [each app is a VM](https://www.qubes-os.org/). But
+when the rubber hits the road, this may completely exceed consumer threat
+modeling. And rightly so, there is by and large fundamentally no need to nest
+computers without extraneous reason, it is expensive and only gives you what you
+already have. Emulation mostly exists as a cool, if not a bit weird, possibility
+in computing.
 
 That was, until Docker came onto the scene in 2013, and put this on its head
 with one very big use case: Containerization.
 
 ## Containerization
 
-Containers, as it turns out, are _extremely_ useful in attempting to solve
-problems of
+Containers are very lightweight virtual machines. They don't emulate the entire
+computer, but emulate just enough to find a good balance between form and
+function. And as it turns out, they are _extremely_ useful in attempting to
+solve problems of
 [resource isolation and application packaging](https://www.youtube.com/watch?v=lzf9LD1unTk).
 It is very easy to assign resources to a virtual computer that will never be
-exceeded when the computer has no way of knowing there are more resources to
-use—like one level of the game of life being unaware of any which supports it.
-What is more, packaging an application is much easier and more reliable when all
-the dependencies all the way down to the OS can be included. Further, this has
-added benefits for security: one container can only communicate with another
-container via network routing despite living on the same physical memory chips.
-To this end, entire extremely secure OSes are built where
-[each app is a VM](https://www.qubes-os.org/).
+exceeded when that computer has no way of knowing there are more resources to
+use—like one level of the game of life being unaware of any level which supports
+it. What is more, packaging an application is much easier and more reliable when
+all the dependencies all the way down to the OS can be included.
 
-What is more, a container that has these defined resources can also have defined
+A container that has these declarative resources can also have defined
 initialization steps. For instance, to set up a new server, generally, you would
 need to install the OS, set users, set passwords, apply security measures,
 update, and add services to get the box into a working state. When the box
@@ -130,7 +134,7 @@ Enter, orchestration.
 Though many companies have worked through these issues as well, Google,
 [perhaps](https://www.youtube.com/watch?v=lsFDp-W1Ks0), has the longest history
 and experience with orchestrating both physical machines and virtual ones.
-Google launched it's first production server on cheap, expecting to fail,
+Google launched it's first production server on cheap, expected to fail,
 consumer hardware using custom fault-tolerant software.
 
 Eventually, that idea became an internal tool called
@@ -159,25 +163,27 @@ are needed. It does this by measuring how many hits a server might be getting
 and then adjusting the number of containers that would service those hits. 100
 hits per second might only need 2 containers, while a million hits per second
 might need 10,000. A properly configured Kubernetes setup, would be able to
-seamlessly, and without a hiccup, spin up any number of new servers according to
-whatever the demand was.
+seamlessly spin up or down any number of new servers according to whatever the
+demand was.
 
-These numbers are not exaggerations. Attached are two great example of how
+These numbers are not exaggerations. Attached are two great examples of how
 powerful k8s is. This is k8s scaling up servers in a server farm — and then
 rolling out an update while maintaining steady latency and no downtime. To be
 clear, when the narrator says "servers" he is referring to containers. However,
 let not the magic of Kubernetes be lost on anyone: when you watch these videos
 try to imagine spinning up the stated number of _physical computers_ in _any_
-amount of time. [Wow,](https://www.youtube.com/watch?v=7TOWLerX0Ps) and
-[double wow](https://www.youtube.com/watch?v=9C6YeyyUUmI).
+amount of time. [Example 1,](https://www.youtube.com/watch?v=7TOWLerX0Ps) and
+[Example 2](https://www.youtube.com/watch?v=9C6YeyyUUmI).
 
 Kubernetes is tremendously powerful and important. In fact, we'd wager that it
 is in the top 5 most important pieces of software written in the last 20 years
 (along with Bitcoin and a short list of others). In summary, Kubernetes allows
-you to coordinate _any set of computers_ into one single cluster—and those
-computers can live anywhere on _earth_ with an internet connection. Kubernetes
-is _software_ that makes applications _physical-reality-agnostic_. It allows for
-hardware to completely fail, while keeping the _software_ still running.
+you to coordinate _any set of computers_ into one single cluster—and as long as
+those computers have an internet connection, they can live anywhere on _earth_.
+Kubernetes is _software_ that makes applications _physical-reality-agnostic_. It
+allows for hardware to completely fail, while keeping the _software_ still
+running. In short, for all practical interaction with the apps that run in CO
+environments, OC effectively divorces software from hardware.
 
 Kubernetes is now the international standard for handling these problems and is
 responsible for trillions in value as it supports large swaths of the legacy
@@ -196,18 +202,18 @@ we get the name _HA Bitcoin Node_.
 
 In broad strokes, a HAB Node is set up and works like this:
 
-1. A few bitcoin node-capable computers are networked together (they become a
-   "cluster").
+1. A few bitcoin node-capable computers are spun up with reachable addresses.
 1. They are then provisioned with Kubernetes, and their resources are cataloged,
-   and health checked.
+   and health checked (they become a "cluster").
 1. Many implementations and versions of Bitcoin are made into images.
-1. Those images are then chosen, according to operator preference and
-   availability, to be used in containers on the various hosts.
+1. Those images are then organized into a plan, according to operator preference
+   and resources, to be used in containers on the various hosts.
 1. That "plan" is given to Kubernetes, and k8s looks at its health and
    availability of its resources and does what it thinks is best in deploying
    that plan and keeping to that plan.
 1. If resources are degraded, it attempts to "move" the bitcoin container(s)
-   away from the degraded resource and towards the healthy ones.
+   away from the degraded resource and towards the healthy ones in accordance
+   with keeping the plan active.
 
 This setup allows for dynamic and fault-tolerant node operating scenarios.
 
@@ -237,7 +243,6 @@ flowchart LR
 			btc2[Bitcoin Node 2]
 			ln2([Lightning Node 2])
 		end
-
 	end
 
 	btc((Bitcoin Network))
@@ -256,8 +261,8 @@ flowchart LR
 	ln2 <--> ln1
 	ln2 <--> ln
 
-	style btc fill:orange
-	style ln fill:yellow
+	style btc fill:orange,color:black
+	style ln fill:yellow,color:black
 
 	classDef HABNClass display:inline-block
 
@@ -277,7 +282,6 @@ flowchart LR
 			btc2[Bitcoin Node 2]
 			ln2([Lightning Node 2])
 		end
-
 	end
 
 	btc((Bitcoin Network))
@@ -296,8 +300,8 @@ flowchart LR
 	ln2 <--> ln1
 	ln2 <--> ln
 
-	style btc fill:orange
-	style ln fill:yellow
+	style btc fill:orange,color:black
+	style ln fill:yellow,color:black
 
 	classDef HABNClass display:inline-block
 	style btc1 fill:red
@@ -318,7 +322,6 @@ flowchart LR
 			btc2[Bitcoin Node 2]
 			ln2([Lightning Node 2])
 		end
-
 	end
 
 	btc((Bitcoin Network))
@@ -337,8 +340,8 @@ flowchart LR
 	ln2 -.- ln1
 	ln2 <--> ln
 
-	style btc fill:orange
-	style ln fill:yellow
+	style btc fill:orange,color:black
+	style ln fill:yellow,color:black
 
 	classDef HABNClass display:inline-block
 	style ln1 fill:red
@@ -377,8 +380,8 @@ flowchart LR
 	ln2 -.- ln1
 	ln2 <--> ln
 
-	style btc fill:orange
-	style ln fill:yellow
+	style btc fill:orange,color:black
+	style ln fill:yellow,color:black
 
 	classDef HABNClass display:inline-block
 	style ln1 fill:red
@@ -418,8 +421,8 @@ flowchart LR
 	ln2 -.- ln1
 	ln2 <--> ln
 
-	style btc fill:orange
-	style ln fill:yellow
+	style btc fill:orange,color:black
+	style ln fill:yellow,color:black
 
 	classDef HABNClass display:inline-block
 	style host1 fill:red
@@ -427,7 +430,7 @@ flowchart LR
 
 As you can see, the node can remain fully operational under a myriad of degraded
 conditions. In fact, we can think of the above node as a 1-of-2 schema, not
-dissimilar from a 1-of-2 multi-sig wallet. And this functionality dramatically
+dissimilar to a 1-of-2 multi-sig wallet. And this functionality dramatically
 improves with more hosts added. However, we should note that this example is
 primarily a static routing example, a lot more interesting options are possible
 in a HAB Node, including self-healing.
@@ -458,8 +461,8 @@ flowchart LR
 			ln2([Lightning Node 2])
 		end
 		subgraph host3 [Cloud 1]
-			btc3[Bitcoin Node 3]
-			ln3[Lightning Node 3]
+			btc3[" "]
+			ln3[" "]
 		end
 	end
 
@@ -487,10 +490,10 @@ flowchart LR
 	ln3 === ln
 	ln3 === ln2
 
-	style btc fill:orange
-	style ln fill:yellow
-	style btc3 stroke:#ffffde,fill:#ffffde,color:#ffffde
-	style ln3 stroke:#ffffde,fill:#ffffde,color:#ffffde
+	style btc fill:orange,color:black
+	style ln fill:yellow,color:black
+	style btc3 stroke:none,fill:none,color:none
+	style ln3 stroke:none,fill:none,color:none
 
   linkStyle 3,4,9,10,11,15,16 stroke-width:0px
 
@@ -516,8 +519,8 @@ flowchart LR
 			ln2([Lightning Node 2])
 		end
 		subgraph host3 [Cloud 1]
-			btc3[Bitcoin Node 3]
-			ln3[Lightning Node 3]
+			btc3[" "]
+			ln3[" "]
 		end
 	end
 
@@ -544,10 +547,10 @@ flowchart LR
 	ln3 === ln
 	ln3 === ln2
 
-	style btc fill:orange
-	style ln fill:yellow
-	style btc3 stroke:#ffffde,fill:#ffffde,color:#ffffde
-	style ln3 stroke:#ffffde,fill:#ffffde,color:#ffffde
+	style btc fill:orange,color:black
+	style ln fill:yellow,color:black
+	style btc3 stroke:none,fill:none,color:none
+	style ln3 stroke:none,fill:none,color:none
 
 	style host1 fill:red
 
@@ -606,8 +609,8 @@ flowchart LR
 	ln3 <--> ln
 	ln3 <--> ln2
 
-	style btc fill:orange
-	style ln fill:yellow
+	style btc fill:orange,color:black
+	style ln fill:yellow,color:black
 
 	style host1 fill:red
 
@@ -625,10 +628,10 @@ appropriate amount of failed health checks.
 
 The above would happen in real time, as an automated process, and alerting could
 be forwarded so that the operator can then troubleshoot the problematic host
-when available or if even needed, as opposed to **_we are actively losing income
-fix immediately_**. Once the host is back up, Kubernetes will start a bitcoin
-node on Computer 1 and once synced, remove the Bitcoin node from the cloud, to
-fully remediate the incident.
+when available or if even needed, as opposed to **_we are actively in a
+liquidity crisis fix immediately_**. Once the host is back up, Kubernetes will
+start a bitcoin node on Computer 1 and once synced, remove the Bitcoin node from
+the cloud, to fully remediate the incident.
 
 You should recognize the above process as one similar to (but distinctly
 different from) a different kind of multi-signature transaction: m-of-3. In the
@@ -644,16 +647,23 @@ If we diversify Bitcoin implementations, and diversify Lightning
 implementations, and, say, one implementation becomes unstable, the others can
 then carry the uptime forward.
 
-But let's not gloss over the bigger picture either: Computer : Cluster :: Node :
-Bitcoin Network. What Kubernetes does for uptime is the _very same_ (but weaker)
-paradigm that bitcoin the network at large does, with the added functionality of
-also centrally controlling the _entire_ network of computers. Thankfully, the
-bitcoin network doesn't have this functionality because that is a _feature_. To
-put a Copernican Shift on it... it took the legacy tech paradigm decades,
+But let's not gloss over the bigger picture either:
+
+Computer : Cluster :: Bitcoin Node : Bitcoin Network
+
+What Kubernetes does for uptime is the _very same_ (but weaker) paradigm that
+bitcoin the network at large does with this key difference: Kubernetes adds the
+functionality of also centrally controlling the cluster of computers.
+Thankfully, the bitcoin network doesn't have this functionality because at a
+macro scale that would destroy bitcoin. Centralization of control is good when
+dealing with one operator having dominion over all his machines, and bad when
+one operator can have dominion over all machines in existence.
+
+To put a Copernican Shift on it... it took the legacy tech paradigm decades,
 billions of dollars of investment, and millions of hours of developer time to
-achieve an imperfect, albeit incredibly powerful solution to availability.
-Whereas Satoshi with a few years of thought, writing, and coding created the
-_ideal_ solution to availability in a distributed system.
+achieve an imperfect, albeit incredibly powerful solution to availability in a
+distributed system. Whereas Satoshi with a few years of thought, writing, and
+coding created the _ideal_ solution to availability in a distributed system.
 
 ## Conclusion
 
@@ -670,19 +680,20 @@ virtualization, this explanation applies directly to what a HAB Node does:
 > crashes. Thankfully, it was just a thought, so the computer thinks up another
 > computer to replace it and carries on.
 
-Only it's for a bitcoin node. It is, without metaphor, this:
+Only it's for a bitcoin node. It is, without metaphor, this (and you can see
+this in an actual example [here](/blog/Case-study-1)):
 
 > My cluster is running bitcoin node containers. One node it is running crashes.
 > Thankfully, it was just a container, so my cluster spins up another container
 > to replace it and carries on.
 
-The idea of virtualizing opened up new horizons for cloud computing. Now, it
-opens up new horizons for Bitcoin and the peer to peer internet. With the
-realization of HAB Nodes, we can apply billions of investment in CO underneath
-and in support of the ideal bitcoin peer-to-peer solution to uptime by attaching
-those solutions to the individual bitcoin node.
+The idea of containers opened up new horizons for cloud computing. Now, it opens
+up new horizons for Bitcoin and the peer to peer internet. With the realization
+of HAB Nodes, we can apply billions of investment in CO underneath and in
+support of the ideal bitcoin peer-to-peer solution to uptime by attaching those
+solutions to the individual bitcoin node.
 
 ---
 
-To begin building your own HAB Node, read the Introduction to the
+To begin building your own HAB Node, start with the Introduction to the
 [Guide](/docs/Introduction/intro)
