@@ -71,22 +71,22 @@ Example of a valid plan:
 #                   -*- End Of Unassigned Inventory -*-                       #
 
 [leader]
-nuc1 ansible_user=ubuntu ansible_ssh_pass=ubuntuRaw mac=1c:69:xx:xx:xx:xx
+nuc1 ansible_user=hab ansible_ssh_pass=vanillaHab mac=1c:69:xx:xx:xx:xx
 
 [lieutenants]
-pi1 ansible_user=pi ansible_ssh_pass=raspberryRaw mac=dc:a6:xx:xx:xx:xx
-pi2 ansible_user=pi ansible_ssh_pass=raspberryRaw mac=dc:a6:xx:xx:xx:xx
+pi1 ansible_user=hab ansible_ssh_pass=vanillaHab mac=dc:a6:xx:xx:xx:xx
+pi2 ansible_user=hab ansible_ssh_pass=vanillaHab mac=dc:a6:xx:xx:xx:xx
 
 [workers]
-nuc2 ansible_user=ubuntu ansible_ssh_pass=ubuntuRaw mac=1c:69:xx:xx:xx:xx
-pi3 ansible_user=pi ansible_ssh_pass=raspberryRaw mac=dc:a6:xx:xx:xx:xx
-pi4 ansible_user=pi ansible_ssh_pass=raspberryRaw mac=dc:a6:xx:xx:xx:xx
-pi5 ansible_user=pi ansible_ssh_pass=raspberryRaw mac=dc:a6:xx:xx:xx:xx
+nuc2 ansible_user=hab ansible_ssh_pass=vanillaHab mac=1c:69:xx:xx:xx:xx
+pi3 ansible_user=hab ansible_ssh_pass=vanillaHab mac=dc:a6:xx:xx:xx:xx
+pi4 ansible_user=hab ansible_ssh_pass=vanillaHab mac=dc:a6:xx:xx:xx:xx
+pi5 ansible_user=hab ansible_ssh_pass=vanillaHab mac=dc:a6:xx:xx:xx:xx
 ```
 
 At this point, all the heavy lifting with regard to hardware is done. Running
 the next `standup` Ansible command, will stand up live hosts, which is to say,
-it will be ready to stand up a vanilla k3s instance.
+your hosts will be ready to stand up a vanilla k3s instance.
 
 ## Stand Up Live Hosts
 
@@ -96,6 +96,13 @@ your host plan name:
 ```bash
 apb Hosts/standup-live.yml -e "plan=host-plan-2022-03-17"
 ```
+
+:::tip
+
+One host failed but everyone else succeeded? Run the script again before jumping
+to troubleshooting.
+
+:::
 
 ### What Does This Script Do?
 
@@ -127,14 +134,17 @@ Let's look at what this has given us:
 
 1. We have locked out all other accounts, including the raw account user so no
    one but the named role account now has access to the host, and they need the
-   ssh keys or the encrypted password.
+   ssh keys or the encrypted password. This has the added benefit of
+   _preventing_ any Ansible command which needed vanilla hosts from being able
+   to execute those commands.
 
 :::note
 
 We could also lock down all unneeded connections via `ufw` but because we are
 assuming we are behind a heavy gateway firewall, we don't really need it, as at
 that point it would mean local machines are p0wned which may indicate a far
-bigger problem, like an attacker having physical access.
+bigger problem, like an attacker having physical access. But perhaps it might be
+good to add to the guide one day.
 
 :::
 

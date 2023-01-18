@@ -23,7 +23,11 @@ You probably only need to do this if you need low-security host access restored,
 and don't want to re-image, the host is in need of deep maintenance, or if you
 want to re-organize your cluster roles. Be it unlikely, it is also essential for
 a clean host exit in the case of exercising a
-[Hydra Option](/why#obscure-threat-mitigation--hydra-option)
+[Hydra Option](/why#obscure-threat-mitigation--hydra-option).
+
+Further, if you are running this command to permanently remove a host from the
+cluster, you will need to comment out that hosts entry on your host plan by
+adding a `#` in front, before running higher commands that rely on all hosts.
 
 ## Hosts Are Finished
 

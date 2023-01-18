@@ -47,7 +47,7 @@ DHCP) can assign or use these addresses.
 
 Finally, we can start to define some Raw hosts for our cluster!
 
-In this guide, we will add a few types of hosts:
+In this guide, we will add two types of hosts:
 
 - Raspberry pis
 - NUCs
@@ -96,7 +96,7 @@ is not backed up or can not be lost. _Imaging will erase this information._
       name to the static address
 
 It should be prudent to reboot your host just to make sure it takes, and is
-getting the same IP address.
+getting the same IP address from your router after being connected/disconnect.
 
 ### Using pfSense
 

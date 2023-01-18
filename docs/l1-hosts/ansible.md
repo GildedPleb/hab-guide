@@ -18,7 +18,7 @@ scripts on other machines and offers certain guarantees when doing so". One of
 the big guarantees is idempotence, which you just saw in
 [Control Prep](/docs/l1-hosts/control-prep#indempotent-ness). The basic upside
 of Ansible is that you can use code to define the state of a machine, and that
-code can be applied to many machines. As such, you only need to execute a
+code can be applied to many machines. As such, you only need to execute one
 command one time, and it can completely change the state of multiple machines.
 
 Generally speaking, Ansible works by ssh-ing into a remote host, and begins
@@ -100,7 +100,7 @@ waiting for a previous host to finish first.
 :::caution the cache
 
 Be advised, the cache is a dump of system details about your hosts. After you
-run commands, you can view it in plain text at the address above.
+run commands, you can view it in plain text in the directory above.
 
 1. You may want to disable the cash by commenting it out, so that it does not
    save all this info to disk. This will cost you playback speed.
@@ -139,10 +139,10 @@ apb Hosts/validate-hostname.yml --extra-vars "hostName=test1"
 
   In the above code, we see two things:
 
-  - **hosts**: where the command should run. In this case, on the machines we
+  - **`hosts`**: where the command should run. In this case, on the machine we
     are running the command from, the localhost.
-  - **tasks**: the tasks which are to run on that host. In this case, it is the
-    tasks located at `tasks/validate-host-name.yml`
+  - **`tasks`**: the tasks which are to run on that host. In this case, it is
+    the tasks located at `tasks/validate-host-name.yml`
 
   Heading over to `tasks/validate-host-name.yml` we see this code:
 
@@ -220,7 +220,7 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0
 ```
 
-:::tip Yes, this is Overkill
+:::note Yes, this is Overkill
 
 In case you were wondering, yes, it is complete overkill to use Ansible to check
 a words' validity when any human can read for these very easy checks, or a
@@ -235,25 +235,29 @@ Right off the bat, you should notice that Ansible is following the directions
 exactly as specified in the `.yml` file and reporting everything it's doing.
 First, Ansible gets the list of hosts and gathers information about them. Then,
 it gets the tasks and begins execution. You will notice it did not do any fact
-gathering in the fail case above, that is thanks to the cache. Only once we get
-into more complex Ansible commands, will you really see where Ansible shines.
+gathering in the fail case above, that is thanks to the cache.
+
+This trite example does not really show of the brilliance of Ansible, only once
+we get into more complex Ansible commands, will we really see where Ansible
+shines.
 
 :::note Atypical Ansible Structuring
 
 If you are familiar with Ansible, you will immediately notice that we are not
 using `roles`, `ansible-galaxy` and a host of other best practices and community
-resources that Ansible scripts are typically designed around.
-
-This is intentional.
-
-For instance, the `role` pattern, though undoubtedly useful in commercial host
-provisioning with large experienced teams and thousands of computers, is opaque
-to navigate and disorienting to read. Having to open up multiple files and
-directories to find `variables` and figure out how they connect with other
-`tasks` in yet other files and folders is indirection and does not make for
-readable or digestible code, which is a first priority for this guide. We are
-using Ansible as a beginner would use it and reason with it because the
-expectation is that the audience is indeed beginners.
+resources that Ansible scripts are typically designed around. This is
+intentional. For instance, the `role` pattern, though undoubtedly useful in
+commercial host provisioning with large experienced teams and thousands of
+computers, where an SRE might prefer to rely on the content of the command line
+args and not the content of the code they map to is not useful here. Here we are
+trying to read as much of the _code_ as possible, to understand what it is
+doing. Relying on `roles` here makes this process opaque to navigate and
+disorienting to read. Having to open up multiple files and directories to find
+`variables` and figure out how they connect with other `tasks` in yet other
+files and folders is indirection and does not make for readable or digestible
+code, which is a first priority for this guide. We are using Ansible as a
+beginner would use it and reason with it because the expectation is that the
+audience is indeed beginners.
 
 :::
 

@@ -22,13 +22,13 @@ You should see something like this:
 # DO NOT EDIT THIS COMMENT BLOCK AND THE FOLLOWING LINE "[vanillahosts]": MANGED BY ANSIBLE!
 ############################################
 [vanillahosts]
-pi1 ansible_user=pi ansible_ssh_pass=raspberryRaw mac=dc:a6:xx:xx:xx:xx
-pi2 ansible_user=pi ansible_ssh_pass=raspberryRaw mac=dc:a6:xx:xx:xx:xx
-pi3 ansible_user=pi ansible_ssh_pass=raspberryRaw mac=dc:a6:xx:xx:xx:xx
-pi4 ansible_user=pi ansible_ssh_pass=raspberryRaw mac=dc:a6:xx:xx:xx:xx
-pi5 ansible_user=pi ansible_ssh_pass=raspberryRaw mac=dc:a6:xx:xx:xx:xx
-nuc1 ansible_user=ubuntu ansible_ssh_pass=ubuntuRaw mac=1c:69:xx:xx:xx:xx
-nuc2 ansible_user=ubuntu ansible_ssh_pass=ubuntuRaw mac=1c:69:xx:xx:xx:xx
+pi1 ansible_user=hab ansible_ssh_pass=vanillaHab mac=dc:a6:xx:xx:xx:xx
+pi2 ansible_user=hab ansible_ssh_pass=vanillaHab mac=dc:a6:xx:xx:xx:xx
+pi3 ansible_user=hab ansible_ssh_pass=vanillaHab mac=dc:a6:xx:xx:xx:xx
+pi4 ansible_user=hab ansible_ssh_pass=vanillaHab mac=dc:a6:xx:xx:xx:xx
+pi5 ansible_user=hab ansible_ssh_pass=vanillaHab mac=dc:a6:xx:xx:xx:xx
+nuc1 ansible_user=hab ansible_ssh_pass=vanillaHab mac=1c:69:xx:xx:xx:xx
+nuc2 ansible_user=hab ansible_ssh_pass=vanillaHab mac=1c:69:xx:xx:xx:xx
 ```
 
 If all went well, this should be a list of all the machines you expect to be in

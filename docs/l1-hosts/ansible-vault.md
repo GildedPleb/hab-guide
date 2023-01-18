@@ -34,11 +34,9 @@ clear text:
 cat ~/.HAB/vault-hosts
 ```
 
-Viola! No need to worry about these files hitting the terminal from basic
-commands, they can not be read!
-
-To view the decrypted file, you can run (though, the file is empty, so you won't
-see anything, yet):
+Voilà! No need to worry about these files hitting the terminal from basic
+commands, they can not be read! To view the decrypted file, you can run (though,
+the file is empty, so you won't see anything, yet):
 
 ```bash
 ansible-vault view ~/.HAB/vault-hosts
@@ -53,7 +51,7 @@ ansible-vault edit ~/.HAB/vault-hosts
 
 ## Word To The Wise
 
-Ansible vault can get really finicky with regard to finding the config files
+Ansible Vault can get really finicky with regard to finding the config files
 needed to map to your password, so be sure you are executing commands in the top
 level `hab-plays` folder at all times.
 

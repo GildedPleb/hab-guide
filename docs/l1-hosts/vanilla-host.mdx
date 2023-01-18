@@ -91,13 +91,13 @@ be able to stand up vanilla pis.
 
 A few notes to keep in mind before embarking:
 
-- **Host Count** If you only have one pi, that's fine.
-- **SD Count** If you only have 1 SD card but multiple pis, you will have to run
-  through this entire thing for each pi, individually, but it'll work.
-- **Add a Pi Later** You must also go through these steps to add a new pi,
+- **Host Count**: If you only have one pi, that's fine.
+- **SD Count**: If you only have 1 SD card but multiple pis, you will have to
+  run through this entire thing for each pi, individually, but it'll work.
+- **Add a Pi Later**: You must also go through these steps to add a new pi,
   regardless of the state of other pis (when adding a new pi, you only have to
   execute all actions against the one new pi, the other pis are golden)
-- **User/Password** This guide and the Ansible scripts herein rely on a uniform
+- **User/Password**: This guide and the Ansible scripts herein rely on a uniform
   user/password schema when in the raw and vanilla state. Though you can deviate
   from them, it will make your life just a little easier to stick with the same
   user and password for ALL hosts in the vanilla state. We will secure the host
@@ -111,7 +111,7 @@ A few notes to keep in mind before embarking:
 
   :::
 
-- **Booting From USB** The
+- **Booting From USB**: The
   [recommended way of ensuring that booting from USB is enabled](https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#raspberry-pi-4-boot-eeprom)
   is simpler. However, this way will provide some more logging if things go
   south and will update firmware if needed.
@@ -224,7 +224,7 @@ devices but can be more expensive than pis.
 
 ## Prep Raw NUCs
 
-- **User/Password** This guide and the Ansible scripts herein rely on a uniform
+- **User/Password**: This guide and the Ansible scripts herein rely on a uniform
   user/password schema when in the raw and vanilla state. Though you can deviate
   from them, it will make your life just a little easier to stick with the same
   user and password for ALL hosts in the vanilla state. We will secure the host
@@ -241,36 +241,41 @@ is not backed up or can not be lost. _Imaging will erase this information._
 1. Connect monitor and keyboard to NUC.
 1. Connect Ethernet cable.
 1. Connect power, but no need to power on yet.
-1. Get the latest Ubuntu server 20.04 image from
+1. Get the latest Ubuntu server image from
    [Ubuntu](https://ubuntu.com/download/server) on your controlling computer
 1. On the Ubuntu website, select "Option 2 - Manual Server Installation"
-1. Make sure you are downloading **AMD** architecture (you are usually and it
+1. Make sure you are downloading **AMD** architecture (you usually are, and it
    will say so in the name of the download, e.g.
    "ubuntu-20.04.4-live-server-amd64.iso")
 1. Click download
 1. Open the Raspberry Pi Imager
-1. Choose "Use Custom" and find the image you just downloaded.
+1. Choose "Use Custom" and find the image you just downloaded
 1. Insert a SD card into the control computer
 1. Select it in Imager as the "storage" option
+1. (it may ask you if you would like to preserver setting from the previous
+   imaging, click "Use Defaults" or "Reset")
 1. **Click WRITE**
 1. Once written, Eject card and put it in the NUC
 1. Power on the NUC and hold / press F10 on the keyboard until you see the
    `boot from` screen.
 1. Select boot from USB / SD.
 1. Go through the process of setting up the server.
+   - Almost all the setting defaults should suffice
    - No need to enter your name
-   - User and password (This password can be altered, but it's just easier to
-     keep it as is):
+   - User and password (This password can be altered, but again it's just easier
+     to keep it as is):
      - User: `hab`
      - Password: `vanillaHab`
    - SSH:
+     - Make sure it is installed
      - No need to copy over keys just yet
      - Make sure password authentication is enabled
    - Select disk partitions and boot drives as you find appropriate, generally,
-     we want at least one massive partition > 1.5 TB.
+     we want at least one massive partition > 1.5 TB. (If this step confuses
+     you, just select defaults, it can be fixed later).
 1. Once everything is installed, it will indicate a successful install, and ask
-   you to eject the USB / SD media, Eject it.
-1. Boot the device from disk
+   you to eject the USB / SD media, and hit `enter`, Eject it, hit enter.
+1. It will now Boot the device from disk
 1. Log in using provided user/pass
 1. Do not disconnect keyboard / monitor until you can confirm that you can ssh
    in from local control machine using user/pass given above
@@ -279,10 +284,16 @@ is not backed up or can not be lost. _Imaging will erase this information._
      a
      [handful](https://duckduckgo.com/?q=can+not+SSH+into+Ubuntu+Server+on+NUC&t=ffab&ia=web)
      of other things going on.)
-1. Once you have SSHed in, escalate the ubuntu user permissions to use sudo
+1. Once you have SSHed in, escalate the `hab` user permissions to use sudo
    without a password
-   1. run: `sudo visudo`
-   1. Add: `ubuntu ALL=(ALL) NOPASSWD:ALL` to the end of the file
+   1. Run:
+      ```bash
+      sudo visudo
+      ```
+   1. Add this to the end of the file:
+      ```bash
+      hab ALL=(ALL) NOPASSWD:ALL
+      ```
    1. To save changes: `CTRL + o`
    1. Confirm changes: `ENTER`
    1. Exit and apply : `CTRL + x`
@@ -292,17 +303,35 @@ is not backed up or can not be lost. _Imaging will erase this information._
       `nuc1`
    1. While still logged in, run this command, be sure to change the name to
       match the NUC its being applied to, e.g. `nuc1` etc:
-   ```bash
-   sudo hostnamectl set-hostname nuc1
-   ```
+      ```bash
+      sudo hostnamectl set-hostname nuc1
+      ```
 1. It might also be good to make sure firmware is up-to-date with:
-   `fwupdmgr get-updates --ipfs`
+   `fwupdmgr get-updates --ipfs` (though, we have only had limited success
+   here).
 1. Additionally, it's probably a good idea to make sure your hard drive, volume
    groups, and logical volumes are in order. Run, `sudo pvs` `sudo vgs` and
    `sudo lvs`. Your physical volumes ('pv', from 'pvs') should reflect the
    expected disk space you have. So too should vgs (volume groups) and lvs
    (logic volumes). See
-   [here](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning).
+   [here](https://askubuntu.com/questions/1106795/ubuntu-server-18-04-lvm-out-of-space-with-improper-default-partitioning)
+   for more details, but you might need to simply run `lvm` `lvextend` and
+   `resize2fs`:
+   ```
+   hab@nuc2: sudo su -
+   [sudo] password for hab:
+   root@nuc2:~# lvm
+   lvm> lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+     Size of logical volume ubuntu-vg/ubuntu-lv changed from 100.00 GiB (25600 extents) to <1.82 TiB (476150 extents).
+     Logical volume ubuntu-vg/ubuntu-lv successfully resized.
+   lvm> exit
+     Exiting.
+   root@nuc2:~# resize2fs /dev/ubuntu-vg/ubuntu-lv
+   resize2fs 1.46.5 (30-Dec-2021)
+   Filesystem at /dev/ubuntu-vg/ubuntu-lv is mounted on /; on-line resizing required
+   old_desc_blocks = 13, new_desc_blocks = 233
+   The filesystem on /dev/ubuntu-vg/ubuntu-lv is now 487577600 (4k) blocks long.
+   ```
 
 ## Stand-up Vanilla NUCs
 
@@ -347,10 +376,11 @@ Here are some basic goalposts for adding a generic host that we should call
 attention to from the NUC guide.
 
 - [ ] Name the host uniquely in accordance with your naming plan.
-- [ ] Get ssh access from your control machine via password.
+- [ ] Get ssh access from your control machine via password
 - [ ] Make sure `hostnamectl` is set correctly.
 - [ ] Make sure Ansible does not need to enter the password to use root
-      privileges.
+      privileges by adding `hab ALL=(ALL) NOPASSWD:ALL`
+- [ ] Make sure the disk partition is as big as it can be
 
 All of these have pathways in the NUC guide above, in fact, again, most of the
 NUC guide should apply.
@@ -367,9 +397,8 @@ If there are no failures, all raw generic hosts are now vanilla hosts 🙌
   </TabItem>
 </Tabs>
 
-If you don't have any other computers, you can proceed to the section:
-[Stand-up Live Hosts](/docs/l1-hosts/live-hosts). Otherwise, change the tab
-above to the next set of hosts.
+If you don't have any other computers, you can proceed to the section below.
+Otherwise, change the tab above to the next set of hosts.
 
 ---
 

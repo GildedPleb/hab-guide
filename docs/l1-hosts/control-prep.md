@@ -19,19 +19,19 @@ file? "rc" stands for
 It is a list of commands that are run every time we open up a new terminal. In
 our case, every time we open a new terminal, we want to be able to not type
 `ansible-playbook` but instead type `apb`. You can find out which command to run
-(and thus which rc file is important) by using the command
+(and thus which rc file is important) by using the command:
 
 ```bash
 echo $0
 ```
 
-if it returns `zsh`:
+if it returns `zsh`, run:
 
 ```bash
 echo 'alias apb="ansible-playbook"' >> ~/.zshrc && source ~/.zshrc
 ```
 
-or if `bash`:
+or if `bash`, run:
 
 ```bash
 echo 'alias apb="ansible-playbook"' >> ~/.bashrc && source ~/.bashrc
@@ -41,7 +41,8 @@ We will also be using Ansible-Vault to store secrets for our cluster. For this,
 we will need a vault password which we will store in an executable clear text
 file. This isn't secure. But, it gives us good options for later. Like changing
 the executable script from echoing the password to a script which calls the
-password from Bitwarden, or asks for user input.
+password from Bitwarden, asks for user input, or we can simply remove the
+password and lock down all actions.
 
 To add this Ansible Vault password, run this command:
 
@@ -79,7 +80,7 @@ password to the terminal. Do that now to make sure everything took.
 
 If you see your newly generated random password, Congrats! However, there is a
 new problem: You now have your password printed in your terminal and should
-consider that password burned.
+probably consider that password burned.
 
 It's time you get a new password. Run the super long command above again,
 without altering it. What happened?

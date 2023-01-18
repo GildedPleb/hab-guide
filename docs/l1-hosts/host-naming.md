@@ -31,17 +31,13 @@ follows:
 - `pi5`
 
 This is a pretty straightforward WYSIWUG naming convention, but you are welcome
-to get creative with naming as long as you stay within the naming spec.
-
-:::caution
-
-It is advisable to _not_ name hosts by roles like `leader`, `master`, `slave` or
+to get creative with naming as long as you stay within the naming spec. However,
+it is advisable to _not_ name hosts by roles like `leader`, `master`, `slave` or
 `work-horse`, etc. This guide is architecturally predicated on hosts being role
 agnostic. Highly available services assume failure and replacement of resources,
 or having interchangeable and expendable parts. Naming by role might add
-confusion here.
-
-::::
+confusion here... for instance, if "Slave" became a control plain node, the very
+leader of the group.
 
 Importantly, a host name will also be used as a fully qualified domain name
 (FQDN). So, if you have hosts that are off site, and you do not have access to
@@ -55,7 +51,7 @@ with remote hosts at the present moment.
 
 It is advisable to keep track of these names by actually attaching them to the
 exterior of the physical device somehow, no need to be permanent, but this may
-help with troubleshooting later on.
+help with troubleshooting should it arise.
 
 :::
 
