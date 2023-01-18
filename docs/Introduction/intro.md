@@ -41,7 +41,7 @@ Available Bitcoin node.
 
 This project is very new, raw, and not battle tested yet. Under no circumstance
 should this project defend Private Keys for real Bitcoin. Many of the best
-practices are yet to been discovered. And there are undoubtedly many bugs.
+practices are yet to be discovered. And there are undoubtedly many bugs.
 
 **! PROCEED WITH CAUTION !**
 

@@ -15,7 +15,7 @@ If you want to see the specific technical requirements, start with
 
 Hardware is expensive, and the node expense will balloon unless managed
 appropriately. You probably are already running a single computer node. As a
-first measure, we will re-purpose and expand on top of it, count it as one of
+first measure, we will re-purpose and expand on top of it, counting it as one of
 your hosts.
 
 ### Multi-Compute
@@ -42,7 +42,9 @@ resources and network resources. We will soon see why in software, but we should
 assume HDD (aka "spinning rust") should not be used for mission critical storage
 (like the blockchain). All said storage should be SSD. What is more, SSD should
 be minimally 2 TB, as the blockchain is now >500 GB (depending on set flags) and
-Longhorn (see below) inefficiently allocates space.
+Longhorn can inefficiently allocate space as well as move volumes between hosts,
+meaning 1 host may have two copies of the blockchain from time to time (see
+below).
 
 ### Power
 
@@ -101,8 +103,8 @@ easy-to-use distributed block storage system for Kubernetes.
   - Snapshot, backup, and restore the blockchain
   - Move the blockchain between hosts
 - Drawbacks include:
-  - Slow dev cycle means out of sync with Kubernetes master branch, combined
-    with automated updating this is the only thing that has killed the PoC node
-    so far.
+  - Slow dev cycle means it can be out of sync with the Kubernetes master
+    branch. Combined with automated updating this is the only thing that has
+    killed the PoC node so far.
   - Not strictly needed
   - _Requires_ SSD drives

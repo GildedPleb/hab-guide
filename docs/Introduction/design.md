@@ -36,8 +36,8 @@ and how they will affect design. In a basic k8s cluster, there are two types of
 hosts: Leader ("control plain node" in k8s speak) and Worker ("worker node").
 The leader runs the cluster, the workers run all the apps the cluster runs. A
 leader can also run the apps in the cluster, but a worker can not run the
-cluster. In an HA cluster, which we will build, the only difference is that
-there are many Leaders, not just one.
+cluster. In an HA cluster, which we will build, the big difference is that there
+are many Leaders, not just one.
 
 Generally speaking, if host resources are practically unlimited, say if you are
 running a cluster in GKE, you'd want to separate these two groups. Because we
@@ -54,7 +54,8 @@ resources for Bitcoin.
 
 Another thing to consider here is that etcd (which runs on Leader hosts) will
 require _a lot_ of write and re-write to the hard drive. As such, it is less
-than ideal to apply a Leader to a host with a slower, older, and used SSD drive.
+than ideal to apply a Leader to a host with a slower, older, and/or used SSD
+drive.
 
 Additionally, its _required_ that to run in HA mode, there must be at least 3
 Leaders:
@@ -95,8 +96,8 @@ parts operate together as one, it is far better to utilize those resources in
 ways that are friendly with decentralizing, or splitting up the node. To address
 this, the node must be composable (or decomposable). As in, it should be trivial
 for the node operator to slice off a piece of the node where that slice can
-operate on its own, as its own full node. This serves a few purposes also listed
-in [Why?](/why#obscure-threat-mitigation--hydra-option).
+operate on its own, as its own full node. This serves a few purposes listed in
+[Why?](/why#obscure-threat-mitigation--hydra-option).
 
 ### No Hydra Option? No problem.
 
@@ -111,9 +112,10 @@ every HAB Node to keep as many full copies of the blockchain as possible.
 ### No pre-packaged HAB Node: Aesthetic Option
 
 Though many excellent companies offer individual Bitcoin nodes as pre-packaged
-products which can and should be employed in HAB Clusters, HAB Clusters
-themselves should seek to diversify hardware, vendors, and supply chain as much
-as possible and avoid cluster-level "ready-made" solutions.
+products which can and should be employed in HAB Clusters (consult individual
+companies whether their hardware can be re-imaged to use modern Linux distros),
+HAB Clusters themselves should seek to diversify hardware, vendors, and supply
+chain as much as possible and avoid cluster-level "ready-made" solutions.
 
 Far from a production-line computer, a HAB node should be the highest caliber
 node that the node operator can muster, and he should take absolute ownership,
@@ -130,10 +132,9 @@ manifest itself as such:
    it with finality. "This is my node..."
 1. A HAB node should be well-designed. It should fit operator needs and
    resources, it should be carefully scrutinized, secured, organized, and, in
-   the end, closer to being a piece of art than a heap of cables, hodgepodge
-   acrylic boxes, loud fans, and blinking lights. The aesthetics of the node
-   matter. Which is why we call this the Aesthetic Option for the purposes of
-   this guide.
+   the end, closer to being a piece of art than a heap of cables and hodgepodge
+   acrylic boxes with loud fans. The aesthetics of the node matter. Which is why
+   we call this the Aesthetic Option for the purposes of this guide.
 1. As much as this guide may help a node operator set up a HAB node, we would be
    remiss if all HAB nodes looked exactly like the PoC (indeed they _shouldn't_,
    considering the [lessons learned](/poc#host-diversification)). The intention

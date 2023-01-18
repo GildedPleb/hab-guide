@@ -31,8 +31,8 @@ majority of this guide is _reading and comprehension_ not _doing_.
 
 ## The Content vs The Commands
 
-Indeed, here is a (nearly) full list of the commands that will be required to
-spin up a HAB Node from this guide, assuming your hosts are imaged and
+To that end, here is a (nearly) full list of the commands that will be required
+to spin up a HAB Node from this guide, assuming your hosts are imaged and
 networked, and your Control Computer has all the software installed correctly:
 
 :::caution
@@ -90,7 +90,9 @@ is for at least two reasons:
    may not have to run commands _at all_ but instead can simply open up a
    management GUI and drag and drop.
 1. We hope that this teaches other developers unfamiliar with the stack the
-   entry level architecture needed to get up to speed on the technology quickly.
+   entry level architecture needed to get up to speed on the technology quickly
+   so that they can start thinking about this stuff practically in how they
+   develop other bitcoin ecosystem apps.
 
 This is also a note on just how fresh this technology truly is. We hope that
 from here, this guide would become two separate setup paths: a guide like
@@ -98,18 +100,18 @@ RaspiBolt and a straightforward GUI solution.
 
 :::note Is "One Click" Possible?
 
-Unfortunately, we don't presently think it's feasible to get a HAB Node set up
-with "1 click" until we can codify best practices around choosing roles for
-hosts. The difficulty lies in an answer to this question: Under what metrics
-should the quorum of leaders be distinguished from the workers? Presently, it
-depends on number of hosts, host type, location, compute, hardware, storage,
-stability, connectivity, etc., and for all of those looser metrics, we must
-determine how they quantified. The answer here will be opinionated and dependent
-on operator capabilities, resources, and budget.
+Unfortunately, we don't think it's feasible to get a HAB Node set up with "1
+click" until we can codify best practices around choosing roles for hosts. The
+difficulty lies in an answer to this question: Under what metrics should the
+quorum of leaders be distinguished from the workers? Presently, it depends on
+number of hosts, host type, location, compute, hardware, storage, stability,
+connectivity, etc., and for all of those loose metrics, we must determine how
+they are quantified. Until best practices are known, the answers here will be
+opinionated and dependent on operator capabilities, resources, and budget.
 
 Point is, it seems like there will be, for a while to come, a needed step where
 the operator decides who is who among his hosts and how each should be
-provisioned, such that a HAB Node can not be created in "1 click". But let's not
+provisioned. As such, a HAB Node can not be created in "1 click". But let's not
 overstate that: with netbooting and a GUI, we can get _incredibly_ close. It's
 not inconceivable to get there with "n clicks" where n does not exceed the
 number of _hosts_.
