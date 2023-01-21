@@ -4,29 +4,6 @@ sidebar_position: 1
 
 # Start Here
 
-:::warning
-
-As of December 31, 2022, our chosen load balancer, Metal LB, has changed their
-API. As such, the guide, as written, will fail when attempting to install Metal
-LB.
-
-You can still use the guide, but you will need to make changes accordingly. You
-have two ways forward:
-
-1. Edit the Ansible scripts to alter the Metal LB deployment and get it working
-   manually, either by targeting releases below `13` or by adding new resource
-   definitions.
-1. Replace Metal LB with something else.
-
-Investigating this problem has revealed that the implementation of our load
-balancer was not actually HA. This is not a problem as the cluster is not made
-to host incoming traffic like web requests. But it does present an opportunity
-to make this infrastructure HA in case HA is needed here in the future. We will
-be pursuing a [solution](https://kube-vip.io/docs/usage/k3s/?query=k3s) in the
-coming weeks and release a fix.
-
-:::
-
 ## Build Your Own HAB Node
 
 In this tutorial we will be bootstrapping, from raw hardware, a Highly Available
