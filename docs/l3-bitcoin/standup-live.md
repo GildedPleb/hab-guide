@@ -60,14 +60,14 @@ deployment should look:
    and passes validation:
 
    ```bash
-   helm template gildedpleb/hab -f ~/.HAB/values.hab.yml > ./ChartBeingDeployed.yml
+   helm template gildedpleb/hab -f ~/.HAB/values.hab.yml > ~/.HAB/ChartBeingDeployed.yml
    ```
 
    Then, if it looks good, install the bitcoin chart using the values you
    created.
 
    ```bash
-   helm install hab gildedpled/hab -f ~/.HAB/values.hab.yml
+   helm install hab gildedpleb/hab -f ~/.HAB/values.hab.yml
    ```
 
 Did it install without error? Congrats! You now have a Highly Available Bitcoin

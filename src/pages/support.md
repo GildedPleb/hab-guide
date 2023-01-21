@@ -7,8 +7,8 @@ title: Support the HAB Node project
 Bitcoiners,
 
 Gilded Pleb here, I have been involved in Bitcoin for a long time, but with a
-strong preference for remaining private, so this is my semi-public debut on a
-new yet pseudonymous account, pleasure to make your acquaintance!
+strong preference for remaining a private pleb. This is my semi-public debut on
+a new pseudonymous account, pleasure to make your acquaintance!
 
 I have wanted to work on, in, or around Bitcoin for years now. However, my love
 of and deep respect for Bitcoin as well as my atypical background, have, for a
@@ -21,27 +21,33 @@ startup— getting professional experience in everything from actual hardware, t
 CSS animations. Nearing the end of that incredible experience, I felt like I
 could finally bring something to the table.
 
-I put together a portfolio project to show off my skills, and this HAB Node and
-guide was the result: hardware, DevOps, FrontEnd, and even animation in the
-introduction page. I am very please with how this all turned out, only wishing
-that I could have incorporated a DB to show of backend skills as well.
-Certainly, it seems that this project may be bigger than my desire to get a job,
-so I really can not complain.
+I put together a portfolio project to show off my skills, in pursuit of a job in
+bitcoin, and this HAB Node and guide was the result: hardware, DevOps, FrontEnd,
+and even animation in the introduction page. I am very please with how this all
+turned out, only wishing that I could have incorporated a DB to show of backend
+skills as well (but check out the very rough
+[Relational LevelDB](https://github.com/GildedPleb/relational-leveldb) backend
+project I spun up!).
+
+Certainly, the HAB Node project may be bigger than my desire to get a job, so I
+really can not complain.
 
 Though it is a work in progress, I hope that for some of you, a HAB Node is a
 net addition to the space, and pushes the conversation forward about creating
 nodes which can truly support the entire spectrum of peer-to-peer and
 distributed infrastructure in very reliable, private, affordable, non-relay,
 non-federated, and sovereign ways for everyone. Indeed, Plebs should be able to
-put the entire internet on our shoulders, and this is how it starts.
+put the entire internet on our shoulders, if that hasn't started already (it
+has), this is how it really picks up momentum.
 
 By browsing this site, and hopefully being intrigued or challenged by these
-ideas—even if you disagree, you have helped this project be better, thank you
-for the support.
+ideas—even if you disagree—you have helped this project be better, thank you for
+the support.
 
-Thank you!
+Thank you.
 
-There is much more to come, and Bitcoin is only getting started,
+There is much more to come, and as you are well aware, Bitcoin is only getting
+started,
 
 Sincerely,
 
