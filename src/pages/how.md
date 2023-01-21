@@ -651,6 +651,8 @@ But let's not gloss over the bigger picture either:
 
 Computer : Cluster :: Bitcoin Node : Bitcoin Network
 
+## The Bigger Picture
+
 What Kubernetes does for uptime is the _very same_ (but weaker) paradigm that
 bitcoin the network at large does with this key difference: Kubernetes adds the
 functionality of also centrally controlling the cluster of computers.

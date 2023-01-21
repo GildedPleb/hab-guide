@@ -7,20 +7,20 @@ sidebar_position: 4
 Let's now stand-up a live k3s cluster.
 
 Though k3s is fully live and active in its "vanilla state" we can't build
-anything substantial on top of it without first running some "service apps" that
-open up its functionality layers. All these apps will be required to get Bitcoin
-in the proper environment. As such, completing these steps will be getting
-Bitcoin not just into the raw state, but into the vanilla state as well. As
-mentioned, once we lean deeper into the software side of things, we start to get
-very streamlined.
+anything substantial on top of it without first running some "low level apps"
+that open up its functionality layers. All these apps will be required to get
+Bitcoin in the proper environment. As such, completing these steps will be
+getting Bitcoin not just into the raw state, but into the vanilla state as well.
+As mentioned, once we lean deeper into the software side of things, we start to
+get very streamlined.
 
 ## Live K3s
 
 All of these apps can be installed with one Ansible-Playbook command, which we
-will do at the end, but we will need to edit more than a few settings
-beforehand. Though pre-sets exist, you should tinker, try to get your barrings,
-and change a handful of things. We will try to point out all the needed changes
-and offer basic explanations.
+will do at the end, but we may need to edit more than a few settings beforehand.
+Though pre-sets exist, you should tinker, try to get your barrings, and change a
+handful of things. We will try to point out all the needed changes and offer
+basic explanations.
 
 :::caution
 
@@ -44,9 +44,6 @@ to the following `include_tasks`, and how those included tasks point to the
 ...
     # Install k3s automated upgrades
     - include_tasks: tasks/system-upgrade-controller.yml
-
-    # Add and Install MetalLB
-    - include_tasks: tasks/metalLB.yml
 
     # Add and Install nginx
     - include_tasks: tasks/nginx.yml
@@ -76,9 +73,10 @@ and then for workers. In effect, you can think of _this entire upgrade app_ as
 being declared by the file Ansible downloads and these blocks of `yml`.
 
 You should be able to see that it uses `concurrency: 1` to cordon 1 host at a
-time while it updates. The defaults should suffice for all, but do consult the
-[docs](https://rancher.com/docs/k3s/latest/en/upgrades/automated/) first if you
-would like to make changes.
+time while it updates. The defaults should suffice for all, (unless you _need_
+to be on the _stable_ release of k3s, as opposed to the _latest_) but do consult
+the [docs](https://rancher.com/docs/k3s/latest/en/upgrades/automated/) first if
+you would like to make changes.
 
 To change the SUC settings, edit these files before installing:
 
@@ -92,10 +90,10 @@ your steady-state HAB node does not have N+1 available space, you may be
 counting down days till downtime with a SUC installed. But, many will not have
 access to 4 computers to do this anyway, so if that is you, you might consider
 commenting out this upgrading code in `K3s/standup-live.yml` so that it is not
-deployed on your cluster.
+deployed on your cluster, like so:
 
 ```yml
-# Install k3s automated upgrades
+# # Install k3s automated upgrades
 # - include_tasks: tasks/system-upgrade-controller.yml
 ```
 
@@ -105,44 +103,17 @@ This also means you will have to upgrade your cluster manually.
 
 ### MetalLB
 
+MetalLB is already installed as a load balancer because a load balancer is a
+fundamental component of a HA system, but let's dive into it now.
+
 [MetalLB](https://metallb.universe.tf/) is a load balancer which opens up your
-k3s cluster to its wider network: it gives the services on your node IP
+k3s cluster to its wider network: it gives the services on your HAB cluster IP
 addresses. Don't worry, none of this is public if your LAN subnet is not public
-and behind a firewall like pfSense. There are a few load balancers in the k8s
+and is behind a firewall like pfSense. There are a few load balancers in the k8s
 universe, but this one is a basic one for bare metal, and self-hosting, which,
-at the time of research in March 2022, many load balancers did not offer (but
-apparently, in Dec 2022, there are others now). Remember that Kubernetes is
-_cloud_ native, not _edge_ native, but it does work wonders at the edge!
-
-Be sure to edit the IP range so that it reflect a range that will be available
-from your router. If you recall, for us,
-[that was set to](/docs/l1-hosts/networking#designate-ip-address-block)
-`10.1.0.50-99`.
-
-```yml title="hab-plays/K3s/charts/Metallb"
-configInline:
-address-pools:
-	- name: default
-	protocol: layer2
-	addresses:
-		- 10.1.0.50-10.1.0.99    #<<--- HERE
-```
-
-This is the first block to use Helm, as you will have undoubtedly noticed from
-the lines `kubernetes.core.helm_repository` and `kubernetes.core.helm:` in
-`hab-plays/K3s/tasks/metalLB.yml`. The equivalent commands for this Ansible
-block are:
-
-```bash
-helm repo add metallb https://metallb.github.io/metallb
-helm install metallb metallb/metallb -n kube-system -f K3s/charts/MetalLB/values.yml
-```
-
-If you run these commands, and also run them in the Ansible script, guess what?
-Nothing should happen! Ansible is declarative, Helm is declarative, and
-Kubernetes is declarative. All of these systems are given instructions like
-"Hey, we want this software to be defined as such", and if the software is
-already defined as such, it says, "Looks great!" and does nothing.
+at the time of research in Jan 2023, many load balancers did not offer. Remember
+that Kubernetes is _cloud_ native, not _edge_ native, but it does work wonders
+at the edge!
 
 ### NGINX
 
@@ -152,15 +123,31 @@ and says "Ah! I know what to do with this `web request`". More
 to handle potentially many things in the cluster, most notably is the Longhorn
 UI.
 
-There are no settings to change for this one.
+There are no settings to change for this one. But you will notice, this is the
+first block to use Helm, as evident from the lines
+`kubernetes.core.helm_repository` and `kubernetes.core.helm:` in
+`hab-plays/K3s/tasks/nginx.yml`. The equivalent commands for this Ansible block
+are:
+
+```bash
+helm repo add nginx https://kubernetes.github.io/ingress-nginx
+helm install nginx nginx/ingress-nginx -n kube-system --set defaultBackend.enabled=false
+```
+
+If you run these commands, and also run them in the Ansible script, guess what?
+Nothing should happen! Ansible is declarative, Helm is declarative, and
+Kubernetes is declarative. All of these systems are given instructions like
+"Hey, we want this software to be defined as such", and if the software is
+already defined as such, it says, "Looks great!" and does nothing.
 
 Once the ingress controller has been installed, Ansible will wait for the
 LoadBalancer IP to be available. You can watch the status by running the
-following command in another terminal window, before standing up live k8s:
+following command in another terminal window, but do so before standing up live
+k8s because it will happen _fast_:
 
 ```bash
-kubectl ns kube-system
-watch kubectl get services
+% kubectl ns kube-system
+% watch kubectl get services
 ```
 
 By the time the Ansible command is finished, you should see something like:
@@ -170,13 +157,13 @@ By the time the Ansible command is finished, you should see something like:
 NAME                                       TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
 kube-dns                                   ClusterIP      10.43.0.10     <none>        53/UDP,53/TCP,9153/TCP       50m
 metrics-server                             ClusterIP      10.43.53.37    <none>        443/TCP                      50m
-nginx-ingress-nginx-controller             LoadBalancer   10.43.92.27    10.1.0.50     80:31559/TCP,443:31850/TCP   43m
+nginx-ingress-nginx-controller             LoadBalancer   10.43.92.27    10.1.0.51     80:31559/TCP,443:31850/TCP   43m
 nginx-ingress-nginx-controller-admission   ClusterIP      10.43.90.232   <none>        443/TCP                      43m
 ```
 
 Finally, to make sure it is indeed working, open a web browser on your control
 computer and point it to the `nginx-ingress-nginx-controller` `EXTERNAL-IP`
-(e.g. 10.1.0.50 in the example above) and you should see the infamous
+(e.g. 10.1.0.51 in the example above) and you should see the infamous
 
 ```
         404 Not Found
@@ -185,8 +172,8 @@ computer and point it to the `nginx-ingress-nginx-controller` `EXTERNAL-IP`
 ```
 
 This means it's working—that your web traffic is making it to your cluster—but
-that your cluster has nothing to serve, which is expected. Insert failed
-successfully memes.
+that your cluster has nothing to serve at that address, which is expected.
+Insert failed successfully memes.
 
 ### Cert-Manager
 
@@ -198,7 +185,8 @@ There are no settings to change for this one either.
 
 We are automatically adding self-signing certs to the manager, so you can deploy
 services privately. It is out of the scope of this guide to create a public
-interface, though it's perfectly feasible once you have a Cert Manager!
+interface (one attached to an internationally resolvable website), though it's
+perfectly feasible once you have a Cert Manager!
 
 To ensure that it is installed and working correctly, in the `cert-manager`
 namespace you should see three running pods. If you wanted, you could open yet
@@ -232,20 +220,20 @@ Above, you should see three healthy pods: `cert-manager`,
 Alright, now it's time for the big guy: Longhorn.
 
 [Longhorn](https://longhorn.io/) is a highly available persistent storage
-solution for Kubernetes. It makes managing blockchain data sane. But it's also
-not without its downsides and added complications. For now, we still think its
-worth including in the cluster as it will allow us to easily monitor storage,
-backup data, and provide replication. Plus, it's a straightforward and useful
-primer to seeing just how vastly powerful this cluster can become.
+solution for Kubernetes. It makes managing blockchain data a little more sane.
+But it's also not without its downsides and added complications. For now, we
+still think its worth including in the cluster as it will allow us to easily
+monitor storage, and backup data. Plus, it's a straightforward and useful primer
+to seeing just how vastly powerful this cluster can become.
 
 First, Ansible will be running
-[this script](https://longhorn.io/docs/1.3.2/deploy/install/#using-the-environment-check-script)
+[this script](https://longhorn.io/docs/1.4.0/deploy/install/#using-the-environment-check-script)
 on the local machine which will use `kubectl` to spin up pods on each host to
 make sure everything meets minimum requirements and was installed correctly.
 
 Then, Ansible will run a version of the commands found
-[here](https://longhorn.io/docs/1.3.2/deploy/install/install-with-helm/) and
-[here](https://longhorn.io/docs/1.3.2/deploy/accessing-the-ui/longhorn-ingress/)
+[here](https://longhorn.io/docs/1.4.0/deploy/install/install-with-helm/) and
+[here](https://longhorn.io/docs/1.4.0/deploy/accessing-the-ui/longhorn-ingress/)
 but will run it in a way as to save secrets safely. Most of the Ansible script
 herein, will be better understood by also reading these links. Ansible will add
 a secret for volume encryption, which can be found in the Ansible vault at
@@ -332,7 +320,7 @@ spec:
 You will also need to add `lh.gilded.lan` (or whatever you edit it to) to your
 DNS resolver in your router. It should resolve to the
 `nginx-ingress-nginx-controller` `LoadBalancer` `External-IP` address assigned
-[above](/docs/l2-k3s/standup-live#nginx) (in our case `10.1.0.50`, for which we
+[above](/docs/l2-k3s/standup-live#nginx) (in our case `10.1.0.51`, for which we
 got `404 Not Found nginx`).
 
 The upshot to getting this kind of exposure to an ingress this early on is that,

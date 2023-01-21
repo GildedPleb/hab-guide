@@ -19,8 +19,9 @@ apb K3s/teardown-vanilla.yml
 - This will not change any hosts, and still keep them in the live state, but it
   will tear down k3s. So if you run `kubectl get nodes -o wide` again, you will
   get an error.
-- If you do not plan on changing the host plan, you can use this to bounce k3s.
-  If you plan on changing the host plan, you should also tear down the live
+- If you do not plan on changing the host plan, you can use this to bounce k3s,
+  it will also reboot the hosts.
+- If you plan on changing the host plan, you should also tear down the live
   hosts.
 
 However, it has been a part of the plan from the outset to be able to trivially

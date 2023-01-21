@@ -60,7 +60,7 @@ ansible-vault encrypt ~/.HAB/vault-hosts
 cat ~/.HAB/vault-hosts
 awk 'NR>=6' ~/.HAB/inventory/host-plan.tpl > ~/.HAB/inventory/host-plan-$(date "+%Y-%m-%d")
 apb Hosts/standup-live.yml -e "plan=host-plan-2022-03-17"
-apb K3s/standup-vanilla.yml
+apb K3s/standup-vanilla.yml -e 'vip=10.1.0.50 serviceRange=10.1.0.51-10.1.0.99'
 kubectl get nodes -o wide
 apb K3s/standup-live.yml
 helm repo add gildedpleb https://gildedpleb.github.io/helm-charts/

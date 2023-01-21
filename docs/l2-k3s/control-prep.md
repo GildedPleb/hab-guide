@@ -22,16 +22,22 @@ set up appropriately.
 
 ## Install Kubectl
 
-Kubectl is how you control and interact with a Kubernetes cluster. Make sure you
-have `kubectl` installed on your local/control machine (it gets installed on the
-master node, but it's best to have locally, so you don't have to ssh into the
-cluster) [Install](https://kubernetes.io/docs/tasks/tools/).
+Kubectl is how you control and interact with a Kubernetes cluster. You may
+recall from [How?](/how#the-bigger-picture) that Kubernetes adds centralized
+command and control to a distributed system. Kubectl ("Kube Control") is that
+centralized control. Whoever has the cert which gives them full access to the
+cluster, fully owns that cluster.
 
-Once installed, its a great idea to enable
+Make sure you have `kubectl` installed on your local/control machine (it also
+gets installed on the leader node, but it's best to have locally, so you don't
+have to ssh into the cluster)
+[Install](https://kubernetes.io/docs/tasks/tools/).
+
+Once installed, it's a great idea to enable
 [bash/zsh completion](https://kubernetes.io/docs/tasks/tools/included/) though
 not required.
 
-You can make sure its working by running:
+You can make sure Kubectl is working by running:
 
 ```bash
 % kubectl
@@ -64,8 +70,8 @@ Kubernetes, much better.
 
    Once installed, poke around, you might find a plugin you find interesting.
 
-1. At this time, we only really recommend adding `ns` which allows you to change
-   namespace via the command:
+1. We highly recommend adding `ns` which allows you to change namespace via the
+   command:
 
    ```bash
    kubectl ns bitcoin
@@ -132,9 +138,11 @@ For a full definition, check out
 [this article](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/).
 For our novice purposes, we can think of namespaces as folders which isolate
 apps. Apps in k8s are generally not solitary programs, but a collection of
-containers, storage, pods, tasks and other resources, that all work together to
-deliver a functional App. It is helpful to isolate these resources into
+containers, storage, pods, tasks and other resources, that all work together in
+replaceable ways to deliver a functional App with minimized (or completely
+removed) single points of failure. It is helpful to isolate these resources into
 namespaces so that the cluster does not become overly cluttered with definitions
-and thus hard to navigate.
+and thus hard (or impossible) to navigate. Namespaces exist cluster wide, they
+are not assigned to hosts.
 
-All set? Let's spin up K8s!
+All set? Let's spin up Kubernetes!

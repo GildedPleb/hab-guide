@@ -49,6 +49,8 @@ would simply use
 ansible-vault edit ~/.HAB/vault-hosts
 ```
 
+To quit the editor type `:q`.
+
 ## Word To The Wise
 
 Ansible Vault can get really finicky with regard to finding the config files

@@ -60,6 +60,20 @@ light weight).
 
    - [Windows](https://duckduckgo.com/?t=ffab&q=how+to+install+nmap&ia=web)
 
+1. **jq**: JQ is a JSON string parser. It's a pretty handy utility.
+
+   - Mac:
+
+   ```bash
+   brew install jq
+   ```
+
+   - Linux:
+
+   ```bash
+   apt-get update && apt-get upgrade && install jq
+   ```
+
 1. **guildedpleb/hab-plays** You will need to clone the HAB Node repo to get all
    the Ansible commands we are going to run.
 

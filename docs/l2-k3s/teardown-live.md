@@ -14,7 +14,7 @@ reason with the cluster as one single entity.
 As such, tearing down a live cluster is better thought of as simply uninstalling
 the software we just installed.
 
-In standing up a live k3s cluster we used an Ansible script to install 5
+In standing up a live k3s cluster we used an Ansible script to install 4
 essential apps. We did this because the installation order was important, and
 the apps were fairly cut and dry. Because the installation order matters, so
 does the order by which we _uninstall_ these apps. As you browse
