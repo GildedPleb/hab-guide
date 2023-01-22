@@ -104,11 +104,12 @@ designed from the ground up with this end in mind.
 ## Why Is this Important?
 
 From this premise, we can begin to ask _why_ this is important, what specific
-benefits it gains us, and what specific or unknown threats it curtails. Though
-there are undoubtedly many more answers and points of discussion, these stand
-out and are worth elaborating on here:
+benefits it gains us, and what specific or unknown threats it curtails. From
+this foundation, we can begin to build a defense of HAB Nodes. Though there are
+undoubtedly many more answers and points of discussion, these stand out and are
+worth elaborating on here:
 
-- Reduction to Lost Income / HALX Option
+- Reduction to Lost Liquidity / HALX Option
 - Self-hosting / Sovereign Option ("Trusted Third Parties Are Security Holes")
 - Obscure Threat Mitigation / Hydra Option
 - Forecasted Obsolescence / Induction Option
@@ -116,18 +117,22 @@ out and are worth elaborating on here:
 - Bitcoin is. (And Will Always Be Under Attack)
 - Dissenting Opinion Refutation
 
-## Reduction to Lost Income / HALX Option
+## Reduction to Lost Liquidity / HALX Option
 
 It is becoming clear that higher layers of the stack will increasingly mean
 income streams—routing fees, streamed sats from podcast listens, gaming apps,
-etc. As those income streams mature into living wages, it will become paramount
-for security, autonomy, and privacy that privately operated, independent,
+etc, aka cash flow and liquidity. As these streams mature into living wages, or
+even corporate expenses and revenue, it will become paramount for security,
+autonomy, and privacy that independently operated,
 [economic nodes](https://medium.com/shiftcrypto/we-need-bitcoin-full-nodes-economic-ones-fd17efcb61fb)
-process those transactions. Though transactions may only be delayed by downtime,
-they can not be ultimately processed without compute, power, an internet
-connection, and memory. As such, node downtime will soon mean either lost or
-delayed living wages, bidirectional income flow imbalances, or sacrifices to
-privacy, autonomy, security, independence, etc.
+process those transactions. In any adversarial or competitive economy, autonomy
+is key to competitive advantage, otherwise participants subject themselves to
+financial censorship, conflict of interest, or cross purpose arrangements.
+Though transactions may only be delayed by downtime, they can not be ultimately
+processed without compute, power, an internet connection, and memory. As such,
+independent and economic node downtime will soon mean either lost or delayed
+living wages/bidirectional imbalances, or sacrifices to privacy, autonomy,
+security, independence, etc.
 
 A highly available node alleviates this pressure. From the physical and data
 inputs, hardware layer, and up, it has the capacity to offer all services as
