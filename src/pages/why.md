@@ -65,7 +65,7 @@ the individual cells. Each individual cell, alone, is entirely expendable by the
 organism, but only together do all the cells make the whole organism. Bitcoin
 does not exist to defend each node, but each node exists to serve a purpose for
 the whole. As such, cells can only rely on minimal help from the larger organism
-and must chiefly rely on their own internal threat mitigation technology to
+and must chiefly employ their own internal threat mitigation technology to
 continue to allow them to execute on their purpose.
 
 That technology set is encoded in the cells DNA. For any one cell to accomplish
