@@ -19,7 +19,7 @@ const Container = styled(Link)`
 
 const Nav = (_props: unknown) => {
   return (
-    <Container to="/poc">
+    <Container to="/what">
       <img src={useBaseUrl("/img/ionico.png")} />
     </Container>
   );

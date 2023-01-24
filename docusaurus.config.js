@@ -91,6 +91,7 @@ const config = {
           src: "img/ionico.png",
         },
         items: [
+          { to: "/what", label: "What?", position: "left" },
           { to: "/poc", label: "PoC", position: "left" },
           { to: "/why", label: "Why?", position: "left" },
           { to: "/how", label: "How?", position: "left" },
@@ -157,7 +158,7 @@ const config = {
               },
               {
                 label: "What?",
-                to: "/docs/Introduction/what",
+                to: "/what",
               },
               {
                 label: "Why?",
