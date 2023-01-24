@@ -29,7 +29,7 @@
   border: none;
   background: none;
   opacity: 0.5;
-`,g=e=>i.createElement(p,{to:"/poc"},i.createElement("img",{src:(0,h.Z)("/img/ionico.png")})),f=i.memo(g),u=r.ZP.div`
+`,g=e=>i.createElement(p,{to:"/what"},i.createElement("img",{src:(0,h.Z)("/img/ionico.png")})),f=i.memo(g),u=r.ZP.div`
   display: grid;
   height: 100vh;
   width: 100vw;
