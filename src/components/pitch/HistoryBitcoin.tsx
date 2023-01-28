@@ -117,9 +117,9 @@ const History = ({ pos }: { pos: number | null }) => {
         </IntroBody>
         <IntroBody>
           <ScrollFade start={0} end={0.15} pos={pos} from={1} to={0}>
-            Indeed, for some nodes, downtime already means loses. And if
+            Indeed, for some nodes, downtime already means losses. And if
             it&rsquo;s a Raspberry Pi node with a bricked hard drive, downtime
-            means loses for weeks, or having to trust the infamous "Trusted
+            means losses for weeks, or having to trust the infamous "Trusted
             Third Party", which will forever be a problem with{" "}
             <StyledLink
               href="
