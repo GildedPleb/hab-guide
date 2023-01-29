@@ -339,7 +339,7 @@ HA services for self-hosted individuals. Indeed, a HAB node provides the path
 for all such services to becoming reliably income producing without sacrifices
 to privacy, autonomy, or sovereignty. HAB Nodes empower sovereign plebs at the
 edge of the network with the most advanced datacenter tech which was formerly
-only meaningful at the center at the center of the cloud.
+only meaningful at the center of the cloud.
 
 Hopefully no other HAB Nodes look like the Ionico Base Node (_or costs as
 much_), indeed, this node is not without its problems, but a HAB Node, in all
