@@ -17,7 +17,7 @@ remains reachable:
 
 > "Nodes can leave and rejoin the network at will"
 >
-> — Satoshi, Bitcoin White Paper
+> — Satoshi Nakamoto, Bitcoin White Paper
 
 Bitcoin uptime, as a whole, [is outstanding](https://bitcoinuptime.org/), but
 the low marks for the average node persist, for the average node does not have
@@ -72,7 +72,7 @@ That technology set is encoded in the cells DNA. For any one cell to accomplish
 its purpose, it might only need to use a small fraction of the DNA available to
 it for the majority of its existence. "Junk DNA" might even argue for less than
 3%. But is the rest of the DNA really junk? By no means. Within the rest of the
-DNA (among many other things) there reside instruction on how to deal with
+DNA (among many other things) there reside instructions on how to deal with
 untold count of long dormant threats, unknown threat mitigation strategies,
 emergency protocols, communication and search mechanisms, and so much more.
 Molecular biology assumes "better to have it and not need it than need it and
@@ -204,13 +204,12 @@ Potential scenarios for this optionality include, but are not limited to:
    office, and at a family members house. It is then trivial to change from one
    to many nodes, or to slice off one or many parts, without taking down the
    cluster.
+1. In the case of an unlikely kinetic attack, or a more likely planned
+   relocation, a cluster can be incrementally torn down host-by-host and set up
+   host-by-host in a different physical location without downtime.
 1. It allows the node operator to front run supply chain collapse for his
    immediate meat-space network who may need to all-of-a-sudden place a bid on
    spinning up their own nodes.
-1. In the case of an unlikely kinetic attack on a cluster that does not have
-   locational diversity, given enough warning, the HAB node can be fully split
-   up and distributed, trivially changing from effectively one node to many,
-   multiplying the difficulty of the attack.
 1. It fights against a “Version” signalling Sybil Attack. An attack when bad
    actors spin up hundreds of AWS nodes to signal to the bitcoin network to push
    particular protocol changes such as soft or hard forks. It fights this by
