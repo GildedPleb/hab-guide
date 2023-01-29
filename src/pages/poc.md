@@ -260,8 +260,8 @@ extensibility than Pi's.
 
 We placed a high premium on aesthetics for this node too early in the build and
 the pictures do look very pretty. However, as we have come to realize, no HAB
-Node should not have 5, or even 3, or maybe even 2 of the same computer host.
-The problem here is that it can introduce perverse incentives for any single
+Node should have 5, or even 3, or maybe even 2 of the same computer host. The
+problem here is that it can introduce perverse incentives for any single
 manufacture, via economies of scale. Say, if someone realizes that the Raspberry
 Pi Foundation is primarily manufacturing HAB Nodes, and those RPi hosts
 constitute a majority of hosts in the Bitcoin Network. This introduces an attack
