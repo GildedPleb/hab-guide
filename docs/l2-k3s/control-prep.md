@@ -105,10 +105,10 @@ You can edit it accordingly, but your command prompt should now look something
 like this:
 
 ```
-(⎈|deafault:default) %
+(⎈|default:default) %
 ```
 
-The first `deafult` is the context. If you had multiple clusters, like a test
+The first `default` is the context. If you had multiple clusters, like a test
 cluster and production cluster, that is where context comes in handy. We won't
 be paying much attention to this at this time. The second `default` is the
 namespace, which we will be utilizing, and which will affect where apps get
