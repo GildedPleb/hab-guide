@@ -36,8 +36,9 @@ light weight).
    up Infrastructure as Code (IoC) idempotently. This means that no matter how
    many times you run the code, it always gives the same result.
    [Install](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
-   
-1. **Kubernetes**: Kubernetes Python Client
+
+1. **Kubernetes Client**: Kubernetes Python Client. This is needed to allow
+   Ansible to communicate with Kubernetes.
    [Install](https://github.com/kubernetes-client/python)
 
 1. **sshpass**: Also, for Ansible, you will need to install `sshpass` which is a
