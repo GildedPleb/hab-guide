@@ -107,7 +107,7 @@ const History = ({ pos }: { pos: number | null }) => {
     <StyledContainer>
       <FirstBlock>
         <IntroBody>
-          High Avalability (HA) is the process of eliminating as much downtime
+          High Availability (HA) is the process of eliminating as much downtime
           as possible in providing a remote service. The Bitcoin protocol is
           designed to be Highly Available:
         </IntroBody>
