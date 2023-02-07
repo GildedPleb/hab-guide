@@ -13,19 +13,11 @@ Most of the commands in this guide will start with `ansible-playbook` so for the
 sake of sanity, we will add an `alias`, so we don't have to type that all out
 but instead just type `apb`.
 
-The following commands write an alias to the end of your rc file. What is the rc
-file? "rc" stands for
-"[run command](https://unix.stackexchange.com/questions/3467/what-does-rc-in-bashrc-stand-for)".
-It is a list of commands that are run every time we open up a new terminal. In
-our case, every time we open a new terminal, we want to be able to not type
-`ansible-playbook` but instead type `apb`. You can find out which command to run
-(and thus which rc file is important) by using the command:
+The following commands write an alias to the end of your rc file. Every time we
+open a new terminal, we want to be able to not type `ansible-playbook` but
+instead type `apb`.
 
-```bash
-echo $0
-```
-
-if it returns `zsh`, run:
+If on `zsh`, run:
 
 ```bash
 echo 'alias apb="ansible-playbook"' >> ~/.zshrc && source ~/.zshrc

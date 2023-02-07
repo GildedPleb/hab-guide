@@ -46,6 +46,60 @@ light weight).
    convenient for vanilla provisioning. More secure pathways are added later.
    [Install](https://duckduckgo.com/?t=ffab&q=how+to+install+sshpass&ia=web)
 
+1. **openssl**: `openssl` is a
+   [cryptographic tool kit](https://www.openssl.org/) for the command line. We
+   will need it to create passwords. It should already be installed on most
+   systems but be sure it is up-to-date and correctly on your PATH.
+
+   - Mac:
+
+   ```bash
+   brew install openssl
+   ```
+
+   You will then need to add the correct version to your PATH in your rc file.
+   What is the rc file? "rc" stands for
+   "[run command](https://unix.stackexchange.com/questions/3467/what-does-rc-in-bashrc-stand-for)".
+   It is a list of commands that are run every time we open up a new terminal.
+   What is PATH? Path is a list of directories to search for executables by
+   name. When a program isn't 'on your path' that means you can not run it
+   without the absolute path `/usr/local/opt/openssl@3/bin/openssl` vs `openssl`
+
+   You can find out which command will add `openssl` to your PATH (and thus
+   which rc file is important) by using the command:
+
+   ```bash
+   echo $0
+   ```
+
+   Then choose accordingly:
+
+   ```bash title="zsh"
+   echo 'export PATH="/usr/local/opt/openssl@3/bin:$PATH"' >> ~/.zshrc && source ~/.zshrc
+   ```
+
+   ```bash title="bash"
+   echo 'export PATH="/usr/local/opt/openssl@3/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+   ```
+
+   - Linux:
+
+   ```bash
+   sudo apt update && sudo apt upgrade && sudo apt install openssl
+   ```
+
+   - [Windows](https://duckduckgo.com/?t=ffab&q=how+to+install+openssl&ia=web)
+
+   For **ALL** installs, it will be important that this new install of `openssl`
+   lives on your PATH. To confirm this, when you check the version you should
+   see something like this (and in particular with macOS, you should _not_ see
+   `LibreSSL`):
+
+   ```bash
+   % openssl version
+   OpenSSL 3.0.7 1 Nov 2022 (Library: OpenSSL 3.0.7 1 Nov 2022)
+   ```
+
 1. **nmap**: `nmap` is a "Network MAPper" (commonly used by pen testers to find
    vulnerabilities in networks) and it is needed by one of our Ansible playbooks
    to find hosts.
